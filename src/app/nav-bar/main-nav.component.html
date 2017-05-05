@@ -1,0 +1,13 @@
+
+<nav id="mainNav">
+  <a routerLink="/home" routerLinkActive="active">Home</a>
+  <a routerLink="/news" routerLinkActive="active">News</a>
+  <a routerLink="/contact" routerLinkActive="active">Contact</a>
+  <a *ngIf="userService.logged" routerLink="/addFestival" routerLinkActive="active">Add Festival</a>
+  <a *ngIf="userService.logged" routerLink="/adminFestival" routerLinkActive="active">Admin Dashboard</a>
+  <a *ngIf="userService.logged" routerLink="/profile" routerLinkActive="active">My Profile</a>
+  <a *ngIf="userService.logged === false" routerLink="/login" routerLinkActive="active">Login</a>
+  <a *ngIf="userService.logged === false" routerLink="/signUp" routerLinkActive="active">SignUp</a>
+  <a *ngIf="userService.logged" routerLink="/home" routerLinkActive="active" (click)="logout()">Logout</a>
+</nav>
+

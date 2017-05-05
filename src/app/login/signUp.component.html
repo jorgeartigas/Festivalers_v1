@@ -1,0 +1,9 @@
+<div><h1>User Sign Up</h1><br>
+  <label>Email:</label> <input #userEmail type="text"/><br>
+  <label>Password:</label> <input type="password" #password /><br>
+  <label>Name:</label> <input type="text" #name /><br>
+  <label>Lastname:</label> <input type="text" #lastname /><br>
+  <label>Age:</label> <input type="text" #age /><br>
+  <label>City:</label> <input type="text" #city /><br>
+</div><br>
+<button (click)="signUp(userEmail.value,password.value,name.value,lastname.value,age.value,city.value)">Sign Up</button>

@@ -1,0 +1,16 @@
+
+<h1>Tomorrouland</h1>
+<p>tal tal tal tlajifefhei ifheih oahfei aofheoh ohufvrucbeiw vbweiveivrivo ahfier vf</p>
+<h2>Spectaculiar imagen</h2>
+<img src="../../assets/maxresdefault.jpg" alt="festivalaso nuevo" />
+
+<h2>Test festival</h2>
+  <div *ngFor="let festival of festivales | async">
+    Festival ID: <b>{{ festival.$key }}</b>
+    <h3>Festival Name: {{ festival.name }}</h3>
+    <p>Description: {{ festival.description }}</p>
+    <h4>Start date:</h4>
+    <p>{{ festival.startDate }}</p>
+    <h4>End date:</h4>
+    <p>{{ festival.endDate }}</p>
+  </div>

@@ -1,0 +1,8 @@
+hola
+<form>
+    <label><input type="text" placeholder="Tipo"/></label>
+    <label><input type="text" placeholder="Pais"/></label>
+    <label><input type="text" placeholder="Mes"></label>
+</form>
+<div class="vec" *ngIf="userService.logged"><p>Logged In</p></div>
+<div class="vec" *ngIf="userService.logged===false"><p>Not logged in</p></div>

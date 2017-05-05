@@ -1,0 +1,11 @@
+#previewImg{
+    border: 1px solid black;
+    width: 350px;
+    height: 250px;
+}
+input[type="file"] {
+    display: none;
+}
+#buttonUpload{
+    margin-left:50px;
+}

@@ -1,0 +1,5 @@
+<div><h1>User Login</h1><br>
+  <label>User:</label> <input #userName type="text"/><br><br>
+  <label>Password:</label> <input type="password" #password />
+</div><br>
+<button (click)="login(userName.value,password.value)">Login</button>

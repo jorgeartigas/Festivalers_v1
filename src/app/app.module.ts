@@ -15,6 +15,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AddFestivalComponent } from './festivales/add-festival.component';
 import { AdminFestivalComponent } from './festivales/admin-festival.component';
+import { FestivalComponent } from './festivales/festival.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CarrouselComponent } from './carrousel/carrousel.component';
 import { FooterComponent } from './footer/footer.component';
@@ -23,6 +24,7 @@ import { UserService } from './services/user.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthGuardLogin } from './services/auth-guard-logged.service';
 import { StorageService } from './services/storage.service';
+import { FestivalService } from './services/festival.service';
 
 // CONNECTION DATA TO FIREBASE
 export const firebaseConfig = {
@@ -51,7 +53,8 @@ const myFirebaseAuthConfig = {
     SignUpComponent,
     ProfileComponent,
     CarrouselComponent,
-    FooterComponent
+    FooterComponent,
+    FestivalComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,7 @@ const myFirebaseAuthConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
   ],
-  providers: [ UserService,AuthGuard,StorageService,AuthGuardLogin],
+  providers: [ UserService,AuthGuard,StorageService,AuthGuardLogin,FestivalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

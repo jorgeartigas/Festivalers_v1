@@ -22,10 +22,10 @@ login(username,password) {
 showResultsFunction(){
   this.showResults = true;
 }
-filter(results,pais) : boolean{
-     if (results.pais != pais){
+filter(results,estilo,mes) : boolean{
+     if (results.estilo === estilo && results.mes){
         return true;
      }
-     return false; 
+     return false;
   }
 }

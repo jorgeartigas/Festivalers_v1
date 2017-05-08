@@ -11,7 +11,6 @@ import { UserService } from '../services/user.service';
 export class ProfileComponent implements OnInit {
   imgURL:string = null;
   previewURL:string;
-  user:any;
 
     constructor(
         private af: AngularFire,
@@ -21,19 +20,18 @@ export class ProfileComponent implements OnInit {
 ngOnInit(){
   this.userService.isLoggedIn();
   this.userService.getUserData();
-  this.user = this.userService.userData;
 }
-upload(file){
-    this.storageService.upload(file.target.files[0]);
+upload(file,path){
+    this.storageService.upload(file.target.files[0],path);
 }
-preview(event) {
-  if (event.target.files && event.target.files[0]) {
-    var reader = new FileReader();
-    reader.onload = (event:any) => {
-      this.previewURL = event.target.result;
-    }
-    reader.readAsDataURL(event.target.files[0]);
-  }
-}
+// preview(event) {
+//   if (event.target.files && event.target.files[0]) {
+//     var reader = new FileReader();
+//     reader.onload = (event:any) => {
+//       this.previewURL = event.target.result;
+//     }
+//     reader.readAsDataURL(event.target.files[0]);
+//   }
+// }
 
 }

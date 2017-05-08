@@ -7,6 +7,7 @@ import { NewsComponent } from './news/news.component';
 import { ContactComponent } from './contact/contact.component';
 import { AddFestivalComponent } from './festivales/add-festival.component';
 import { AdminFestivalComponent } from './festivales/admin-festival.component';
+import { FestivalComponent } from './festivales/festival.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthGuardLogin } from './services/auth-guard-logged.service';
 import { ProfileComponent } from './profile/profile.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent},
   { path: 'news', component: NewsComponent},
   { path: 'contact', component: ContactComponent},
+  { path: 'festival/:id', component: FestivalComponent},
   { path: 'addFestival', component: AddFestivalComponent, canActivate: [AuthGuard]},
   { path: 'adminFestival', component: AdminFestivalComponent, canActivate: [AuthGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}

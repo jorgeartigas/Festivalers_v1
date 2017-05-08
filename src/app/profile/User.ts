@@ -5,6 +5,7 @@ export class User {
     public age: string,
     public location: string,
     public festivales: Array<string>,
+    public isAdmin: boolean,
     public registered: any = Date.now()
   ) { }
 }

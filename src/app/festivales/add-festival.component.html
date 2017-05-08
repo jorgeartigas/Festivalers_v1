@@ -1,12 +1,12 @@
 <br><br><div>
   <form>
-    <label><h3>Festival Name:</h3></label> <input #festivalName />
-    <label><h3>Estilo de musica:</h3></label> <input #estilo />
-    <label><h3>Mes:</h3></label> <input #mes />
-    <label><h3>Pais:</h3></label> <input #pais />
-    <label><h3>Description:</h3></label> <input #festivalDescription />
-    <label><h3>Main Foto:</h3></label> <input #festivalImage />
-    <label><h3>Start Date:</h3></label> <input type="date" #festivalStartDate />
+    <label><h3>Festival Name:</h3></label> <input #festivalName /><br>
+    <label><h3>Estilo de musica:</h3></label> <input #estilo /><br>
+    <label><h3>Mes:</h3></label> <input #mes /><br>
+    <label><h3>Pais:</h3></label> <input #pais /><br>
+    <label><h3>Description:</h3></label> <input #festivalDescription /><br>
+    <label><h3>Main Foto:</h3></label> <input #festivalImage /><br>
+    <label><h3>Start Date:</h3></label> <input type="date" #festivalStartDate /><br>
     <label><h3>End Date:</h3></label> <input type="date" #festivalEndDate /><br><br>
     <button (click)="addFestival(festivalName.value,estilo.value,mes.value,pais.value,festivalDescription.value,festivalImage.value,festivalStartDate.value,festivalEndDate.value); festivalName.value=''">Add</button>
   </form>

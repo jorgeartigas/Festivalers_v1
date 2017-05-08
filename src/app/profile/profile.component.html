@@ -2,11 +2,11 @@
 <img *ngIf="previewURL" id="previewImg" [src]="previewURL"/><br><br><br>
 
     <label for="fileUpload"  class="btn btn-primary buttonUpload">Upload a Photo</label>
-    <input type="file" id="fileUpload" (change)="preview($event);upload($event);"/><br>
+    <input type="file" id="fileUpload" (change)="upload($event,'profile_pictures');"/><br>
 
 
-    <h2>Test festival</h2>
-    <p>{{userService.userUid}}</p>
+    <h2>Test Profile</h2>
+    <p>UId: {{userService.userUid}}</p>
   <div>
     <h3>Name: <b>{{ (userService.userData)?.name }}</b></h3>
     <h3>LastName: {{ (userService.userData)?.lastname }}</h3>

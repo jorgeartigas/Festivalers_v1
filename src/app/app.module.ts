@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AddFestivalComponent } from './festivales/add-festival.component';
 import { AdminFestivalComponent } from './festivales/admin-festival.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CarrouselComponent } from './carrousel/carrousel.component';
 // IMPORTS FOR SERVICES
 import { UserService } from './services/user.service';
 import { AuthGuard } from './services/auth-guard.service';
@@ -47,7 +48,8 @@ const myFirebaseAuthConfig = {
     AddFestivalComponent,
     AdminFestivalComponent,
     SignUpComponent,
-    ProfileComponent
+    ProfileComponent,
+    CarrouselComponent
   ],
   imports: [
     BrowserModule,

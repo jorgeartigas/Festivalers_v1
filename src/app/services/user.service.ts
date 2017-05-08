@@ -6,6 +6,7 @@ import { HomePageComponent } from '../home/homePage.component';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/filter';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class UserService {
@@ -13,8 +14,9 @@ export class UserService {
   userUid:string;
   userData: any;
   sub:any;
-  festivalesPendientes: FirebaseListObservable<any> = this.af.database.list('/FESTIVALERS/festivalesPendientes');;
-  festivales: FirebaseListObservable<any>=this.af.database.list('/FESTIVALERS/festivales');;
+  festivalesPendientes: FirebaseListObservable<any> = this.af.database.list('/FESTIVALERS/festivalesPendientes');
+  festivales: FirebaseListObservable<any>=this.af.database.list('/FESTIVALERS/festivales');
+
   
   constructor(
     private router: Router,
@@ -71,14 +73,14 @@ getUserData(){
     this.userData=user;
   })
 }
-addFestival(festivalName: String,description: String,mainImage:String,festivalStartDate:String,festivalEndDate:String) { 
-  if (!festivalName||!description||!mainImage||!festivalStartDate||!festivalEndDate) { return; } 
-    this.festivalesPendientes.push({ name: festivalName,description: description,mainImage: mainImage,startDate:festivalStartDate,endDate: festivalEndDate});
+addFestival(festivalName: String,estilo:String,mes:String,pais:String,description: String,mainImage:String,festivalStartDate:String,festivalEndDate:String) { 
+  if (!festivalName||!estilo||!description||!mainImage||!festivalStartDate||!festivalEndDate) { return; } 
+    this.festivalesPendientes.push({ name: festivalName,estilo: estilo,mes: mes,pais: pais,description: description,mainImage: mainImage,startDate:festivalStartDate,endDate: festivalEndDate});
   }
 validateFestival(festival: any){
     this.festivales.push(festival).then(()=> this.festivalesPendientes.remove(festival));
   }
 discardFestival(festival: any){
-   this.festivalesPendientes.remove(festival);
-  }
+   this.festivalesPendientes.remove(festival); 
+}
 }

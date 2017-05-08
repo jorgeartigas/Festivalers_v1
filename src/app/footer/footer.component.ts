@@ -3,11 +3,11 @@ import { UserService } from '../services/user.service';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Component({
-  selector: 'main-nav',
-  templateUrl: './main-nav.component.html',
-  styleUrls: ['./main-nav.component.css']
+  selector: 'footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.css']
 })
-export class MainNavComponent implements OnInit {
+export class FooterComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router

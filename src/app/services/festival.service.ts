@@ -10,30 +10,57 @@ import 'rxjs/add/operator/filter';
 export class FestivalService{
   festivalesPendientes: FirebaseListObservable<any> = this.af.database.list('/FESTIVALERS/festivalesPendientes');
   festivales: FirebaseListObservable<any>=this.af.database.list('/FESTIVALERS/festivales');
-  arrayAttendees: Array<string>;
+  arrayAttendees: Array<string> = [];
+  arrayFestivales: Array<string> = [];
 
   constructor(
     private router: Router,
     private af: AngularFire
   ) {}
-addAttendee(idFestival,userUid){
-    this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival).subscribe(snap => {
-        this.arrayAttendees=snap;
-        //this.arrayAttendees.push(userUid);
-        //console.log(this.arrayAttendees);
-    })
-    console.log(userUid);
-    //this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival).update(this.arrayAttendees);
-}
 
-addFestival(festivalName: String,estilo:String,mes:String,pais:String,description: String,mainImage:String,festivalStartDate:String,festivalEndDate:String) { 
-  if (!festivalName||!estilo||!description||!mainImage||!festivalStartDate||!festivalEndDate) { return; } 
-    this.festivalesPendientes.push({ name: festivalName,estilo: estilo,mes: mes,pais: pais,description: description,mainImage: mainImage,startDate:festivalStartDate,endDate: festivalEndDate});
+  addFestival(newFestival){
+    this.af.database.list('FESTIVALERS/festivales/').push(newFestival);
   }
-validateFestival(festival: any){
-    this.festivales.push(festival).then(()=> this.festivalesPendientes.remove(festival));
+  validateFestival(festival: any){
+      this.festivales.push(festival).then(()=> this.festivalesPendientes.remove(festival));
+    }
+  discardFestival(festival: any){
+    this.festivalesPendientes.remove(festival); 
   }
-discardFestival(festival: any){
-   this.festivalesPendientes.remove(festival); 
-}
+
+  // BASTANTE PRECARIO - MODIFICAR
+  addAttendee(idFestival,userUid){
+    this.af.database.object('FESTIVALERS/festivales/'+idFestival).first().subscribe(festival => {
+        if(festival.asistentes){
+          //implementar funcion para saber si ese userUid ya asiste al evento
+          this.arrayAttendees = festival.asistentes;
+          this.arrayAttendees.push(userUid);
+          this.af.database.object('FESTIVALERS/festivales/'+idFestival).update({asistentes: this.arrayAttendees})
+            .then(()=>{this.addFestivalToUser(idFestival,userUid);}
+             ); 
+        }
+        else{
+          this.arrayAttendees.push(userUid);
+          this.af.database.object('FESTIVALERS/festivales/'+idFestival).update({asistentes: this.arrayAttendees})
+          .then(()=>{this.addFestivalToUser(idFestival,userUid);}
+          ); 
+        }
+    });
+  }
+
+  addFestivalToUser(idFestival,userUid){
+     this.af.database.object('FESTIVALERS/Users/'+userUid).first().subscribe(user => {
+       console.log(user);
+        if(user.festivales){
+          this.arrayFestivales = user.festivales;
+          this.arrayFestivales.push(idFestival);
+          this.af.database.object('FESTIVALERS/Users/'+userUid).update({festivales: this.arrayFestivales});
+        }
+        else{
+          this.arrayFestivales.push(idFestival);
+          this.af.database.object('FESTIVALERS/Users/'+userUid).update({festivales: this.arrayFestivales});
+        }
+    });
+  }
+
 }

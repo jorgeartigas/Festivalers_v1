@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { UserService } from '../services/user.service';
+import { FestivalService } from '../services/festival.service';
+import { Festival } from './festival';
 
 
 @Component({
@@ -9,15 +10,16 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./add-festival.component.css']
 })
 export class AddFestivalComponent {
+    newFestival = new Festival ('','','','','','','','','',[],[],true,'',Date.now());
     festivales: FirebaseListObservable<any>;
     constructor(
         private af: AngularFire,
-        private userService: UserService
+        private festivalService: FestivalService
     ){
         this.festivales = this.af.database.list('/festivales');
     }
     //tendria que estar en un servicio
-    addFestival(festivalName: String,estilo:String,mes:string,pais:string,description: String,mainImage:String,festivalStartDate:String,festivalEndDate:String) { 
-        this.userService.addFestival(festivalName,estilo,mes,pais,description,mainImage,festivalStartDate,festivalEndDate);
-  }
+    addFestival(){
+        this.festivalService.addFestival(this.newFestival);
+    }
 }

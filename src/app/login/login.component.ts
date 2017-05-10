@@ -16,14 +16,14 @@ constructor(private userService: UserService, private af: AngularFire){
     this.results = this.af.database.list('FESTIVALERS/festivales');
 
 }
-login(username,password) {
-  this.userService.login(username,password);
+login(loginData) {
+  this.userService.login(loginData);
 }
 showResultsFunction(){
   this.showResults = true;
 }
-filter(results,estilo,mes) : boolean{
-     if (results.estilo === estilo && results.mes){
+filter(results,estilo) : boolean{
+     if (results.estilo !== estilo){
         return true;
      }
      return false;

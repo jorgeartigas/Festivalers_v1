@@ -12,6 +12,7 @@ export class UserService {
   userUid:string;
   userData: any;
   sub:any;
+  error: string;
   festivalesPendientes: FirebaseListObservable<any> = this.af.database.list('/FESTIVALERS/festivalesPendientes');
   festivales: FirebaseListObservable<any>=this.af.database.list('/FESTIVALERS/festivales');
 
@@ -20,24 +21,36 @@ export class UserService {
     private router: Router,
     private af: AngularFire
   ) {}
-login(username,password) {
-  this.af.auth.login({email: username, password: password}).then(user=>{
+
+login(loginData) {
+  this.af.auth.login(loginData).then(user=>{
     this.router.navigate(['/home']);
     this.userUid = user.uid;
+  }, error =>{  
+     switch(error['code']){
+        case 'auth/user-not-found':
+            this.error = 'El email no existe';
+            break;
+        case 'auth/wrong-password':
+            this.error = 'Contraseña incorrecta';
+            break;
+    }
   });
 }
+
 isLoggedIn(){
-      this.af.auth.subscribe(user => {
-      if(user){
-        this.logged=true;
-        this.userUid=user.uid;
-      }
-      else{
-        this.logged=false;
-        this.userUid=null;
-      }
-    })
+  this.af.auth.subscribe(user => {
+    if(user){
+      this.logged=true;
+      this.userUid=user.uid;
+    }
+    else{
+      this.logged=false;
+      this.userUid=null;
+    }
+  })
 }
+
 signUp(email,password,userName,lastName,age,city){
   this.af.auth.createUser({email: email,password: password}).then(regUser => { 
           this.router.navigate(['/login']);
@@ -70,15 +83,5 @@ getUserData(){
   this.sub.subscribe(user=>{
     this.userData=user;
   })
-}
-addFestival(festivalName: String,estilo:String,mes:String,pais:String,description: String,mainImage:String,festivalStartDate:String,festivalEndDate:String) { 
-  if (!festivalName||!estilo||!description||!mainImage||!festivalStartDate||!festivalEndDate) { return; } 
-    this.festivalesPendientes.push({ name: festivalName,estilo: estilo,mes: mes,pais: pais,description: description,mainImage: mainImage,startDate:festivalStartDate,endDate: festivalEndDate});
-  }
-validateFestival(festival: any){
-    this.festivales.push(festival).then(()=> this.festivalesPendientes.remove(festival));
-  }
-discardFestival(festival: any){
-   this.festivalesPendientes.remove(festival); 
 }
 }

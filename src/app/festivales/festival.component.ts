@@ -13,27 +13,35 @@ import { FestivalService } from '../services/festival.service';
 export class FestivalComponent implements OnInit {
     idFestival:string;
     festival:any;
-    sub:any;
+    attendees: any;
+    userFestival: any;
 
     constructor(
         private af: AngularFire,
         private storageService: StorageService,
         private route: ActivatedRoute,
         private userService: UserService,
-        private festivalService: FestivalService
+        private festivalService: FestivalService,
     ){}
     ngOnInit(){
         this.userService.isLoggedIn();
         this.route.params.subscribe(params => {
             this.idFestival = params['id'];
-        })
-        this.sub = this.af.database.object('FESTIVALERS/festivales/'+this.idFestival);
-        this.sub.subscribe(festival => {
-            this.festival=festival;
-        })
+            this.af.database.object('FESTIVALERS/festivales/'+this.idFestival).first().subscribe(festival => {
+                this.festival=festival;
+            });
+            this.af.database.list('FESTIVALERS/festivalAttendees/'+this.idFestival).subscribe(attendees =>{
+                this.attendees = attendees;
+            });
+        });
     }
     addAttendee(){
         this.festivalService.addAttendee(this.idFestival,this.userService.userUid);
+    }
+    showFestivals(){
+        this.af.database.list('FESTIVALERS/UsersFestivals/'+this.userService.userUid).subscribe(festivales =>{
+            this.userFestival = festivales;
+        });
     }
 
 }

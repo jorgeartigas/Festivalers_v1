@@ -10,7 +10,6 @@ export class Festival {
     public endDate: string,
     public mainPhoto: string,
     public photos: Array<string>,
-    public assistants: Array<string>,
     public active: boolean,
     public urlAmigable: string,
     public published: any = Date.now()

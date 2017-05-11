@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/filter';
 import { Subject } from 'rxjs/Subject';
 
@@ -11,7 +10,6 @@ export class UserService {
   logged:boolean;
   userUid:string;
   userData: any;
-  sub:any;
   error: string;
   festivalesPendientes: FirebaseListObservable<any> = this.af.database.list('/FESTIVALERS/festivalesPendientes');
   festivales: FirebaseListObservable<any>=this.af.database.list('/FESTIVALERS/festivales');
@@ -43,6 +41,8 @@ isLoggedIn(){
     if(user){
       this.logged=true;
       this.userUid=user.uid;
+      this.af.database.object('FESTIVALERS/Users/'+user.uid).first().subscribe(user =>{
+      })
     }
     else{
       this.logged=false;
@@ -73,8 +73,7 @@ logout() {
   this.af.auth.logout();
 }
 getUserData(){
-  this.sub = this.af.database.object('FESTIVALERS/Users/'+this.userUid);
-  this.sub.subscribe(user=>{
+  this.af.database.object('FESTIVALERS/Users/'+this.userUid).subscribe(user=>{
     this.userData=user;
   })
 }

@@ -10,3 +10,15 @@ form{
     text-align: left;
     text-decoration: none;
 }
+
+.search-central{
+    position: absolute;
+    left: 400px;
+    bottom: 300px;
+}
+
+.input-search{
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid orange;
+}

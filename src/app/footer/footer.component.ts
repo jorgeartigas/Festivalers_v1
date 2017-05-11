@@ -3,7 +3,7 @@ import { UserService } from '../services/user.service';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Component({
-  selector: 'footer',
+  selector: 'footerComponent',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })

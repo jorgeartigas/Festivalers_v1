@@ -1,36 +1,13 @@
-<div class="navb">
-  <nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarb">
-          <span class="sr-only">Boton navegacion</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"><img src="../../assets/logo.png" alt="Logo Festivalers">
-        </a>
-      </div>
-      <div id="navbarb" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a routerLink="/news" routerLinkActive="active">Noticias</a></li>
-          <li><a routerLink="/contact" routerLinkActive="active">Contacto</a></li>
-          <li><a *ngIf="userService.logged === false" routerLink="/login" routerLinkActive="active">Acceso</a></li>
-          <li><a *ngIf="userService.logged === false" routerLink="/signUp" routerLinkActive="active">Registro</a></li>
-          <li class="dropdown" *ngIf="userService.logged">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mi Perfil<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li><a routerLink="/addFestival" routerLinkActive="active">Añadir festival</a></li>
-                <li><a routerLink="/profile" routerLinkActive="active">Perfil</a></li>
-                <li><a routerLink="/adminFestival" routerLinkActive="active">Panel de administración</a></li>
-                <li><a routerLink="/home" routerLinkActive="active" (click)="logout()">Salir</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <!--/.nav-collapse -->
-    </div>
-    <!--/.container-fluid -->
-  </nav>
-</div>
-
+		<footer class="footer-distributed">
+			<div class="footer-right">
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-instagram"></i></a>
+			</div>
+			<div class="footer-left">
+			<p class="footer-links">
+        <img src="../assets/logo.png" />
+			</p>
+				<p>todos los derechos reservados &copy; 2017</p>
+			</div>
+		</footer>

@@ -1,9 +1,12 @@
-<div><h1>User Sign Up</h1><br>
-  <label>Email:</label> <input #userEmail type="text"/><br>
-  <label>Password:</label> <input type="password" #password /><br>
-  <label>Name:</label> <input type="text" #name /><br>
-  <label>Lastname:</label> <input type="text" #lastname /><br>
-  <label>Age:</label> <input type="text" #age /><br>
-  <label>City:</label> <input type="text" #city /><br>
-</div><br>
-<button (click)="signUp(userEmail.value,password.value,name.value,lastname.value,age.value,city.value)">Sign Up</button>
+<h1>User Sign Up</h1><br>
+<form (ngSubmit)="signUp({email: newUser.email, password: newUser.password})" #signUpForm="ngForm">
+  <label>Email</label><input type="text" [(ngModel)]="newUser.email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/><br>
+  <label>Password</label><input type="password" [(ngModel)]="newUser.password" name="password" required /><br>
+  <label>Nombre</label><input type="text" [(ngModel)]="newUser.name" name="name" required /><br>
+  <label>Apellido</label><input type="text" [(ngModel)]="newUser.lastname" name="lastname" required /><br>
+  <label>Edad</label><input type="text" [(ngModel)]="newUser.age" name="age" required /><br>
+  <label>Pais</label><input type="text" [(ngModel)]="newUser.location" name="location" required /><br>
+  <label>Estilo</label><input type="text" [(ngModel)]="newUser.estilos" name="estilos" required /><br>
+<br>
+<button>Sign Up</button>
+</form>

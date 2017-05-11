@@ -51,16 +51,10 @@ isLoggedIn(){
   })
 }
 
-signUp(email,password,userName,lastName,age,city){
-  this.af.auth.createUser({email: email,password: password}).then(regUser => { 
+signUp(signUpData,newUser){
+  this.af.auth.createUser(signUpData).then(regUser => { 
           this.router.navigate(['/login']);
-          var userInfo = {
-              name: userName,
-              lastname: lastName,
-              age: age,
-              city: city
-          }
-          this.af.database.object('FESTIVALERS/Users/'+regUser.uid).set(userInfo);
+          this.af.database.object('FESTIVALERS/Users/'+regUser.uid).set(newUser);
           // email de verificacion y verificar email
           //this.af.auth.getAuth().auth.sendEmailVerification();
           //console.log(this.af.auth.getAuth().auth.emailVerified);

@@ -18,7 +18,7 @@ export class AddFestivalComponent {
     ){
         this.festivales = this.af.database.list('/festivales');
     }
-    //tendria que estar en un servicio
+    
     addFestival(){
         this.festivalService.addFestival(this.newFestival);
     }

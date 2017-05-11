@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { User } from '../profile/User';
 
 @Component({
   selector: 'signUp',
@@ -7,10 +8,11 @@ import { UserService } from '../services/user.service';
   styleUrls: [ './signUp.component.css' ]
 })
 export class SignUpComponent{
+  newUser = new User ('','','','',[],'',[],[],[],[],[],[],false,Date.now());
 
-constructor(private userService: UserService){}
+  constructor(private userService: UserService){}
 
-signUp(email,password,name,lastname,age,city){
-  this.userService.signUp(email,password,name,lastname,age,city);
-}
+  signUp(signUpData){
+    this.userService.signUp(signUpData,this.newUser);
+  }
 }

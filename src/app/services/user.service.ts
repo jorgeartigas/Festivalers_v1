@@ -24,6 +24,11 @@ login(loginData) {
   this.af.auth.login(loginData).then(user=>{
     this.router.navigate(['/home']);
     this.userUid = user.uid;
+    this.logged=true;
+    this.af.database.object('FESTIVALERS/Us ers/'+user.uid).first().subscribe(admin =>{
+      this.isAdmin=admin.isAdmin;
+      console.warn(this.isAdmin);
+    })
   }, error =>{  
      switch(error['code']){
         case 'auth/user-not-found':
@@ -41,12 +46,11 @@ isLoggedIn(){
     if(user){
       this.logged=true;
       this.userUid=user.uid;
-      this.af.database.object('FESTIVALERS/Users/'+user.uid).first().subscribe(user =>{
-      })
     }
     else{
       this.logged=false;
       this.userUid=null;
+      this.userData=null;
     }
   })
 }
@@ -68,6 +72,7 @@ logout() {
   this.af.auth.filter((authState)=>!authState).first().subscribe(
     ()=>{
       this.userUid=null;
+      this.userData=null;
       this.router.navigate(['/home']);
     });
   this.af.auth.logout();
@@ -76,5 +81,12 @@ getUserData(){
   this.af.database.object('FESTIVALERS/Users/'+this.userUid).subscribe(user=>{
     this.userData=user;
   })
+}
+isAdmin(userUid){
+  console.log(userUid);
+  return this.af.database.object('FESTIVALERS/Users'+userUid).map(user=>{
+    console.log(user.isAdmin);
+    return user.isAdmin;
+  }).first();
 }
 }

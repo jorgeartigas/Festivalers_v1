@@ -10,6 +10,7 @@ import { AdminFestivalComponent } from './festivales/admin-festival.component';
 import { FestivalComponent } from './festivales/festival.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthGuardLogin } from './services/auth-guard-logged.service';
+import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { ProfileComponent } from './profile/profile.component';
 
 
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent},
   { path: 'festival/:id', component: FestivalComponent},
   { path: 'addFestival', component: AddFestivalComponent, canActivate: [AuthGuard]},
-  { path: 'adminFestival', component: AdminFestivalComponent, canActivate: [AuthGuard]},
+  { path: 'adminFestival', component: AdminFestivalComponent, canActivate: [AuthGuardAdmin]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
 ];
 @NgModule({

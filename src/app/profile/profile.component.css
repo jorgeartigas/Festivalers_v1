@@ -9,3 +9,6 @@ input[type="file"] {
 #buttonUpload{
     margin-left:50px;
 }
+.hijoProfile{
+    border:1px solid black;
+}

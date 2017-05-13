@@ -1,5 +1,6 @@
 export class Festival {
   constructor(
+    public owner: string,
     public name: string,
     public style: string,
     public description : string,

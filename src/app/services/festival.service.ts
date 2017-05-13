@@ -20,7 +20,7 @@ export class FestivalService{
   ) {}
 
   addFestival(newFestival){
-    this.af.database.list('FESTIVALERS/festivales/').push(newFestival);
+    this.af.database.list('FESTIVALERS/festivalesPendientes/').push(newFestival);
   }
   validateFestival(festival: any){
       this.festivales.push(festival).then(()=> this.festivalesPendientes.remove(festival));
@@ -40,22 +40,4 @@ export class FestivalService{
         );
       });
   }
-
-ç
-  addFestivalToUser(idFestival,userUid){
-     this.af.database.object('FESTIVALERS/Users/'+userUid).first().subscribe(user => {
-        if(user.festivales){
-          this.arrayFestivales = user.festivales;
-          this.arrayFestivales.push(idFestival);
-          this.af.database.object('FESTIVALERS/Users/'+userUid).update({festivales: this.arrayFestivales});
-          this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival).update({[userUid]: user.name});
-        }
-        else{
-          this.arrayFestivales.push(idFestival);
-          this.af.database.object('FESTIVALERS/Users/'+userUid).update({festivales: this.arrayFestivales});
-          this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival).update({[userUid]: user.name});
-        }
-    });
-  }
-
 }

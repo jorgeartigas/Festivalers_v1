@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'main-nav',
@@ -9,12 +10,18 @@ import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/ro
 })
 export class MainNavComponent implements OnInit {
   constructor(
-    private userService: UserService,
+    public userService: UserService,
     private router: Router
   ){}
+
+  isAdmin:Observable<boolean>;
+
   ngOnInit(){
-  this.userService.isLoggedIn();
-}
+    console.log("hola");
+    this.userService.isLoggedIn();
+    this.isAdmin = this.userService.isAdmin(this.userService.userUid);
+  }
+  
   logout(){
     this.userService.logout();
   }

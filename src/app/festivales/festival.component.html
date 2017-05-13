@@ -12,13 +12,5 @@
     <li>{{ attendee.profilePhoto }}</li>
 </ul>
 <button *ngIf="userService.logged" (click)="addAttendee()">Voy a ir!</button>
-<div *ngIf="userFestival">
-<h3>current user festivals:</h3> 
-<ul *ngFor="let userFestival of userFestivals">
-    <li>{{ userFestival.name }}</li>
-    <li>{{ userFestival.profilePhoto }}</li>
-</ul>
-</div>
-<button *ngIf="userService.logged" (click)="showFestivals()">Festivals</button>
 
 

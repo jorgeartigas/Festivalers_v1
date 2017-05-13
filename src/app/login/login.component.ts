@@ -12,7 +12,7 @@ export class LoginComponent{
   results: FirebaseListObservable<any[]>;
   showResults: boolean;
 
-constructor(private userService: UserService, private af: AngularFire){
+constructor(public userService: UserService, private af: AngularFire){
     this.results = this.af.database.list('FESTIVALERS/festivales');
 
 }

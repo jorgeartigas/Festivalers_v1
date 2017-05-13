@@ -25,7 +25,7 @@ export class FestivalComponent implements OnInit {
     ){}
     ngOnInit(){
         this.userService.isLoggedIn();
-        this.route.params.subscribe(params => {
+        this.route.params.first().subscribe(params => {
             this.idFestival = params['id'];
             this.af.database.object('FESTIVALERS/festivales/'+this.idFestival).first().subscribe(festival => {
                 this.festival=festival;
@@ -38,10 +38,4 @@ export class FestivalComponent implements OnInit {
     addAttendee(){
         this.festivalService.addAttendee(this.idFestival,this.userService.userUid);
     }
-    showFestivals(){
-        this.af.database.list('FESTIVALERS/UsersFestivals/'+this.userService.userUid).subscribe(festivales =>{
-            this.userFestival = festivales;
-        });
-    }
-
 }

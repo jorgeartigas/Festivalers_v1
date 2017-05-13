@@ -10,6 +10,7 @@ import { UserService } from '../services/user.service';
 })
 export class ProfileComponent implements OnInit {
   imgURL:string = null;
+  userUid: string;
   previewURL:string;
 
     constructor(
@@ -18,11 +19,10 @@ export class ProfileComponent implements OnInit {
         private userService: UserService
     ){}
 ngOnInit(){
-  this.userService.isLoggedIn();
-  this.userService.getUserData();
+  this.userUid = this.userService.userUid;
 }
 upload(file,path){
-    this.storageService.upload(file.target.files[0],path);
+  this.storageService.upload(file.target.files[0],path);
 }
 // preview(event) {
 //   if (event.target.files && event.target.files[0]) {

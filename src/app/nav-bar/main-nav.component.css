@@ -1,5 +1,10 @@
 .navbar{
     margin-bottom: 0 !important;
+    background-color: #9099A2 !important;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: white;
 }
 
 .navb .navbar-brand {

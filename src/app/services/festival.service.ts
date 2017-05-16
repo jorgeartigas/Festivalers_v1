@@ -1,7 +1,6 @@
 import { Injectable, } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Router } from '@angular/router';
-import { UserService } from './user.service';
 import 'rxjs/add/operator/first';
 
 
@@ -16,7 +15,6 @@ export class FestivalService{
   constructor(
     private router: Router,
     private af: AngularFire,
-    private userService: UserService
   ) {}
 
   addFestival(newFestival){

@@ -2,20 +2,19 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/first';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { AngularFire } from 'angularfire2';
-import { UserService } from './user.service';
+import { CurrentUserData } from './user-data.service';
 
 @Injectable()
 export class AuthGuardAdmin implements CanActivate{
   constructor(
     private af: AngularFire, 
-    private router: Router,
-    private userService: UserService
+    private userData: CurrentUserData
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
-    return this.af.database.object('FESTIVALERS/Users/'+this.userService.userUid).map(snap=>{
+    return this.af.database.object('FESTIVALERS/Users/'+this.userData.userUID).map(snap=>{
        if(snap.isAdmin===true){
             return true;
        }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { CurrentUserData } from '../services/user-data.service';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
@@ -8,20 +9,17 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: './main-nav.component.html',
   styleUrls: ['./main-nav.component.css']
 })
-export class MainNavComponent implements OnInit {
+export class MainNavComponent implements OnInit{
   constructor(
     public userService: UserService,
-    private router: Router
+    public router: Router,
+    public userData: CurrentUserData
   ){}
 
-  isAdmin:Observable<boolean>;
-
   ngOnInit(){
-    console.log("hola");
-    this.userService.isLoggedIn();
-    this.isAdmin = this.userService.isAdmin(this.userService.userUid);
+    console.log(this.userData.userUID);
   }
-  
+
   logout(){
     this.userService.logout();
   }

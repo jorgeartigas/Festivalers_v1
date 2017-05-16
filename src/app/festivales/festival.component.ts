@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { StorageService } from '../services/storage.service';
 import { Router, ActivatedRoute, Params} from '@angular/router';
-import { UserService } from '../services/user.service';
 import { FestivalService } from '../services/festival.service';
+import { CurrentUserData } from '../services/user-data.service';
 
 @Component({
   selector: 'festival',
@@ -20,11 +20,10 @@ export class FestivalComponent implements OnInit {
         private af: AngularFire,
         private storageService: StorageService,
         private route: ActivatedRoute,
-        private userService: UserService,
         private festivalService: FestivalService,
+        private userData: CurrentUserData
     ){}
     ngOnInit(){
-        this.userService.isLoggedIn();
         this.route.params.first().subscribe(params => {
             this.idFestival = params['id'];
             this.af.database.object('FESTIVALERS/festivales/'+this.idFestival).first().subscribe(festival => {
@@ -36,6 +35,6 @@ export class FestivalComponent implements OnInit {
         });
     }
     addAttendee(){
-        this.festivalService.addAttendee(this.idFestival,this.userService.userUid);
+        this.festivalService.addAttendee(this.idFestival,this.userData.userUID);
     }
 }

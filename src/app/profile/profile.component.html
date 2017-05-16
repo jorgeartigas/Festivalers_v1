@@ -5,11 +5,11 @@
     <input type="file" id="fileUpload" (change)="upload($event,'profile_pictures');"/><br>
 
     <h2>Test Profile</h2>
-    <p>UId: {{userService.userUid}}</p>
+    <p>UId: {{userData?.userUID}}</p>
   <div>
-    <h3>Name: <b>{{ (userService.userData)?.name }}</b></h3>
-    <h3>LastName: {{ (userService.userData)?.lastname }}</h3>
-    <h3>Age: {{ (userService.userData)?.age }}</h3>
+    <h3>Name: <b>{{ userData.currentUser?.name }}</b></h3>
+    <h3>LastName: {{ userData.currentUser?.lastname }}</h3>
+    <h3>Age: {{ userData.currentUser?.age }}</h3>
   </div>
-  <profileFestivals [userUid]="userUid"></profileFestivals>
-  <profileArtists [userUid]="userUid"></profileArtists>
+  <profileFestivals></profileFestivals>
+  <profileArtists></profileArtists>

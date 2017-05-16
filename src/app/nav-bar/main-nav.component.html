@@ -15,14 +15,14 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a routerLink="/news" routerLinkActive="active">Noticias</a></li>
           <li><a routerLink="/contact" routerLinkActive="active">Contacto</a></li>
-          <li><a *ngIf="userService.logged === false" routerLink="/login" routerLinkActive="active">Acceso</a></li>
-          <li><a *ngIf="userService.logged === false" routerLink="/signUp" routerLinkActive="active">Registro</a></li>
-          <li class="dropdown" *ngIf="userService.logged">
+          <li><a *ngIf="userData.isLoggedIn === false" routerLink="/login" routerLinkActive="active">Acceso</a></li>
+          <li><a *ngIf="userData.isLoggedIn === false" routerLink="/signUp" routerLinkActive="active">Registro</a></li>
+          <li class="dropdown" *ngIf="userData.isLoggedIn">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mi Perfil<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                 <li><a routerLink="/addFestival" routerLinkActive="active">Añadir festival</a></li>
                 <li><a routerLink="/profile" routerLinkActive="active">Perfil</a></li>
-                <li *ngIf="isAdmin"><a routerLink="/adminFestival" routerLinkActive="active">Panel de administración</a></li>
+                <li *ngIf="userData.currentUser.isAdmin"><a routerLink="/adminFestival" routerLinkActive="active">Panel de administración</a></li>
                 <li><a routerLink="/home" routerLinkActive="active" (click)="logout()">Salir</a></li>
             </ul>
           </li>

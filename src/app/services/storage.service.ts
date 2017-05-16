@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseApp } from 'angularfire2';
 import * as firebase from 'firebase';
-import { UserService } from '../services/user.service';
+import { CurrentUserData } from './user-data.service';
 
 @Injectable()
 export class StorageService {
@@ -11,12 +11,12 @@ imgURL: string = null;
 
 constructor(
     private af: AngularFire,
-    private userService: UserService
+    public userData: CurrentUserData
     ) {}
 
 upload(file,path){
 // Upload file and metadata to the object 'images/mountains.jpg'
-let uploadTask = this.storageRef.child('images/'+ path +'/'+ this.userService.userUid).put(file);
+let uploadTask = this.storageRef.child('images/'+ path +'/'+ this.userData.currentUser.userUID).put(file);
 // Register three observers:
 uploadTask.on('state_changed', function(snapshot){
     // Observe state change events such as progress, pause, and resume

@@ -1,4 +1,3 @@
-<body>
 <br><h1>User Login</h1>
 <div id="loginbox">
   <form (ngSubmit)="login({ email: email, password: pass })" #loginForm="ngForm">
@@ -10,22 +9,3 @@
     <button type="submit" [disabled]="!loginForm.form.valid">Login</button>
   </form>
 </div>
-
-
-
-<div>
-  <h1>Buscar Festival</h1>
-  <input #estilo type="text" placeholder="Estilo"/><br><br>
-  <input #mes type="text" placeholder="Mes"/><br>
-</div><br>
-
-<button (click)="showResultsFunction()">Busca</button>
-<div *ngIf="showResults===true">
-<div *ngFor="let result of results | async" [hidden]="filter(result,estilo.value)">
-    <li>Nombre: {{ result.name }}</li>
-    <li>Estilo:  {{ result.estilo }}</li>
-    <li>Estilo:  {{ result.mes }}</li>
-    <li>Estilo:  {{ result.pais }}</li><br>
-</div>
-</div>
-</body>

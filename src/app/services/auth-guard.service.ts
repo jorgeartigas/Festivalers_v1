@@ -8,13 +8,11 @@ import { AngularFire } from 'angularfire2';
 
 @Injectable()
 export class AuthGuard implements CanActivate{
-  userUID:string;
   constructor(private af: AngularFire, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.af.auth.map((auth) =>  {
       if(auth) {
-        this.userUID = auth.uid;
         return true;
       } else {
         this.router.navigate(['/login']);

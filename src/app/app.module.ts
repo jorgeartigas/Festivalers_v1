@@ -29,6 +29,7 @@ import { AuthGuardLogin } from './services/auth-guard-logged.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { StorageService } from './services/storage.service';
 import { FestivalService } from './services/festival.service';
+import { CurrentUserData } from './services/user-data.service';
 
 // CONNECTION DATA TO FIREBASE
 export const firebaseConfig = {
@@ -76,7 +77,8 @@ const myFirebaseAuthConfig = {
     StorageService,
     AuthGuardLogin,
     FestivalService,
-    AuthGuardAdmin
+    AuthGuardAdmin,
+    CurrentUserData
   ],
   bootstrap: [AppComponent]
 })

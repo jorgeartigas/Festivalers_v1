@@ -11,6 +11,6 @@
     <li>{{ attendee.name }}</li>
     <li>{{ attendee.profilePhoto }}</li>
 </ul>
-<button *ngIf="userService.logged" (click)="addAttendee()">Voy a ir!</button>
+<button *ngIf="userData.isLoggedIn" (click)="addAttendee()">Voy a ir!</button>
 
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { UserService } from '../services/user.service';
+import { CurrentUserData } from '../services/user-data.service';
 import { FestivalService } from '../services/festival.service';
 import { Festival } from './festival';
 
@@ -16,12 +16,12 @@ export class AddFestivalComponent {
     constructor(
         private af: AngularFire,
         private festivalService: FestivalService,
-        private userService: UserService
+        private userData: CurrentUserData
     ){
         this.festivales = this.af.database.list('/festivales');
     }
     addFestival(){
-        this.newFestival.owner = this.userService.userUid;
+        this.newFestival.owner = this.userData.userUID;
         this.festivalService.addFestival(this.newFestival);
     }
 }

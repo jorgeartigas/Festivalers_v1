@@ -1,7 +1,7 @@
 <buscador></buscador>
 <carrousel></carrousel>
-<div class="vec" *ngIf="userService.logged"><p>Actualmente estas registrado</p></div>
-<div class="vec" *ngIf="userService.logged === false"><p>Registrate para ver mas información</p></div>
+<div class="vec" *ngIf="userData.isLoggedIn"><p>Actualmente estas registrado</p></div>
+<div class="vec" *ngIf="userData.isLoggedIn === false"><p>Registrate para ver mas información</p></div>
 <div class="container">
     <div class="row">
         <div class="col-sm-offset-2 col-sm-8">

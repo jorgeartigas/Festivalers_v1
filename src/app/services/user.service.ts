@@ -1,33 +1,28 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Router } from '@angular/router';
+import { CurrentUserData } from './user-data.service';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/filter';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class UserService {
-  logged:boolean;
-  userUid:string;
-  userData: any;
   error: string;
-  festivalesPendientes: FirebaseListObservable<any> = this.af.database.list('/FESTIVALERS/festivalesPendientes');
-  festivales: FirebaseListObservable<any>=this.af.database.list('/FESTIVALERS/festivales');
 
-  
   constructor(
     private router: Router,
-    private af: AngularFire
+    private af: AngularFire,
+    public userData: CurrentUserData
   ) {}
 
 login(loginData) {
   this.af.auth.login(loginData).then(user=>{
     this.router.navigate(['/home']);
-    this.userUid = user.uid;
-    this.logged=true;
-    this.af.database.object('FESTIVALERS/Us ers/'+user.uid).first().subscribe(admin =>{
-      this.isAdmin=admin.isAdmin;
-      console.warn(this.isAdmin);
+    this.af.database.object('FESTIVALERS/Users/'+user.uid).first().subscribe(user =>{
+      this.userData.userUID = user.uid;
+      this.userData.isLoggedIn=true;
+      this.userData.currentUser=user;
     })
   }, error =>{  
      switch(error['code']){
@@ -41,20 +36,6 @@ login(loginData) {
   });
 }
 
-isLoggedIn(){
-  this.af.auth.subscribe(user => {
-    if(user){
-      this.logged=true;
-      this.userUid=user.uid;
-    }
-    else{
-      this.logged=false;
-      this.userUid=null;
-      this.userData=null;
-    }
-  })
-}
-
 signUp(signUpData,newUser){
   this.af.auth.createUser(signUpData).then(regUser => { 
           this.router.navigate(['/login']);
@@ -66,27 +47,15 @@ signUp(signUpData,newUser){
             (err) => {
             console.log(err);
             this.router.navigate(['/signUp']);
-        })
-    }
+            })
+  }
 logout() {
   this.af.auth.filter((authState)=>!authState).first().subscribe(
     ()=>{
-      this.userUid=null;
-      this.userData=null;
+      this.userData.userUID = null;
+      this.userData.isLoggedIn = false;
       this.router.navigate(['/home']);
     });
   this.af.auth.logout();
-}
-getUserData(){
-  this.af.database.object('FESTIVALERS/Users/'+this.userUid).subscribe(user=>{
-    this.userData=user;
-  })
-}
-isAdmin(userUid){
-  console.log(userUid);
-  return this.af.database.object('FESTIVALERS/Users'+userUid).map(user=>{
-    console.log(user.isAdmin);
-    return user.isAdmin;
-  }).first();
 }
 }

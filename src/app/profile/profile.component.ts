@@ -1,26 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { StorageService } from '../services/storage.service';
-import { UserService } from '../services/user.service';
+import { CurrentUserData } from '../services/user-data.service';
 
 @Component({
   selector: 'profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
   imgURL:string = null;
-  userUid: string;
   previewURL:string;
 
     constructor(
         private af: AngularFire,
         private storageService: StorageService,
-        private userService: UserService
+        public userData: CurrentUserData
     ){}
-ngOnInit(){
-  this.userUid = this.userService.userUid;
-}
+
 upload(file,path){
   this.storageService.upload(file.target.files[0],path);
 }

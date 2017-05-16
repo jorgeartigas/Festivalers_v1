@@ -1,3 +1,20 @@
 input{
     margin-bottom: 5px;
 }
+
+#registerbox{
+    margin: 0 auto;
+    text-align: center;
+    background-color: #9099A2;
+    width: 300px;
+    height: 265px;
+    border-radius: 10px;
+    border: 1px solid white;
+    position: relative;
+    top: 80px;
+}
+
+body{
+    background-image: url('../../assets/maxresdefault.jpg');
+    height: 600px;
+}

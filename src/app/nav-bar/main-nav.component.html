@@ -22,7 +22,7 @@
             <ul class="dropdown-menu" role="menu">
                 <li><a routerLink="/addFestival" routerLinkActive="active">Añadir festival</a></li>
                 <li><a routerLink="/profile" routerLinkActive="active">Perfil</a></li>
-                <li *ngIf="userData.currentUser.isAdmin"><a routerLink="/adminFestival" routerLinkActive="active">Panel de administración</a></li>
+                <li *ngIf="userData.currentUser?.isAdmin"><a routerLink="/adminFestival" routerLinkActive="active">Panel de administración</a></li>
                 <li><a routerLink="/home" routerLinkActive="active" (click)="logout()">Salir</a></li>
             </ul>
           </li>

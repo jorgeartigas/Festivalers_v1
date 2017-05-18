@@ -23,6 +23,7 @@ import { CarrouselComponent } from './carrousel/carrousel.component';
 import { FooterComponent } from './footer/footer.component';
 import { BuscadorComponent } from './search/search.component';
 // IMPORTS FOR SERVICES
+import { LoginService } from './services/login.service';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthGuardLogin } from './services/auth-guard-logged.service';
@@ -78,7 +79,8 @@ const myFirebaseAuthConfig = {
     AuthGuardLogin,
     FestivalService,
     AuthGuardAdmin,
-    CurrentUserData
+    CurrentUserData,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

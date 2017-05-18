@@ -1,8 +1,8 @@
 <div [ngStyle]="getBackground()">
 <div id="loginbox">
   <form (ngSubmit)="login({ email: email, password: pass })" #loginForm="ngForm">
-    <span *ngIf="userService.error"><svg class="cruz" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="#F5494D" d="M10 1.951l-1.951-1.951-3.049 3.049-3.049-3.049-1.951 1.951 3.049 3.049-3.049 3.049 1.951 1.951 3.049-3.049 3.049 3.049 1.951-1.951-3.049-3.049z"/></svg>
-    {{userService.error}}
+    <span *ngIf="loginService.error"><svg class="cruz" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="#F5494D" d="M10 1.951l-1.951-1.951-3.049 3.049-3.049-3.049-1.951 1.951 3.049 3.049-3.049 3.049 1.951 1.951 3.049-3.049 3.049 3.049 1.951-1.951-3.049-3.049z"/></svg>
+    {{loginService.error}}
     </span><br>
     <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/><br><br>
     <input type="password" [(ngModel)]="pass" name="pass" placeholder="Password" required /><br><br>

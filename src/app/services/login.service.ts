@@ -18,11 +18,11 @@ export class LoginService {
 
 login(loginData) {
   this.af.auth.login(loginData).then(user=>{
-    this.router.navigate(['/home']);
+    this.userData.userUID = user.uid;
+    this.userData.isLoggedIn= true;
     this.af.database.object('FESTIVALERS/Users/'+user.uid).first().subscribe(user =>{
-      this.userData.userUID = user.uid;
-      this.userData.isLoggedIn=true;
       this.userData.currentUser=user;
+      this.router.navigate(['/home']);
     })
   }, error =>{  
      switch(error['code']){

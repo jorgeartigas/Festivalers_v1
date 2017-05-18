@@ -26,6 +26,7 @@ import { BuscadorComponent } from './search/search.component';
 import { LoginService } from './services/login.service';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './services/auth-guard.service';
+import { AuthGuardData } from './services/auth-guard-data.service';
 import { AuthGuardLogin } from './services/auth-guard-logged.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { StorageService } from './services/storage.service';
@@ -80,7 +81,8 @@ const myFirebaseAuthConfig = {
     FestivalService,
     AuthGuardAdmin,
     CurrentUserData,
-    LoginService
+    LoginService,
+    AuthGuardData
   ],
   bootstrap: [AppComponent]
 })

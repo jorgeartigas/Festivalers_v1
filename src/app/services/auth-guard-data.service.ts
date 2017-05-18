@@ -8,7 +8,7 @@ import { AngularFire } from 'angularfire2';
 import { CurrentUserData } from '../services/user-data.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate{
+export class AuthGuardData implements CanActivate{
   constructor(
     private af: AngularFire, 
     private router: Router,
@@ -24,9 +24,9 @@ export class AuthGuard implements CanActivate{
           this.userData.currentUser = user;
         })
         return true;
-      } else {
-        this.router.navigate(['/login']);
-        return false;
+      }else{
+          this.userData.isLoggedIn = false;
+          return true;
       }
     }).first()
   }

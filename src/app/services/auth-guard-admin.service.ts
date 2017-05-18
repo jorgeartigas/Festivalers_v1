@@ -14,8 +14,8 @@ export class AuthGuardAdmin implements CanActivate{
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
-    return this.af.database.object('FESTIVALERS/Users/'+this.userData.userUID).map(snap=>{
-       if(snap.isAdmin===true){
+    return this.af.database.object('FESTIVALERS/Users/'+this.userData.userUID).map(user=>{
+       if(user.isAdmin===true){
             return true;
        }
        return false;

@@ -12,19 +12,19 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AuthGuardLogin } from './services/auth-guard-logged.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { ProfileComponent } from './profile/profile.component';
-
+import { AuthGuardData } from './services/auth-guard-data.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuardLogin] },
-  { path: 'signUp', component: SignUpComponent, canActivate: [AuthGuardLogin]},
-  { path: 'home', component: HomePageComponent},
-  { path: 'news', component: NewsComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuardLogin,AuthGuardData] },
+  { path: 'signUp', component: SignUpComponent, canActivate: [AuthGuardLogin,AuthGuardData]},
+  { path: 'home', component: HomePageComponent, canActivate: [AuthGuardData]},
+  { path: 'news', component: NewsComponent, canActivate: [AuthGuardData]},
   { path: 'contact', component: ContactComponent},
-  { path: 'festival/:id', component: FestivalComponent},
-  { path: 'addFestival', component: AddFestivalComponent, canActivate: [AuthGuard]},
-  { path: 'adminFestival', component: AdminFestivalComponent, canActivate: [AuthGuardAdmin]},
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
+  { path: 'festival/:id', component: FestivalComponent, canActivate: [AuthGuardData]},
+  { path: 'addFestival', component: AddFestivalComponent, canActivate: [AuthGuard,AuthGuardData]},
+  { path: 'adminFestival', component: AdminFestivalComponent, canActivate: [AuthGuardAdmin,AuthGuardData]},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard,AuthGuardData]}
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

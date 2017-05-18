@@ -1,4 +1,9 @@
 <div class="hijoProfile">
-    <h1>Componente hijo festivals</h1>
-     Uid de mi padre:<p>{{ userUid }}</p>
+    <h2>LISTA FESTIVALES</h2>
+    <ul>
+        <li *ngFor="let festival of festivals | async">
+            {{ festival.name }}
+            {{ festival.mainPhoto }}
+        </li>
+    </ul>
 </div>

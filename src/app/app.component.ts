@@ -13,16 +13,17 @@ export class AppComponent {
     public af: AngularFire,
     public userData: CurrentUserData
   ){
-    this.af.auth.first().subscribe(auth=>{
-    if(auth){
-      this.af.database.object('FESTIVALERS/Users/'+auth.uid).first().subscribe(user =>{
-        this.userData.userUID = auth.uid;
-        this.userData.isLoggedIn = true;
-        this.userData.currentUser = user;
-      });
-    }else{
-      this.userData.isLoggedIn = false;
-    }
-  });
-}}
+  //   this.af.auth.first().subscribe(auth=>{
+  //   if(auth){
+  //     this.af.database.object('FESTIVALERS/Users/'+auth.uid).first().subscribe(user =>{
+  //       this.userData.userUID = auth.uid;
+  //       this.userData.isLoggedIn = true;
+  //       this.userData.currentUser = user;
+  //     });
+  //   }else{
+  //     this.userData.isLoggedIn = false;
+  //   }
+  // });
+}
+}
 

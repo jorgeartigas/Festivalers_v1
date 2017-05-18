@@ -5,5 +5,6 @@ export class CurrentUserData{
     isLoggedIn: boolean;
     userUID: string;
     currentUser: any;
+    festivals: any;
     constructor() {}
 }

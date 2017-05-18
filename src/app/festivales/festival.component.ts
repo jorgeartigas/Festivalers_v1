@@ -24,6 +24,7 @@ export class FestivalComponent implements OnInit {
         private userData: CurrentUserData
     ){}
     ngOnInit(){
+        console.log(this.userData.userUID);
         this.route.params.first().subscribe(params => {
             this.idFestival = params['id'];
             this.af.database.object('FESTIVALERS/festivales/'+this.idFestival).first().subscribe(festival => {

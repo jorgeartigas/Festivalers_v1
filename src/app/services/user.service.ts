@@ -6,6 +6,11 @@ import { CurrentUserData } from './user-data.service';
 @Injectable()
 export class UserService {
   constructor(
-    public userData: CurrentUserData
+    public userData : CurrentUserData,
+    public af : AngularFire
   ) {}
+
+  changeProfilePhoto(downloadURL){
+    this.af.database.object('FESTIVALERS/Users/'+this.userData.userUID).update({profilePhoto: downloadURL});
+  }
 }

@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseApp } from 'angularfire2';
 import * as firebase from 'firebase';
+import { UserService } from './user.service';
 import { CurrentUserData } from './user-data.service';
 
 @Injectable()
 export class StorageService {
-private storage = firebase.storage();
-private storageRef = this.storage.ref();
-imgURL: string = null;
-
+private storageRef = firebase.storage().ref();
+downloadURL:string;
 constructor(
-    private af: AngularFire,
-    public userData: CurrentUserData
+    public userData: CurrentUserData,
+    public userService: UserService
     ) {}
 
-upload(file,path){
-// Upload file and metadata to the object 'images/mountains.jpg'
-let uploadTask = this.storageRef.child('images/'+ path +'/'+ this.userData.currentUser.userUID).put(file);
+upload(file,path,){
+const that = this;
+// Upload file and metadata to the object
+let uploadTask = this.storageRef.child('images/'+ path +'/'+ this.userData.userUID).put(file);
 // Register three observers:
 uploadTask.on('state_changed', function(snapshot){
     // Observe state change events such as progress, pause, and resume
@@ -45,9 +44,8 @@ uploadTask.on('state_changed', function(snapshot){
             break;
     }
 }, function() {
-  // Handle successful uploads on complete
-  let downloadURL = uploadTask.snapshot.downloadURL;
-  this.imgURL = downloadURL;
-});
+    // Handle successful uploads on complete
+    that.userService.changeProfilePhoto(uploadTask.snapshot.downloadURL);
+    });
 }
 }

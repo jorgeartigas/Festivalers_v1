@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { LoginService } from '../services/login.service';
 import { User } from '../profile/User';
 
 @Component({
@@ -10,9 +10,9 @@ import { User } from '../profile/User';
 export class SignUpComponent{
   newUser = new User ('','','','',[],'',[],[],[],[],[],[],false,Date.now());
 
-  constructor(private userService: UserService){}
+  constructor(private loginService: LoginService){}
 
   signUp(signUpData){
-    this.userService.signUp(signUpData,this.newUser);
+    this.loginService.signUp(signUpData,this.newUser);
   }
 }

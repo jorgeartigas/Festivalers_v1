@@ -3,7 +3,7 @@
 
     <label for="fileUpload"  class="btn btn-primary buttonUpload">Upload a Photo</label>
     <input type="file" id="fileUpload" (change)="upload($event,'profile_pictures');"/><br>
-
+    <img *ngIf="userData.currentUser?.profilePhoto" class="thumbnail-image" src="{{userData.currentUser?.profilePhoto}}"/>
     <h2>Test Profile</h2>
     <p>UId: {{userData?.userUID}}</p>
   <div>

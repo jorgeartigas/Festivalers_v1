@@ -8,7 +8,7 @@ import { User } from '../profile/User';
   styleUrls: [ './signUp.component.css' ]
 })
 export class SignUpComponent{
-  newUser = new User ('','','','',[],'',[],[],[],[],[],[],false,Date.now());
+  newUser = new User ('','','','',[],'../../assets/no-image-user.png',[],[],[],[],[],[],false,Date.now());
 
   constructor(private loginService: LoginService){}
 

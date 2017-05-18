@@ -1,15 +1,21 @@
 <div [ngStyle]="getBackground()">
 <div id="registerbox">
 <form (ngSubmit)="signUp({email: newUser.email, password: newUser.password})" #signUpForm="ngForm">
-  <label>Email</label><input type="text" [(ngModel)]="newUser.email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/><br>
-  <label>Password</label><input type="password" [(ngModel)]="newUser.password" name="password" required /><br>
-  <label>Nombre</label><input type="text" [(ngModel)]="newUser.name" name="name" required /><br>
-  <label>Apellido</label><input type="text" [(ngModel)]="newUser.lastname" name="lastname" required /><br>
-  <label>Edad</label><input type="text" [(ngModel)]="newUser.age" name="age" required /><br>
-  <label>Pais</label><input type="text" [(ngModel)]="newUser.location" name="location" required /><br>
-  <label>Estilo</label><input type="text" [(ngModel)]="newUser.estilos" name="estilos" required /><br>
+  <input type="text" [(ngModel)]="newUser.email" name="email" placeholder="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
+  <input type="password" [(ngModel)]="newUser.password" name="password" placeholder="password" required /><br>
+  <input type="text" [(ngModel)]="newUser.name" name="name" placeholder="nombre" required />
+  <input type="text" [(ngModel)]="newUser.lastname" name="lastname" placeholder="apellidos" required /><br>
+  <input type="text" [(ngModel)]="newUser.age" name="age" placeholder="edad" required />
+  <input type="text" [(ngModel)]="newUser.location" name="location" placeholder="localizacion" required /><br>
+   <select [(ngModel)]="newUser.estilos" name="estilos">
+    <option value="" disabled selected>Estilo musical</option>
+    <option value="Rock">Rock</option>
+    <option value="Pop">Pop</option>
+    <option value="Dance">Dance</option>
+    <option value="Indie">Indie</option>
+  </select> 
 <br>
-<button>Sign Up</button>
+<button class="regbutton">Registro</button>
 </form>
 <div>
 </div>

@@ -1,20 +1,35 @@
-input{
-    margin-bottom: 5px;
-}
-
 #registerbox{
     margin: 0 auto;
     text-align: center;
-    background-color: #9099A2;
     width: 300px;
     height: 265px;
-    border-radius: 10px;
-    border: 1px solid white;
+    color: #3c3c3c;
     position: relative;
-    top: 80px;
+    top: 150px;
+    display: inline;
 }
 
-body{
-    background-image: url('../../assets/maxresdefault.jpg');
-    height: 600px;
+input, button{
+    border: 0;
+    border-radius: 2px;
+    background-color: white;
+    height: 50px;
+    border-bottom: 1px solid #3c3c3c;
+    text-align: center;
+    color: #3c3c3c;
+    margin: 5px;
+}
+
+button.regbutton {
+    background-color: #dd2c35;
+    color: white;
+    font-size: 700;
+}
+
+select{
+    background-color: white;
+    border: none;
+    color: #3c3c3c;
+    height: 50px;
+    width: 361px;
 }

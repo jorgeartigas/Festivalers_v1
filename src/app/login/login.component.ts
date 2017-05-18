@@ -20,7 +20,7 @@ constructor(public loginService: LoginService){}
        'background-repeat': 'no-repeat',
        'background-size': 'cover',
        'background-position': 'center center',
-       'height': '500px'
+       'height': '600px'
     };
 
     return backgroundImage;

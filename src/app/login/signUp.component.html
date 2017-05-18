@@ -1,4 +1,4 @@
-<h1>User Sign Up</h1><br>
+<div [ngStyle]="getBackground()">
 <div id="registerbox">
 <form (ngSubmit)="signUp({email: newUser.email, password: newUser.password})" #signUpForm="ngForm">
   <label>Email</label><input type="text" [(ngModel)]="newUser.email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/><br>
@@ -12,3 +12,4 @@
 <button>Sign Up</button>
 </form>
 <div>
+</div>

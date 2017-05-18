@@ -15,4 +15,16 @@ export class SignUpComponent{
   signUp(signUpData){
     this.userService.signUp(signUpData,this.newUser);
   }
+
+    getBackground() {
+    let backgroundImage = {
+       'background-image': 'url(\'../../assets/bg.png\')',
+       'background-repeat': 'no-repeat',
+       'background-size': 'cover',
+       'background-position': 'center center',
+       'height': '500px'
+    };
+
+    return backgroundImage;
+}
 }

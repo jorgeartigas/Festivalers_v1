@@ -13,29 +13,29 @@ button:active{
 #loginbox{
     margin: 0 auto;
     text-align: center;
-    background-color: #9099A2;
     width: 300px;
     height: 265px;
     border-radius: 10px;
-    border: 1px solid white;
     position: relative;
-    top: 80px;
+    top: 100px;
+    color: #3c3c3c;
 }
 
 input, button{
-    border: 1px solid white;
-    border-radius: 10px;
+    border: 0;
+    border-radius: 2px;
+    background-color: white;
     height: 50px;
     text-align: center;
     position: relative;
     top: 25px;
+    color: #3c3c3c;
 }
 
-h1{
-    text-align: center;
+button.logbutton {
+    background-color: #dd2c35;
     color: white;
-    position: relative;
-    top: 80px;
+    font-size: 700;
 }
 
 .logerror{

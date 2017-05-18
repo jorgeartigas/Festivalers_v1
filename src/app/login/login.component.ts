@@ -8,9 +8,20 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent{
 
-
 constructor(public userService: UserService){}
   login(loginData) {
     this.userService.login(loginData);
   }
+
+  getBackground() {
+    let backgroundImage = {
+       'background-image': 'url(\'../../assets/bg.png\')',
+       'background-repeat': 'no-repeat',
+       'background-size': 'cover',
+       'background-position': 'center center',
+       'height': '500px'
+    };
+
+    return backgroundImage;
+}
 }

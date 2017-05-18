@@ -8,12 +8,8 @@ import { LoginService } from '../services/login.service';
 })
 export class LoginComponent{
 
-<<<<<<< HEAD
-constructor(public userService: UserService){}
-=======
-
 constructor(public loginService: LoginService){}
->>>>>>> refs/remotes/origin/master
+
   login(loginData) {
     this.loginService.login(loginData);
   }

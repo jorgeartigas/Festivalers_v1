@@ -1,9 +1,9 @@
 <div class="hijoProfile">
     <h2>LISTA FESTIVALES</h2>
     <ul>
-        <li *ngFor="let festival of festivals | async">
-            {{ festival.name }}
-            {{ festival.mainPhoto }}
-        </li>
+        <div *ngFor="let festival of festivals | async">
+            <li>{{ festival.name }}</li>
+            <li>{{ festival.mainPhoto }}</li>
+        </div>
     </ul>
 </div>

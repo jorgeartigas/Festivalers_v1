@@ -1,0 +1,18 @@
+<h1>Artist Results</h1>
+<input type="text" name="spotifySearch" [(ngModel)]="spotifySearch" placeholder="Search Artists ..." (keyup)="search()"/><br><br>
+
+<div *ngIf="spotifyResults">
+    <div *ngFor="let results of spotifyResults">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="search-results well">
+                    <h4 routerLink="/artist/{{results.id}}">{{ results.name }}</h4>
+                    <div>
+                        <strong>Generos:</strong>
+                        <span *ngFor="let generos of results.genres">{{generos}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,12 +18,7 @@ export class LoginService {
 
 login(loginData) {
   this.af.auth.login(loginData).then(user=>{
-    this.userData.userUID = user.uid;
-    this.userData.isLoggedIn= true;
-    this.af.database.object('FESTIVALERS/Users/'+user.uid).first().subscribe(user =>{
-      this.userData.currentUser=user;
       this.router.navigate(['/home']);
-    })
   }, error =>{  
      switch(error['code']){
         case 'auth/user-not-found':
@@ -39,11 +34,6 @@ login(loginData) {
 signUp(signUpData,newUser){
   this.af.auth.createUser(signUpData).then(regUser => {  
           this.af.database.object('FESTIVALERS/Users/'+regUser.uid).set(newUser);
-          this.af.database.object('FESTIVALERS/Users/'+regUser.uid).first().subscribe(user =>{
-            this.userData.isLoggedIn = true;
-            this.userData.userUID = regUser.uid;
-            this.userData.currentUser = user;
-          });
           this.router.navigate(['/login']);
           // email de verificacion y verificar email
           //this.af.auth.getAuth().auth.sendEmailVerification();

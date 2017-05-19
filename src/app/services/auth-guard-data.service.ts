@@ -25,8 +25,8 @@ export class AuthGuardData implements CanActivate{
         })
         return true;
       }else{
-          this.userData.isLoggedIn = false;
-          return true;
+        this.userData.isLoggedIn = false;
+        return true;
       }
     }).first()
   }

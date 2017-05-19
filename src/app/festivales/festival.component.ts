@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { StorageService } from '../services/storage.service';
 import { Router, ActivatedRoute, Params} from '@angular/router';
@@ -11,10 +11,11 @@ import { CurrentUserData } from '../services/user-data.service';
   styleUrls: ['./festival.component.css']
 })
 export class FestivalComponent implements OnInit {
-    idFestival:string;
-    festival:any;
+    idFestival: string;
+    festival: any;
+    going: boolean;
     attendees: any;
-    userFestival: any;
+    sub: any;
 
     constructor(
         private af: AngularFire,
@@ -24,18 +25,29 @@ export class FestivalComponent implements OnInit {
         private userData: CurrentUserData
     ){}
     ngOnInit(){
-        console.log(this.userData.userUID);
         this.route.params.first().subscribe(params => {
             this.idFestival = params['id'];
             this.af.database.object('FESTIVALERS/festivales/'+this.idFestival).first().subscribe(festival => {
                 this.festival=festival;
             });
-            this.af.database.list('FESTIVALERS/festivalAttendees/'+this.idFestival).subscribe(attendees =>{
+            this.sub = this.af.database.list('FESTIVALERS/festivalAttendees/'+this.idFestival).subscribe(attendees =>{
                 this.attendees = attendees;
+                for(let i=0;i<attendees.length;i++){ 
+                    if(attendees[i].$key === this.userData.userUID){
+                        this.going=true;
+                    }
+                }
             });
         });
     }
     addAttendee(){
-        this.festivalService.addAttendee(this.idFestival,this.userData.userUID);
+        this.festivalService.addAttendee(this.idFestival);
+    }
+    removeAttendee(){
+        this.going=false;
+        this.festivalService.removeAttendee(this.idFestival);
+    }
+    ngOnDestroy(){
+        this.sub.unsubscribe();
     }
 }

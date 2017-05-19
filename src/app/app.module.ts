@@ -22,6 +22,9 @@ import { ProfileFestivalsComponent } from './profile/profile-festivals.component
 import { CarrouselComponent } from './carrousel/carrousel.component';
 import { FooterComponent } from './footer/footer.component';
 import { BuscadorComponent } from './search/search.component';
+import { ArtistComponent } from './artist/artist.component';
+import { SearchArtistComponent } from './artist/search-artist.component';
+import { AlbumComponent } from './artist/album.component';
 // IMPORTS FOR SERVICES
 import { LoginService } from './services/login.service';
 import { UserService } from './services/user.service';
@@ -64,7 +67,10 @@ const myFirebaseAuthConfig = {
     CarrouselComponent,
     FooterComponent,
     FestivalComponent,
-    BuscadorComponent
+    BuscadorComponent,
+    ArtistComponent,
+    SearchArtistComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,

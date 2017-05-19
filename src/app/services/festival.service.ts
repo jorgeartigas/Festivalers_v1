@@ -1,5 +1,6 @@
 import { Injectable, } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { CurrentUserData } from '../services/user-data.service';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/first';
 
@@ -15,6 +16,7 @@ export class FestivalService{
   constructor(
     private router: Router,
     private af: AngularFire,
+    private userData: CurrentUserData
   ) {}
 
   addFestival(newFestival){
@@ -27,15 +29,17 @@ export class FestivalService{
     this.festivalesPendientes.remove(festival); 
   }
 
-  addAttendee(idFestival,userUid){
-      this.af.database.object('FESTIVALERS/Users/'+userUid).first().subscribe(user => {
-        this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival+'/'+userUid).update({name: user.name,profilePhoto: user.profilePhoto})
+  addAttendee(idFestival){
+        this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival+'/'+this.userData.userUID).update({name: this.userData.currentUser.name,profilePhoto: this.userData.currentUser.profilePhoto})
         .then(()=>{
           this.af.database.object('FESTIVALERS/festivales/'+idFestival).first().subscribe(festival =>{
-            this.af.database.object('FESTIVALERS/UsersFestivals/'+userUid+'/'+idFestival).update({name: festival.name,mainPhoto: festival.mainPhoto});
+            this.af.database.object('FESTIVALERS/UsersFestivals/'+this.userData.userUID+'/'+idFestival).update({name: festival.name,mainPhoto: festival.mainPhoto});
           })
         }
         );
-      });
+  }
+  removeAttendee(idFestival){
+    this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival+'/'+this.userData.userUID).remove();
+    this.af.database.object('FESTIVALERS/UsersFestivals/'+this.userData.userUID+'/'+idFestival).remove();
   }
 }

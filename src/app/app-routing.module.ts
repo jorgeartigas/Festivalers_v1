@@ -12,6 +12,9 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AuthGuardLogin } from './services/auth-guard-logged.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { ProfileComponent } from './profile/profile.component';
+import { ArtistComponent } from './artist/artist.component';
+import { SearchArtistComponent } from './artist/search-artist.component';
+import { AlbumComponent } from './artist/album.component';
 import { AuthGuardData } from './services/auth-guard-data.service';
 
 const routes: Routes = [
@@ -22,6 +25,9 @@ const routes: Routes = [
   { path: 'news', component: NewsComponent, canActivate: [AuthGuardData]},
   { path: 'contact', component: ContactComponent},
   { path: 'festival/:id', component: FestivalComponent, canActivate: [AuthGuardData]},
+  { path: 'search-artist', component: SearchArtistComponent, canActivate: [AuthGuardData]},
+  { path: 'artist/:id', component: ArtistComponent, canActivate: [AuthGuardData]},
+  { path: 'album/:id', component: AlbumComponent},
   { path: 'addFestival', component: AddFestivalComponent, canActivate: [AuthGuard,AuthGuardData]},
   { path: 'adminFestival', component: AdminFestivalComponent, canActivate: [AuthGuardAdmin,AuthGuardData]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard,AuthGuardData]}

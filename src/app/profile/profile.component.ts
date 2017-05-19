@@ -10,7 +10,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent{
-  userUID:string;
   festivals:any;
     constructor(
         private af: AngularFire,
@@ -21,14 +20,5 @@ export class ProfileComponent{
   upload(file,path){
     this.storageService.upload(file.target.files[0],path);
   }
-// preview(event) {
-//   if (event.target.files && event.target.files[0]) {
-//     var reader = new FileReader();
-//     reader.onload = (event:any) => {
-//       this.previewURL = event.target.result;
-//     }
-//     reader.readAsDataURL(event.target.files[0]);
-//   }
-// }
 
 }

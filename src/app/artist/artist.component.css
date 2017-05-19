@@ -1,0 +1,41 @@
+.artist{
+    margin-right: 20px;
+    margin-left:20px;
+}
+.artist-header{
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: solid 1px black;
+}
+.artist-toptracks{
+    border-bottom: solid 1px black;
+    padding-bottom: 20px;
+}
+.toptrack{
+    height: 200px;
+}
+.artist-toptracks img{
+    height: 80px;
+}
+.artist-photo{
+    width: 80px;
+    float:left;
+    margin-right:10px;
+}
+
+.album{
+    text-align: center;
+    background: light-gray;
+    padding: 10px 20px;
+    height: 315px;
+
+}
+.album-thumb{
+    width: 100%;
+}
+.btn-right{
+    float:right;
+}
+audio{
+    width: 230px;
+}

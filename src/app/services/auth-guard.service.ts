@@ -18,15 +18,15 @@ export class AuthGuard implements CanActivate{
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.af.auth.map((auth) =>  {
       if(auth) {
-        this.userData.userUID = auth.uid;
-        this.userData.isLoggedIn = true;
-        this.af.database.object('FESTIVALERS/Users/'+auth.uid).first().subscribe(user => {
-          this.userData.currentUser = user;
-        })
-        return true;
+          this.userData.userUID = auth.uid;
+          this.userData.isLoggedIn = true;
+          this.af.database.object('FESTIVALERS/Users/'+auth.uid).first().subscribe(user => {
+              this.userData.currentUser = user;
+          })
+          return true;
       } else {
-        this.router.navigate(['/login']);
-        return false;
+          this.router.navigate(['/login']);
+          return false;
       }
     }).first()
   }

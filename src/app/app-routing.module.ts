@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'artist/:id', component: ArtistComponent, canActivate: [AuthGuardData]},
   { path: 'album/:id', component: AlbumComponent},
   { path: 'addFestival', component: AddFestivalComponent, canActivate: [AuthGuard,AuthGuardData]},
-  { path: 'adminFestival', component: AdminFestivalComponent, canActivate: [AuthGuardAdmin,AuthGuardData]},
+  { path: 'adminFestival', component: AdminFestivalComponent, canActivate: [AuthGuardData,AuthGuardAdmin]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard,AuthGuardData]}
 ];
 @NgModule({

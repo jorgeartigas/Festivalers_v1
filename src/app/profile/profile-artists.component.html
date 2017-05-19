@@ -1,4 +1,18 @@
 <div class="hijoProfile">
-    <h1>Componente hijo artists</h1>
-    Uid de mi padre:<p>{{ userUid }}</p>
+    <h2>LISTA ARTISTAS</h2>
+    <search-artist *ngIf="searchDisplay"></search-artist>
+    <div class="row">
+        <div *ngFor="let artist of artists">
+            <div class="col-md-2">
+                <div class="show-artist well">
+                    <h4 routerLink="/artist/{{artist.$key}}">{{ artist.name }}</h4>
+                    <div class="img-artist">
+                        <img routerLink="/artist/{{artist.$key}}" src="{{ artist.photo }}"/>
+                        <button class="btn btn-danger" (click)="removeFavorite(artist.$key)">X</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

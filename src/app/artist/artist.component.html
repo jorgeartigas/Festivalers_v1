@@ -20,10 +20,11 @@
                     <div class="well toptrack">
                         <img *ngIf="top.album.images.length > 0" src="{{ top.album.images[0].url }}"/>
                             <h4>{{ top.name }}</h4>
-                            <audio controls preload="none">
+                            <audio *ngIf="top.preview_url" controls preload="none">
                                 <source src="{{top.preview_url}}" type="audio/mpeg">
                                     Your browser does not support the audio element.
                             </audio>
+                            <span *ngIf="!top.preview_url">Preview no disponible</span>
                     </div>
                 </div>
             </div>

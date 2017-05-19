@@ -1,5 +1,5 @@
-<h1>Artist Results</h1>
-<input type="text" name="spotifySearch" [(ngModel)]="spotifySearch" placeholder="Search Artists ..." (keyup)="search()"/><br><br>
+<h1>Busca tu artista favorito!!</h1>
+<input type="text" name="spotifySearch" [(ngModel)]="spotifySearch" placeholder="Busca un artista..." (keyup)="search()"/><br><br>
 
 <div *ngIf="spotifyResults">
     <div *ngFor="let results of spotifyResults">

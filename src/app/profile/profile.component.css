@@ -12,3 +12,10 @@ input[type="file"] {
 .hijoProfile{
     border:1px solid black;
 }
+.show-artist h4{
+    cursor: pointer;
+}
+.img-artist img{
+    width: 80px;
+    cursor: pointer;
+}

@@ -58,4 +58,7 @@ export class ArtistComponent implements OnInit{
     this.favorite = false;
     this.userService.removeFavorite(this.id);
   }
+  ngOnDestroy(){
+    this.sub.unsubscribe();
+  }
 }

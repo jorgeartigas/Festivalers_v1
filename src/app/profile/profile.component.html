@@ -1,14 +1,21 @@
-<br><br>
-    <label for="fileUpload"  class="btn btn-primary buttonUpload">Upload a Photo</label>
-    <input type="file" id="fileUpload" (change)="upload($event,'profile_pictures');"/><br>
-    <img *ngIf="userData.currentUser?.profilePhoto" class="thumbnail-image" src="{{userData.currentUser?.profilePhoto}}"/>
-    <h2>Test Profile</h2>
-    <p>UId: {{userData?.userUID}}</p>
-  <div>
-    <h3>Name: <b>{{ userData.currentUser?.name }}</b></h3>
-    <h3>LastName: {{ userData.currentUser?.lastname }}</h3>
-    <h3>Age: {{ userData.currentUser?.age }}</h3>
-  </div>
-
-  <profileFestivals></profileFestivals>
-  <profileArtists></profileArtists>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+          <h2>Perfil de {{ userData.currentUser?.name }} {{ userData.currentUser?.lastname }}</h2>
+          <label for="fileUpload"  class="btn btn-primary buttonUpload">Upload a Photo</label>
+          <input type="file" id="fileUpload" (change)="upload($event,'profile_pictures');"/><br>
+          <img *ngIf="userData.currentUser?.profilePhoto" class="thumbnail-image img-responsive" src="{{userData.currentUser?.profilePhoto}}"/>
+          <p><span>Nombre:</span> {{ userData.currentUser?.name }}</p>
+          <p><span>Apellidos:</span> {{ userData.currentUser?.lastname }}</p>
+          <p><span>Edad:</span> {{ userData.currentUser?.age }}</p>
+        </div>
+        <div class="col-md-4">
+            <div *ngIf="festivalView" class="menprofile">Mis Festivales</div><div [ngStyle]="{'background-color': 'blue'}" *ngIf="!festivalView"(click)="activateView()" class="menprofile">Mis Festivales</div>
+            <div *ngIf="artistView" class="menprofile">Mis Artistas</div><div *ngIf="!artistView"(click)="activateView()" class="menprofile">Mis Artistas</div>
+        </div>
+        <div class="col-md-6">
+          <profileFestivals *ngIf="festivalView"></profileFestivals>
+          <profileArtists *ngIf="artistView"></profileArtists>
+        </div>
+    </div>
+</div>

@@ -11,7 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileComponent{
   festivals:any;
-
+  artistView:boolean = false;
+  festivalView:boolean = true;
     constructor(
         private af: AngularFire,
         private storageService: StorageService,
@@ -22,4 +23,8 @@ export class ProfileComponent{
     this.storageService.upload(file.target.files[0],path);
   }
 
+  activateView(){
+    this.artistView = !this.artistView;
+    this.festivalView = !this.festivalView;
+  }
 }

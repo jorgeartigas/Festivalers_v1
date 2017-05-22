@@ -1,21 +1,26 @@
-#previewImg{
-    border: 1px solid black;
-    width: 350px;
-    height: 250px;
-}
 input[type="file"] {
     display: none;
 }
-#buttonUpload{
-    margin-left:50px;
-}
-.hijoProfile{
-    border:1px solid black;
-}
+
 .show-artist h4{
     cursor: pointer;
 }
 .img-artist img{
     width: 80px;
     cursor: pointer;
+}
+
+.menprofile {
+    display: inline-block;
+    background-color: #9099A2;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.menprofile.active {
+    background-color: orange;
 }

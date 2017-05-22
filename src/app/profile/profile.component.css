@@ -1,7 +1,6 @@
 input[type="file"] {
     display: none;
 }
-
 .show-artist h4{
     cursor: pointer;
 }
@@ -10,17 +9,17 @@ input[type="file"] {
     cursor: pointer;
 }
 
-.menprofile {
-    display: inline-block;
-    background-color: #9099A2;
-    color: white;
+.navprofile ul{
+    margin-top:20px;
+    list-style-type: none;
+    border-radius: 5px;
     text-align: center;
-    margin-top: 20px;
+    background-color: #9099A2;
+    padding-left: 0;
+}
+.navprofile li{
     padding: 10px 20px 10px 20px;
     cursor: pointer;
-    border-radius: 5px;
-}
-
-.menprofile.active {
-    background-color: orange;
+    color: white;
+    display: inline-block;
 }

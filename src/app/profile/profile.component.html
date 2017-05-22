@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container min-height">
     <div class="row">
         <div class="col-md-3">
           <h2>Perfil de {{ profile?.name }} {{ profile?.lastname }}</h2>
@@ -6,10 +6,14 @@
           <p><span>Nombre:</span> {{ profile?.name }}</p>
           <p><span>Apellidos:</span> {{ profile?.lastname }}</p>
           <p><span>Edad:</span> {{ profile?.age }}</p>
+          <p><span>Location:</span> {{ profile?.location }}</p>
+          <p><span>Estilos:</span> {{ profile?.estilos }}</p>
         </div>
-        <div class="col-md-4">
-            <div *ngIf="festivalView" class="menprofile">Mis Festivales</div><div [ngStyle]="{'background-color': 'blue'}" *ngIf="!festivalView"(click)="activateView()" class="menprofile">Mis Festivales</div>
-            <div *ngIf="artistView" class="menprofile">Mis Artistas</div><div *ngIf="!artistView"(click)="activateView()" class="menprofile">Mis Artistas</div>
+        <div class="col-md-4 navprofile">
+            <ul>
+                <li *ngIf="festivalView" [ngStyle]="{'background-color': '#B0B0B0'}">Mis Festivales</li><li *ngIf="!festivalView"(click)="activateView()" class="menprofile">Mis Festivales</li>
+                <li *ngIf="artistView" [ngStyle]="{'background-color': '#B0B0B0'}">Mis Artistas</li><li *ngIf="!artistView"(click)="activateView()" class="menprofile">Mis Artistas</li>
+            </ul>
         </div>
         <div class="col-md-6">
           <profileFestivals *ngIf="festivalView"></profileFestivals>

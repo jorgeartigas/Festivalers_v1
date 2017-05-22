@@ -23,7 +23,15 @@ export class UserService {
     this.userData.festivals.forEach(idFestival => {
           this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival+'/'+this.userData.userUID).update({profilePhoto: downloadURL});
     });
-  }    
+  }
+  /// juntar arriba y abajo + festivales tiene que ser una subscripcion!
+  update(festivals){
+    this.af.database.object('FESTIVALERS/Users/'+this.userData.userUID).update(this.userData.currentUser);
+    this.userData.festivals.forEach(festival => {
+      this.af.database.object('FESTIVALERS/festivalAttendees/'+festival+'/'+this.userData.userUID).update({name: this.userData.currentUser.name
+      })
+    })
+  }
   addFavorite(artistId,artistName,artistPhoto){
     this.af.database.object('FESTIVALERS/UsersArtists/'+this.userData.userUID+'/'+artistId).update({ name:artistName, photo:artistPhoto })
   }

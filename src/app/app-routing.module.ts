@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'album/:id', component: AlbumComponent, canActivate: [AuthGuardData]},
   { path: 'addFestival', component: AddFestivalComponent, canActivate: [AuthGuard,AuthGuardData]},
   { path: 'adminFestival', component: AdminFestivalComponent, canActivate: [AuthGuardData,AuthGuardAdmin]},
-  { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardData]},
+  { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard,AuthGuardData]},
   { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard,AuthGuardData]}
 ];
 @NgModule({

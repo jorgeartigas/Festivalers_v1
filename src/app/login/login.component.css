@@ -3,7 +3,7 @@
 #loginbox{
     margin: 0 auto;
     text-align: center;
-    width: 300px;
+    width: 400px;
     height: 265px;
     border-radius: 10px;
     position: relative;
@@ -20,8 +20,11 @@ input, button{
     position: relative;
     top: 25px;
     color: #3c3c3c;
+    width: 250px;
 }
-
+.logbutton{
+    width: 150px;
+}
 button.logbutton {
     background-color: #dd2c35;
     color: white;

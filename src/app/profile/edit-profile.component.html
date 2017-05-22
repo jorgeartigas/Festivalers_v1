@@ -1,19 +1,28 @@
-<div class="container">
+<div class="container min-height">
     <div class="row">
         <div class="col-md-3">
-          <h2>Perfil de {{ userData.currentUser?.name }} {{ userData.currentUser?.lastname }}</h2>
-          <label for="fileUpload"  class="btn btn-primary buttonUpload">Upload a Photo</label>
-          <input type="file" id="fileUpload" (change)="upload($event)"/><br><br>
-          <img *ngIf="userData.currentUser?.profilePhoto" class="thumbnail-image img-responsive" src="{{userData.currentUser?.profilePhoto}}"/>
-          <p><span>Nombre:</span> {{ userData.currentUser?.name }}</p>
-          <p><span>Apellidos:</span> {{ userData.currentUser?.lastname }}</p>
-          <p><span>Edad:</span> {{ userData.currentUser?.age }}</p>
+            <h2>Perfil de {{ userData.currentUser?.name }} {{ userData.currentUser?.lastname }}</h2>
+            <label for="fileUpload"  class="btn btn-primary buttonUpload">Upload a Photo</label>
+            <input type="file" id="fileUpload" (change)="upload($event)"/><br><br>
+            <img *ngIf="userData.currentUser?.profilePhoto" class="thumbnail-image img-responsive" src="{{userData.currentUser?.profilePhoto}}"/>
+            <div *ngIf="userData?.currentUser">
+                <form (ngSubmit)="update()" #perfilForm="ngForm" (change)="editado=true">
+                    <input type="text" #name="ngModel" name="name" [(ngModel)]="userData.currentUser.name" required>
+                    <input type="text" #lastname="ngModel" name="lastname" [(ngModel)]="userData.currentUser.lastname" required>
+                    <input type="text" #age="ngModel" name="age" [(ngModel)]="userData.currentUser.age" required>
+                    <input type="text" #location="ngModel" name="location" [(ngModel)]="userData.currentUser.location" required>
+                    <input type="text" #estilos="ngModel" name="estilos" [(ngModel)]="userData.currentUser.estilos">
+                    <button *ngIf="editado" type="submit" [disabled]="perfilForm.invalid" class="btn btn-success">Guardar Cambios</button>
+                </form>
+            </div>
         </div>
-        <div class="col-md-4">
-            <div *ngIf="festivalView" class="menprofile">Mis Festivales</div><div [ngStyle]="{'background-color': 'blue'}" *ngIf="!festivalView"(click)="activateView()" class="menprofile">Mis Festivales</div>
-            <div *ngIf="artistView" class="menprofile">Mis Artistas</div><div *ngIf="!artistView"(click)="activateView()" class="menprofile">Mis Artistas</div>
+        <div class="col-md-4 navprofile">
+            <ul>
+                <li *ngIf="festivalView" [ngStyle]="{'background-color': '#B0B0B0'}">Mis Festivales</li><li *ngIf="!festivalView"(click)="activateView()" class="menprofile">Mis Festivales</li>
+                <li *ngIf="artistView" [ngStyle]="{'background-color': '#B0B0B0'}">Mis Artistas</li><li *ngIf="!artistView"(click)="activateView()" class="menprofile">Mis Artistas</li>
+            </ul>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-9">
           <profileFestivals *ngIf="festivalView"></profileFestivals>
           <profileArtists *ngIf="artistView"></profileArtists>
         </div>

@@ -8,6 +8,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AddFestivalComponent } from './festivales/add-festival.component';
 import { AdminFestivalComponent } from './festivales/admin-festival.component';
 import { FestivalComponent } from './festivales/festival.component';
+import { EditFestivalComponent } from './festivales/edit-festival.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthGuardLogin } from './services/auth-guard-logged.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
@@ -16,6 +17,7 @@ import { ArtistComponent } from './artist/artist.component';
 import { SearchArtistComponent } from './artist/search-artist.component';
 import { AlbumComponent } from './artist/album.component';
 import { AuthGuardData } from './services/auth-guard-data.service';
+import { AuthGuardOwner } from './services/auth-guard-owner.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -25,6 +27,7 @@ const routes: Routes = [
   { path: 'news', component: NewsComponent, canActivate: [AuthGuardData]},
   { path: 'contact', component: ContactComponent},
   { path: 'festival/:id', component: FestivalComponent, canActivate: [AuthGuardData]},
+  { path: 'edit-festival/:id', component: EditFestivalComponent, canActivate: [AuthGuardData,AuthGuardOwner]},
   { path: 'search-artist', component: SearchArtistComponent, canActivate: [AuthGuardData]},
   { path: 'artist/:id', component: ArtistComponent, canActivate: [AuthGuardData]},
   { path: 'album/:id', component: AlbumComponent},

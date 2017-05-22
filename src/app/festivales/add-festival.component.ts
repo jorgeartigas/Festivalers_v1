@@ -4,7 +4,6 @@ import { CurrentUserData } from '../services/user-data.service';
 import { FestivalService } from '../services/festival.service';
 import { Festival } from './festival';
 
-
 @Component({
   selector: 'add-festival',
   templateUrl: './add-festival.component.html',

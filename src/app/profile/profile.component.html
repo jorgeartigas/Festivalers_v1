@@ -1,6 +1,4 @@
 <br><br>
-<img *ngIf="previewURL" id="previewImg" [src]="previewURL"/><br><br><br>
-
     <label for="fileUpload"  class="btn btn-primary buttonUpload">Upload a Photo</label>
     <input type="file" id="fileUpload" (change)="upload($event,'profile_pictures');"/><br>
     <img *ngIf="userData.currentUser?.profilePhoto" class="thumbnail-image" src="{{userData.currentUser?.profilePhoto}}"/>

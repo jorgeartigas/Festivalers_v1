@@ -25,6 +25,7 @@ import { BuscadorComponent } from './search/search.component';
 import { ArtistComponent } from './artist/artist.component';
 import { SearchArtistComponent } from './artist/search-artist.component';
 import { AlbumComponent } from './artist/album.component';
+import { EditFestivalComponent } from './festivales/edit-festival.component';
 // IMPORTS FOR SERVICES
 import { LoginService } from './services/login.service';
 import { UserService } from './services/user.service';
@@ -32,6 +33,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AuthGuardData } from './services/auth-guard-data.service';
 import { AuthGuardLogin } from './services/auth-guard-logged.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
+import { AuthGuardOwner } from './services/auth-guard-owner.service';
 import { StorageService } from './services/storage.service';
 import { FestivalService } from './services/festival.service';
 import { CurrentUserData } from './services/user-data.service';
@@ -70,7 +72,8 @@ const myFirebaseAuthConfig = {
     BuscadorComponent,
     ArtistComponent,
     SearchArtistComponent,
-    AlbumComponent
+    AlbumComponent,
+    EditFestivalComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +91,8 @@ const myFirebaseAuthConfig = {
     AuthGuardAdmin,
     CurrentUserData,
     LoginService,
-    AuthGuardData
+    AuthGuardData,
+    AuthGuardOwner
   ],
   bootstrap: [AppComponent]
 })

@@ -26,7 +26,6 @@ export class SignUpComponent{
        'background-position': 'center center',
        'height': '600px'
     };
-
     return backgroundImage;
 }
 }

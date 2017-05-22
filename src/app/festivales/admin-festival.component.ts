@@ -15,7 +15,7 @@ export class AdminFestivalComponent {
     ){
         this.festivales = this.af.database.list('/FESTIVALERS/festivalesPendientes');
     }
-
+    
     validateFestival(festival: any){
         this.festivalService.validateFestival(festival);
     }

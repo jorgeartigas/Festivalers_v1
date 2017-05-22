@@ -11,8 +11,6 @@
     <label>Mes</label><input type="text" [(ngModel)]="newFestival.month" name="month" required /><br>
     <label>Fecha Inicio</label><input type="date" [(ngModel)]="newFestival.startDate" name="startDate" required /><br>
     <label>Fecha final</label><input type="date" [(ngModel)]="newFestival.endDate" name="endDate" required /><br>
-    <label>Foto Principal</label><input type="file" [(ngModel)]="newFestival.mainPhoto" name="mainPhoto" required /><br>
-    <label>Fotos (luego podras añadir mas o cambiar la de perfil</label><input type="file" [(ngModel)]="newFestival.photos" name="photos" required /><br>
     <button type="submit">Add Festival</button>
     <!-- <button type="submit" [disabled]="!addFestivalForm.form.valid">Add Festival</button> -->
   </form>

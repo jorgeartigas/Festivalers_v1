@@ -1,8 +1,8 @@
 <div [ngStyle]="getBackground()">
 <div id="registerbox">
-<form (ngSubmit)="signUp({email: newUser.email, password: newUser.password})" #signUpForm="ngForm">
-  <input type="text" [(ngModel)]="newUser.email" name="email" placeholder="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
-  <input type="password" [(ngModel)]="newUser.password" name="password" placeholder="password" required /><br>
+<form (ngSubmit)="signUp({email: email, password: password})" #signUpForm="ngForm">
+  <input type="text" [(ngModel)]="email" name="email" placeholder="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
+  <input type="password" [(ngModel)]="password" name="password" placeholder="password" required /><br>
   <input type="text" [(ngModel)]="newUser.name" name="name" placeholder="nombre" required />
   <input type="text" [(ngModel)]="newUser.lastname" name="lastname" placeholder="apellidos" required /><br>
   <input type="text" [(ngModel)]="newUser.age" name="age" placeholder="edad" required />

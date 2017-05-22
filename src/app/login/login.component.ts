@@ -7,8 +7,10 @@ import { LoginService } from '../services/login.service';
   styleUrls: [ './login.component.css' ]
 })
 export class LoginComponent{
+  email: string;
+  pass: string;
 
-constructor(public loginService: LoginService){}
+  constructor(public loginService: LoginService){}
 
   login(loginData) {
     this.loginService.login(loginData);

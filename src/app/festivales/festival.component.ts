@@ -18,11 +18,11 @@ export class FestivalComponent implements OnInit {
     sub: any;
 
     constructor(
-        private af: AngularFire,
-        private storageService: StorageService,
-        private route: ActivatedRoute,
-        private festivalService: FestivalService,
-        private userData: CurrentUserData
+        public af: AngularFire,
+        public storageService: StorageService,
+        public route: ActivatedRoute,
+        public festivalService: FestivalService,
+        public userData: CurrentUserData
     ){}
     ngOnInit(){
         this.route.params.first().subscribe(params => {

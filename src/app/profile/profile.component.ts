@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileComponent{
   festivals:any;
+  //no la uso pero la necesita angular4
+  previewURL:string;
     constructor(
         private af: AngularFire,
         private storageService: StorageService,

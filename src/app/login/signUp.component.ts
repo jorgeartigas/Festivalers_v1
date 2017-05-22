@@ -9,6 +9,8 @@ import { User } from '../profile/User';
 })
 export class SignUpComponent{
   newUser = new User ('','','','',[],'../../assets/no-image-user.png',[],[],[],[],[],[],false,Date.now());
+  email:string;
+  password:string;
 
   constructor(private loginService: LoginService){}
 

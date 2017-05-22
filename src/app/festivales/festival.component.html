@@ -1,3 +1,4 @@
+<img id="mainPhoto" src="{{ festival?.mainPhoto }}"/>
 <h1>{{festival?.name}}</h1>
 <h3>Estilo: {{festival?.style}}</h3>
 <h3>Descripcion: {{festival?.description}}</h3>
@@ -9,7 +10,7 @@
 <h3>Asistentes:</h3> 
 <ul *ngFor="let attendee of attendees">
     <li>{{ attendee.name }}</li>
-    <li>{{ attendee.profilePhoto }}</li>
+    <li><img src="{{ attendee.profilePhoto }}"/></li>
 </ul>
 <button *ngIf="userData.isLoggedIn && !going" (click)="addAttendee()">Asistiré</button>
 <button *ngIf="userData.isLoggedIn && going === true;" (click)="removeAttendee()">Dejar de asistir</button>

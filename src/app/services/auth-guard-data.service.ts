@@ -22,6 +22,11 @@ export class AuthGuardData implements CanActivate{
         this.userData.isLoggedIn = true;
         this.af.database.object('FESTIVALERS/Users/'+auth.uid).first().subscribe(user => {
           this.userData.currentUser = user;
+        });
+        this.af.database.list('FESTIVALERS/UsersFestivals/'+auth.uid).first().subscribe(festivals => {
+          festivals.forEach(fest => {
+            this.userData.festivals.push(fest.$key);
+          });
         })
         return true;
       }else{

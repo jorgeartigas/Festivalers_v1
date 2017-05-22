@@ -21,16 +21,16 @@ import { AuthGuardOwner } from './services/auth-guard-owner.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuardLogin,AuthGuardData] },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuardLogin,AuthGuardData]},
   { path: 'signUp', component: SignUpComponent, canActivate: [AuthGuardLogin,AuthGuardData]},
   { path: 'home', component: HomePageComponent, canActivate: [AuthGuardData]},
   { path: 'news', component: NewsComponent, canActivate: [AuthGuardData]},
-  { path: 'contact', component: ContactComponent},
+  { path: 'contact', component: ContactComponent, canActivate: [AuthGuardData]},
   { path: 'festival/:id', component: FestivalComponent, canActivate: [AuthGuardData]},
   { path: 'edit-festival/:id', component: EditFestivalComponent, canActivate: [AuthGuardData,AuthGuardOwner]},
   { path: 'search-artist', component: SearchArtistComponent, canActivate: [AuthGuardData]},
   { path: 'artist/:id', component: ArtistComponent, canActivate: [AuthGuardData]},
-  { path: 'album/:id', component: AlbumComponent},
+  { path: 'album/:id', component: AlbumComponent, canActivate: [AuthGuardData]},
   { path: 'addFestival', component: AddFestivalComponent, canActivate: [AuthGuard,AuthGuardData]},
   { path: 'adminFestival', component: AdminFestivalComponent, canActivate: [AuthGuardData,AuthGuardAdmin]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard,AuthGuardData]}

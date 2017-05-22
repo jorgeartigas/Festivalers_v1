@@ -28,7 +28,11 @@ export class FestivalService{
   discardFestival(festival: any){
     this.festivalesPendientes.remove(festival); 
   }
-
+  uploadMainPhoto(idFestival,downloadURL){
+    this.af.database.object('FESTIVALERS/festivales/'+idFestival).update({mainPhoto: downloadURL});
+    this.af.database.object('FESTIVALERS/UsersFestivals/'+this.userData.userUID+'/'+idFestival).update({mainPhoto: downloadURL});
+  
+  }
   addAttendee(idFestival){
         this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival+'/'+this.userData.userUID).update({name: this.userData.currentUser.name,profilePhoto: this.userData.currentUser.profilePhoto})
         .then(()=>{

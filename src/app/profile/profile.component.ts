@@ -19,8 +19,10 @@ export class ProfileComponent{
         public userData: CurrentUserData,
         private route:ActivatedRoute
     ){}
-  upload(file,path){
-    this.storageService.upload(file.target.files[0],path);
+  upload(file){
+    if(file){
+      this.storageService.upload(file.target.files[0],0);
+    }
   }
 
   activateView(){

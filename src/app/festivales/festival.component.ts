@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire } from 'angularfire2';
 import { StorageService } from '../services/storage.service';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { FestivalService } from '../services/festival.service';

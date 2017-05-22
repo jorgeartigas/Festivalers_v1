@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { UserService } from './user.service';
 import { CurrentUserData } from './user-data.service';
+import { FestivalService } from './festival.service';
 
 @Injectable()
 export class StorageService {
@@ -9,13 +10,20 @@ private storageRef = firebase.storage().ref();
 downloadURL:string;
 constructor(
     public userData: CurrentUserData,
-    public userService: UserService
+    public userService: UserService,
+    public festivalService: FestivalService
     ) {}
 
-upload(file,path,){
+upload(file,value,idFestival?){
 const that = this;
+let uploadTask
 // Upload file and metadata to the object
-let uploadTask = this.storageRef.child('images/'+ path +'/'+ this.userData.userUID).put(file);
+if(value===0){
+     uploadTask = this.storageRef.child('images/profile_pictures/'+ this.userData.userUID).put(file);
+}else if(value===1){
+    uploadTask = this.storageRef.child('images/festival_main_pictures/'+ idFestival).put(file);
+}
+
 // Register three observers:
 uploadTask.on('state_changed', function(snapshot){
     // Observe state change events such as progress, pause, and resume
@@ -45,7 +53,13 @@ uploadTask.on('state_changed', function(snapshot){
     }
 }, function() {
     // Handle successful uploads on complete
-    that.userService.changeProfilePhoto(uploadTask.snapshot.downloadURL);
+    if(value===0){
+        that.userService.changeProfilePhoto(uploadTask.snapshot.downloadURL);
+        console.log("profile");
+    }else if(value===1){
+        that.festivalService.uploadMainPhoto(idFestival,uploadTask.snapshot.downloadURL);
+        console.log("Mainfestival");
+    }
     });
 }
 }

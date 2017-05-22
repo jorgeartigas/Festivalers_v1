@@ -20,6 +20,9 @@ export class UserService {
 
   changeProfilePhoto(downloadURL){
     this.af.database.object('FESTIVALERS/Users/'+this.userData.userUID).update({profilePhoto: downloadURL});
+    this.userData.festivals.forEach(idFestival => {
+          this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival+'/'+this.userData.userUID).update({profilePhoto: downloadURL});
+    });
   }    
   addFavorite(artistId,artistName,artistPhoto){
     this.af.database.object('FESTIVALERS/UsersArtists/'+this.userData.userUID+'/'+artistId).update({ name:artistName, photo:artistPhoto })

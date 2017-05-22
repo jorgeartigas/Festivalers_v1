@@ -1,1 +1,18 @@
-hola
+<br><br><div>
+  <form (ngSubmit)="updateFestival()" #addFestivalForm="ngForm" novalidate>
+    <label>Nombre</label><input type="text" #name="ngModel" [(ngModel)]="festival.name" name="name" required /><br>
+    <input type="file" (change)="upload($event)"/>
+    <!-- lista predefinida desplegable -->
+    <label>Estilo</label><input type="text" #style="ngModel" [(ngModel)]="festival.style" name="style" required /><br>
+    <!-- pondre un modulo ckeditor para que se pueda formatear como quieran -->
+    <label>Descripcion</label><input type="text" #description="ngModel" [(ngModel)]="festival.description" name="description" required /><br>
+    <!-- O desplegable de paises o en la base de datos y que se vaya filtrando a medida que escriben en el input y lo seleccionen -->
+    <label>Pais</label><input type="text" #location="ngModel" [(ngModel)]="festival.location" name="location" required /><br>
+    <label>Dirección</label><input type="text" #address="ngModel" [(ngModel)]="festival.address" name="address" required /><br>
+    <label>Mes</label><input type="text" #month="ngModel" [(ngModel)]="festival.month" name="month" required /><br>
+    <label>Fecha Inicio</label><input type="date" #startDate="ngModel" [(ngModel)]="festival.startDate" name="startDate" required /><br>
+    <label>Fecha final</label><input type="date" #endDate="ngModel" [(ngModel)]="festival.endDate" name="endDate" required /><br>
+    <button type="submit">Add Festival</button>
+    <!-- <button type="submit" [disabled]="!addFestivalForm.form.valid">Add Festival</button> -->
+  </form>
+</div>

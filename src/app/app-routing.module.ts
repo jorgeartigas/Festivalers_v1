@@ -13,6 +13,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AuthGuardLogin } from './services/auth-guard-logged.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { ProfileComponent } from './profile/profile.component';
+import { EditProfileComponent } from './profile/edit-profile.component';
 import { ArtistComponent } from './artist/artist.component';
 import { SearchArtistComponent } from './artist/search-artist.component';
 import { AlbumComponent } from './artist/album.component';
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'album/:id', component: AlbumComponent, canActivate: [AuthGuardData]},
   { path: 'addFestival', component: AddFestivalComponent, canActivate: [AuthGuard,AuthGuardData]},
   { path: 'adminFestival', component: AdminFestivalComponent, canActivate: [AuthGuardData,AuthGuardAdmin]},
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard,AuthGuardData]}
+  { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardData]},
+  { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard,AuthGuardData]}
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

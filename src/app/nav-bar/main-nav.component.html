@@ -22,7 +22,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mi Perfil<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                 <li><a routerLink="/addFestival" routerLinkActive="active">Añadir festival</a></li>
-                <li><a routerLink="/profile" routerLinkActive="active">Perfil</a></li>
+                <li><a routerLink="/edit-profile" routerLinkActive="active">Perfil</a></li>
                 <li *ngIf="userData.currentUser?.isAdmin"><a routerLink="/adminFestival" routerLinkActive="active">Panel de administración</a></li>
                 <li><a routerLink="/home" routerLinkActive="active" (click)="logout()">Logout</a></li>
             </ul>

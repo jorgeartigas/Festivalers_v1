@@ -1,11 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-          <h2>Perfil de {{ profile?.name }} {{ profile?.lastname }}</h2>
-          <img *ngIf="profile?.profilePhoto" class="thumbnail-image img-responsive" src="{{profile?.profilePhoto}}"/>
-          <p><span>Nombre:</span> {{ profile?.name }}</p>
-          <p><span>Apellidos:</span> {{ profile?.lastname }}</p>
-          <p><span>Edad:</span> {{ profile?.age }}</p>
+          <h2>Perfil de {{ userData.currentUser?.name }} {{ userData.currentUser?.lastname }}</h2>
+          <label for="fileUpload"  class="btn btn-primary buttonUpload">Upload a Photo</label>
+          <input type="file" id="fileUpload" (change)="upload($event)"/><br><br>
+          <img *ngIf="userData.currentUser?.profilePhoto" class="thumbnail-image img-responsive" src="{{userData.currentUser?.profilePhoto}}"/>
+          <p><span>Nombre:</span> {{ userData.currentUser?.name }}</p>
+          <p><span>Apellidos:</span> {{ userData.currentUser?.lastname }}</p>
+          <p><span>Edad:</span> {{ userData.currentUser?.age }}</p>
         </div>
         <div class="col-md-4">
             <div *ngIf="festivalView" class="menprofile">Mis Festivales</div><div [ngStyle]="{'background-color': 'blue'}" *ngIf="!festivalView"(click)="activateView()" class="menprofile">Mis Festivales</div>

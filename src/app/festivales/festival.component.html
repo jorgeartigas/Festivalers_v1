@@ -9,7 +9,7 @@
 <h3>Final: {{festival?.endDate}}</h3>
 <h3>Asistentes:</h3> 
 <ul *ngFor="let attendee of attendees">
-    <li>{{ attendee.name }}</li>
+    <li routerLink="/profile/{{ attendee.$key }}">{{ attendee.name }}</li>
     <li><img src="{{ attendee.profilePhoto }}"/></li>
 </ul>
 <button *ngIf="userData.isLoggedIn && !going" (click)="addAttendee()">Asistiré</button>

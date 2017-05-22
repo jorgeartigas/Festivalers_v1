@@ -17,6 +17,7 @@ import { AddFestivalComponent } from './festivales/add-festival.component';
 import { AdminFestivalComponent } from './festivales/admin-festival.component';
 import { FestivalComponent } from './festivales/festival.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EditProfileComponent } from './profile/edit-profile.component';
 import { ProfileArtistsComponent } from './profile/profile-artists.component';
 import { ProfileFestivalsComponent } from './profile/profile-festivals.component';
 import { CarrouselComponent } from './carrousel/carrousel.component';
@@ -73,7 +74,8 @@ const myFirebaseAuthConfig = {
     ArtistComponent,
     SearchArtistComponent,
     AlbumComponent,
-    EditFestivalComponent
+    EditFestivalComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

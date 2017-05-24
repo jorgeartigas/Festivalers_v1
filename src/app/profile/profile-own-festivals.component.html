@@ -4,9 +4,10 @@
         <div *ngFor="let ownFestival of ownFestivals | async">
             <div class="col-md-4">
                 <div class="well festivalbox">
-                    <h4 routerLink="/festival/{{ ownFestival.$key }}">{{ ownFestival.name }}</h4>
+                    <h4 routerLink="/edit-festival/{{ ownFestival.$key }}">{{ ownFestival.name }}</h4>
                     <div class="img-festival">
-                        <img routerLink="/festival/{{ ownFestival.$key }}" src="{{ ownFestival.mainPhoto }}"/>
+                        <img *ngIf="ownFestival.mainPhoto" routerLink="/edit-festival/{{ ownFestival.$key }}" src="{{ ownFestival.mainPhoto }}"/>
+                        <span *ngIf="!ownFestival.mainPhoto" routerLink="/edit-festival/{{ ownFestival.$key }}"> Entra y añade una foto!</span>
                     </div>
                 </div>
             </div>

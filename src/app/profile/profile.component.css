@@ -23,6 +23,9 @@ input[type="file"] {
     color: white;
     display: inline-block;
 }
+h4{
+    cursor: pointer;
+}
 .img-festival img{
     width: 80px;
     cursor: pointer;

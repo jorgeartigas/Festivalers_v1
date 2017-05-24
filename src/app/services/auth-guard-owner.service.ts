@@ -7,12 +7,13 @@ import { AngularFire } from 'angularfire2';
 
 @Injectable()
 export class AuthGuardOwner implements CanActivate{
-
+  uid:string;
   constructor(private af: AngularFire, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.af.database.object('FESTIVALERS/festivales/'+route.params.id).map(festival => {
-            if(this.af.auth.getAuth().uid === festival.owner){
+        this.af.auth.subscribe(auth => this.uid=auth.uid);
+            if(this.uid === festival.owner){
                 return true;
             }else{
                 this.router.navigate(['home']);

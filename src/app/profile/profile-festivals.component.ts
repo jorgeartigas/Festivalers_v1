@@ -21,6 +21,5 @@ export class ProfileFestivalsComponent implements OnInit{
 
   ngOnInit(){
       this.festivals = this.af.database.list('FESTIVALERS/UsersFestivals/'+this.userData.userUID);
-      this.festivals.subscribe(snap =>console.log(snap));
   }
 }

@@ -17,7 +17,8 @@ export class SearchArtistComponent{
       private userService: UserService
   ){}
   search(){
-    this.userService.search(this.spotifySearch).subscribe(res =>{
+    if(this.spotifySearch)
+      this.userService.search(this.spotifySearch).subscribe(res =>{
       this.spotifyResults = res.artists.items;
     })
   }

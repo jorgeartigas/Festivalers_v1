@@ -28,8 +28,7 @@ export class UserService {
   update(festivals){
     this.af.database.object('FESTIVALERS/Users/'+this.userData.userUID).update(this.userData.currentUser);
     this.userData.festivals.forEach(festival => {
-      this.af.database.object('FESTIVALERS/festivalAttendees/'+festival+'/'+this.userData.userUID).update({name: this.userData.currentUser.name
-      })
+      this.af.database.object('FESTIVALERS/festivalAttendees/'+festival+'/'+this.userData.userUID).update({name: this.userData.currentUser.name});
     })
   }
   addFavorite(artistId,artistName,artistPhoto){

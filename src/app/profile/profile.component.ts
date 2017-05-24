@@ -13,8 +13,8 @@ export class ProfileComponent implements OnInit{
   idProfile:string;
   profile:any;
   festivals:any;
-  artistView:boolean = false;
-  festivalView:boolean = true;
+  activeView:string;
+  
     constructor(
         private af: AngularFire,
         private storageService: StorageService,
@@ -34,9 +34,7 @@ export class ProfileComponent implements OnInit{
       this.storageService.upload(file.target.files[0],0);
     }
   }
-
-  activateView(){
-    this.artistView = !this.artistView;
-    this.festivalView = !this.festivalView;
+  activateView(val?:string){
+    this.activeView = val;
   }
 }

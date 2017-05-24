@@ -12,8 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditProfileComponent{
   festivals:any;
-  artistView:boolean = false;
-  festivalView:boolean = true;
+  activeView:string;
   editado: boolean = false;
     constructor(
         private af: AngularFire,
@@ -22,18 +21,18 @@ export class EditProfileComponent{
         public userService: UserService,
         private route:ActivatedRoute
     ){}
+
   upload(file){
     if(file){
       this.storageService.upload(file.target.files[0],0);
     }
   }
   update(){
-    //no va aun
-    //this.userService.update(this.festivals);
+    this.userService.update(this.festivals);
+    this.editado=false;
   }
 
-  activateView(){
-    this.artistView = !this.artistView;
-    this.festivalView = !this.festivalView;
+  activateView(value?:string){
+    this.activeView = value;
   }
 }

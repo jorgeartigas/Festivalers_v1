@@ -3,7 +3,7 @@
     <search-artist *ngIf="searchDisplay"></search-artist>
     <div class="row">
         <div *ngFor="let artist of artists">
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <div class="show-artist well">
                     <h4 routerLink="/artist/{{artist.$key}}">{{ artist.name }}</h4>
                     <div class="img-artist">

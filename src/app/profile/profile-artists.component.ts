@@ -33,4 +33,7 @@ export class ProfileArtistsComponent {
   removeFavorite(id){
     this.userService.removeFavorite(id);
   }
+  ngOnDestroy(){
+    this.sub.unsubscribe();
+  }
 }

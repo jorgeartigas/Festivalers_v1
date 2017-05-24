@@ -1,9 +1,15 @@
 <div class="hijoProfile">
     <h2>LISTA FESTIVALES</h2>
-    <ul>
+    <div class="row">
         <div *ngFor="let festival of festivals | async">
-            <li>{{ festival.name }}</li>
-            <li>{{ festival.mainPhoto }}</li>
+            <div class="col-md-4">
+                <div class="show-artist well">
+                    <h4 routerLink="/festival/{{ festival.$key }}">{{ festival.name }}</h4>
+                    <div class="img-artist">
+                        <img routerLink="/festival/{{ festival.$key }}" src="{{ festival.mainPhoto }}"/>
+                    </div>
+                </div>
+            </div>
         </div>
-    </ul>
+    </div>
 </div>

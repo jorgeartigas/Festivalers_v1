@@ -20,6 +20,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './profile/edit-profile.component';
 import { ProfileArtistsComponent } from './profile/profile-artists.component';
 import { ProfileFestivalsComponent } from './profile/profile-festivals.component';
+import { ProfileOwnFestivalsComponent } from './profile/profile-own-festivals.component';
 import { CarrouselComponent } from './carrousel/carrousel.component';
 import { FooterComponent } from './footer/footer.component';
 import { BuscadorComponent } from './search/search.component';
@@ -27,6 +28,7 @@ import { ArtistComponent } from './artist/artist.component';
 import { SearchArtistComponent } from './artist/search-artist.component';
 import { AlbumComponent } from './artist/album.component';
 import { EditFestivalComponent } from './festivales/edit-festival.component';
+import { ChatComponent } from './festivales/chat.component';
 // IMPORTS FOR SERVICES
 import { LoginService } from './services/login.service';
 import { UserService } from './services/user.service';
@@ -75,7 +77,9 @@ const myFirebaseAuthConfig = {
     SearchArtistComponent,
     AlbumComponent,
     EditFestivalComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ChatComponent,
+    ProfileOwnFestivalsComponent
   ],
   imports: [
     BrowserModule,

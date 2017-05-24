@@ -12,7 +12,7 @@ export class FestivalService{
   festivales: FirebaseListObservable<any>=this.af.database.list('/FESTIVALERS/festivales');
   arrayAttendees: Array<string> = [];
   arrayFestivales: Array<string> = [];
-
+  vec:any;
   constructor(
     private router: Router,
     private af: AngularFire,
@@ -23,7 +23,10 @@ export class FestivalService{
     this.af.database.list('FESTIVALERS/festivalesPendientes/').push(newFestival);
   }
   validateFestival(festival: any){
-      this.festivales.push(festival).then(()=> this.festivalesPendientes.remove(festival));
+      this.af.database.list('FESTIVALERS/festivales/').push(festival).then(newfestival =>{
+        this.af.database.object('FESTIVALERS/UsersFestivalOwners/'+this.userData.userUID+'/'+newfestival.key).set(festival);
+      });
+      this.af.database.list('FESTIVALERS/festivalesPendientes/').remove(festival);
     }
   discardFestival(festival: any){
     this.festivalesPendientes.remove(festival); 
@@ -36,6 +39,7 @@ export class FestivalService{
   addAttendee(idFestival){
         this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival+'/'+this.userData.userUID).update({name: this.userData.currentUser.name,profilePhoto: this.userData.currentUser.profilePhoto})
         .then(()=>{
+          this.userData.festivals.push(idFestival);
           this.af.database.object('FESTIVALERS/festivales/'+idFestival).first().subscribe(festival =>{
             this.af.database.object('FESTIVALERS/UsersFestivals/'+this.userData.userUID+'/'+idFestival).update({name: festival.name,mainPhoto: festival.mainPhoto});
           })
@@ -45,5 +49,7 @@ export class FestivalService{
   removeAttendee(idFestival){
     this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival+'/'+this.userData.userUID).remove();
     this.af.database.object('FESTIVALERS/UsersFestivals/'+this.userData.userUID+'/'+idFestival).remove();
+    this.userData.festivals.splice(this.userData.festivals.indexOf(idFestival),1);
+    console.warn(this.userData.festivals);
   }
 }

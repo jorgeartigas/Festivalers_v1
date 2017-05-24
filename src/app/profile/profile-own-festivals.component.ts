@@ -5,12 +5,12 @@ import { FestivalService } from '../services/festival.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'profileFestivals',
-  templateUrl: './profile-festivals.component.html',
+  selector: 'profileOwnFestivals',
+  templateUrl: './profile-own-festivals.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileFestivalsComponent implements OnInit{
-  festivals:FirebaseListObservable<any>;
+export class ProfileOwnFestivalsComponent implements OnInit{
+  ownFestivals:FirebaseListObservable<any>;
   
   constructor(
     public userData: CurrentUserData,
@@ -20,7 +20,7 @@ export class ProfileFestivalsComponent implements OnInit{
   ){}
 
   ngOnInit(){
-      this.festivals = this.af.database.list('FESTIVALERS/UsersFestivals/'+this.userData.userUID);
-      this.festivals.subscribe(snap =>console.log(snap));
+      this.ownFestivals = this.af.database.list('FESTIVALERS/UsersFestivalOwners/'+this.userData.userUID);
+      this.ownFestivals.subscribe(snap => console.log(snap))
   }
 }

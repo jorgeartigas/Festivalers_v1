@@ -2,3 +2,9 @@
     height: 350px;
     width: 800px;
 }
+h4{
+    cursor:pointer;
+}
+.img-user{
+    cursor:pointer;
+}

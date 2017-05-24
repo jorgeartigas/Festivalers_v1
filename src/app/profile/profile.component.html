@@ -9,15 +9,17 @@
           <p><span>Location:</span> {{ profile?.location }}</p>
           <p><span>Estilos:</span> {{ profile?.estilos }}</p>
         </div>
-        <div class="col-md-4 navprofile">
+        <div class="col-md-8 navprofile">
             <ul>
-                <li *ngIf="festivalView" [ngStyle]="{'background-color': '#B0B0B0'}">Mis Festivales</li><li *ngIf="!festivalView"(click)="activateView()" class="menprofile">Mis Festivales</li>
-                <li *ngIf="artistView" [ngStyle]="{'background-color': '#B0B0B0'}">Mis Artistas</li><li *ngIf="!artistView"(click)="activateView()" class="menprofile">Mis Artistas</li>
+                <li (click)="activateView()" class="menprofile">Mis Festivales</li>
+                <li (click)="activateView('artistsView')" class="menprofile">Mis Artistas</li>
+                <li (click)="activateView('ownFestivalsView')" class="menprofile">Administrar mis Festivales</li>
             </ul>
         </div>
-        <div class="col-md-6">
-          <profileFestivals *ngIf="festivalView"></profileFestivals>
-          <profileArtists *ngIf="artistView"></profileArtists>
+        <div class="col-md-6" [ngSwitch]="activeView">
+          <profileFestivals *ngSwitchDefault></profileFestivals>
+          <profileArtists *ngSwitchCase="'artistsView'"></profileArtists>
+          <profileOwnFestivals *ngSwitchCase="'ownFestivalsView'"></profileOwnFestivals>
         </div>
     </div>
 </div>

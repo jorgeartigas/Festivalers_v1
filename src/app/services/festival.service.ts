@@ -24,7 +24,7 @@ export class FestivalService{
   }
   validateFestival(festival: any){
       this.af.database.list('FESTIVALERS/festivales/').push(festival).then(newfestival =>{
-        this.af.database.object('FESTIVALERS/UsersFestivalOwners/'+this.userData.userUID+'/'+newfestival.key).set(festival);
+        this.af.database.object('FESTIVALERS/UsersFestivalOwners/'+festival.owner+'/'+newfestival.key).set(festival);
       });
       this.af.database.list('FESTIVALERS/festivalesPendientes/').remove(festival);
     }

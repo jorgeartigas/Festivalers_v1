@@ -20,13 +20,13 @@
             <ul>
                 <li (click)="activateView()" class="menprofile">Mis Festivales</li>
                 <li (click)="activateView('artistsView')" class="menprofile">Mis Artistas</li>
-                <li (click)="activateView('ownFestivalsView')" class="menprofile">Administrar mis Festivales</li>
+                <li *ngIf="ownsFestival" (click)="activateView('ownFestivalsView')" class="menprofile">Administrar mis Festivales</li>
             </ul>
         </div>
         <div class="col-md-6" [ngSwitch]="activeView">
           <profileFestivals *ngSwitchDefault></profileFestivals>
           <profileArtists *ngSwitchCase="'artistsView'"></profileArtists>
-          <profileOwnFestivals *ngSwitchCase="'ownFestivalsView'"></profileOwnFestivals>
+          <profileOwnFestivals  *ngSwitchCase="'ownFestivalsView'"></profileOwnFestivals>
         </div>
     </div>
 </div>

@@ -2,7 +2,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/first';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { AngularFire } from 'angularfire2';
 import { CurrentUserData } from './user-data.service';
 
@@ -10,7 +10,8 @@ import { CurrentUserData } from './user-data.service';
 export class AuthGuardAdmin implements CanActivate{
   constructor(
     private af: AngularFire, 
-    private userData: CurrentUserData
+    private userData: CurrentUserData,
+    private router: Router
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
@@ -18,6 +19,7 @@ export class AuthGuardAdmin implements CanActivate{
        if(user.isAdmin===true){
             return true;
        }
+       this.router.navigate(["home"]);
        return false;
     }).first();
   }

@@ -23,10 +23,7 @@ input[type="file"] {
     color: white;
     display: inline-block;
 }
-.festivalbox{
-    min-height: 300px;
-}
-.img-festival{
+.img-festival img{
     width: 80px;
     cursor: pointer;
 }

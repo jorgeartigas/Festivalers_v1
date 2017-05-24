@@ -21,6 +21,5 @@ export class ProfileOwnFestivalsComponent implements OnInit{
 
   ngOnInit(){
       this.ownFestivals = this.af.database.list('FESTIVALERS/UsersFestivalOwners/'+this.userData.userUID);
-      this.ownFestivals.subscribe(snap => console.log(snap))
   }
 }

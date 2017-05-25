@@ -24,6 +24,11 @@ button.regbutton {
     background-color: #dd2c35;
     color: white;
     font-size: 700;
+    width: 120px;
+}
+
+.regbutton[disabled]{
+    background-color: #9099A2;
 }
 
 select{

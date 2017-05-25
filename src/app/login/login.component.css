@@ -25,6 +25,11 @@ input, button{
 .logbutton{
     width: 150px;
 }
+
+.logbutton[disabled]{
+    background-color: #9099A2;
+}
+
 button.logbutton {
     background-color: #dd2c35;
     color: white;

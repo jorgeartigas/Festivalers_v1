@@ -10,7 +10,7 @@ import { CurrentUserData } from '../services/user-data.service';
   templateUrl: './artist.component.html',
   styleUrls: ['./artist.component.css']
 })
-export class ArtistComponent implements OnInit{
+export class ArtistComponent implements OnInit,OnDestroy{
   id:string;
   artistName:string;
   artistPhoto:string;

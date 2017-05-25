@@ -1,6 +1,7 @@
 import { Injectable, } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { CurrentUserData } from '../services/user-data.service';
+import { Http, Response } from '@angular/http';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/first';
 
@@ -12,11 +13,13 @@ export class FestivalService{
   festivales: FirebaseListObservable<any>=this.af.database.list('/FESTIVALERS/festivales');
   arrayAttendees: Array<string> = [];
   arrayFestivales: Array<string> = [];
-  vec:any;
+  URL:string;
+  response:any;
   constructor(
     private router: Router,
     private af: AngularFire,
-    private userData: CurrentUserData
+    private userData: CurrentUserData,
+    private http: Http
   ) {}
 
   addFestival(newFestival){
@@ -34,6 +37,7 @@ export class FestivalService{
   uploadMainPhoto(idFestival,downloadURL){
     this.af.database.object('FESTIVALERS/festivales/'+idFestival).update({mainPhoto: downloadURL});
     this.af.database.object('FESTIVALERS/UsersFestivals/'+this.userData.userUID+'/'+idFestival).update({mainPhoto: downloadURL});
+    this.af.database.object('FESTIVALERS/UsersFestivalOwners/'+this.userData.userUID+'/'+idFestival).update({mainPhoto: downloadURL});
   
   }
   addAttendee(idFestival){
@@ -51,5 +55,9 @@ export class FestivalService{
     this.af.database.object('FESTIVALERS/UsersFestivals/'+this.userData.userUID+'/'+idFestival).remove();
     this.userData.festivals.splice(this.userData.festivals.indexOf(idFestival),1);
     console.warn(this.userData.festivals);
+  }
+  mapLocation(name:string){
+    this.URL = "https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&key=AIzaSyAgJusLHUIkIGgvTQJyB5_TtSxJTWlFNXo";
+    return this.http.get(this.URL).map(res => JSON.parse(res.text()));
   }
 }

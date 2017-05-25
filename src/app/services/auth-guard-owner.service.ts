@@ -12,13 +12,21 @@ export class AuthGuardOwner implements CanActivate{
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.af.database.object('FESTIVALERS/festivales/'+route.params.id).map(festival => {
-        this.af.auth.subscribe(auth => this.uid=auth.uid);
+        this.af.auth.subscribe(auth => {
+            if(auth)
+                this.uid=auth.uid
+            });
+        if(this.uid){
             if(this.uid === festival.owner){
                 return true;
             }else{
-                this.router.navigate(['home']);
+                this.router.navigate(['/home']);
                 return false;
             }
+        }else{
+            this.router.navigate(['/home']);
+            return false;
+        }
         }).first()
   }
 }

@@ -19,9 +19,9 @@ const that = this;
 let uploadTask
 // Upload file and metadata to the object
 if(value===0){
-     uploadTask = this.storageRef.child('images/profile_pictures/'+ this.userData.userUID+".jpg").put(file);
+     uploadTask = this.storageRef.child('images/profile_pictures/'+ this.userData.userUID).put(file);
 }else if(value===1){
-    uploadTask = this.storageRef.child('images/festival_main_pictures/'+ idFestival+".jpg").put(file);
+    uploadTask = this.storageRef.child('images/festival_main_pictures/'+ idFestival).put(file);
 }
 
 // Register three observers:

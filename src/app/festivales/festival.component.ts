@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import { StorageService } from '../services/storage.service';
 import { Router, ActivatedRoute, Params} from '@angular/router';
+import { MapComponent } from '../map/maps.component';
 import { FestivalService } from '../services/festival.service';
 import { CurrentUserData } from '../services/user-data.service';
 
@@ -10,13 +11,14 @@ import { CurrentUserData } from '../services/user-data.service';
   templateUrl: './festival.component.html',
   styleUrls: ['./festival.component.css']
 })
-export class FestivalComponent implements OnInit {
+export class FestivalComponent implements OnInit, OnDestroy {
     idFestival: string;
     festival: any;
     going: boolean;
     attendees: any;
     sub: any;
-
+    activeView:string;
+    
     constructor(
         public af: AngularFire,
         public storageService: StorageService,
@@ -24,6 +26,7 @@ export class FestivalComponent implements OnInit {
         public festivalService: FestivalService,
         public userData: CurrentUserData
     ){}
+
     ngOnInit(){
         this.route.params.first().subscribe(params => {
             this.idFestival = params['id'];
@@ -46,6 +49,9 @@ export class FestivalComponent implements OnInit {
     removeAttendee(){
         this.going=false;
         this.festivalService.removeAttendee(this.idFestival);
+    }
+    activateView(val?:string){
+        this.activeView = val;
     }
     ngOnDestroy(){
         this.sub.unsubscribe();

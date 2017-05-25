@@ -2,6 +2,8 @@
     <div class="row">
         <div class="col-md-6">
             <h1>{{festival?.name}}</h1>
+            <button class="btn btn-succes" *ngIf="userData.isLoggedIn && !going" (click)="addAttendee()">Asistiré</button>
+            <button class="btn btn-danger" *ngIf="userData.isLoggedIn && going === true;" (click)="removeAttendee()">Dejar de asistir</button>
         </div>
         <div class="col-md-6">
             <img id="mainPhoto" src="{{ festival?.mainPhoto }}" class="img-responsive"/>
@@ -12,22 +14,31 @@
             <ul>
                 <li (click)="activateView()" class="menprofile">Descripcion</li>
                 <li (click)="activateView('artistsView')" class="menprofile">Artistas</li>
-                <li (click)="activateView('artistsView')" class="menprofile">Noticias</li>
-                <li (click)="activateView('artistsView')" class="menprofile">Ubicación</li>
-                <li (click)="activateView('artistsView')" class="menprofile">Asistentes</li>
+                <li (click)="activateView('newsView')" class="menprofile">Noticias</li>
+                <li (click)="activateView('locationView')" class="menprofile">Ubicación</li>
+                <li (click)="activateView('assistantsView')" class="menprofile">Asistentes</li>
             </ul>
         </div>
+        <div class="col-md-8" [ngSwitch]="activeView">
+            <div *ngSwitchDefault>
+                <h3>Estilo: {{festival?.style}}</h3>
+                <h3>Descripcion: {{festival?.description}}</h3>
+                <h3>Pais: {{festival?.location}}</h3>
+                <h3>Direccion: {{festival?.address}}</h3>
+                <h3>Mes: {{festival?.month}}</h3>
+                <h3>Iniciio: {{festival?.startDate}}</h3>
+                <h3>Final: {{festival?.endDate}}</h3>
+                <h3>Asistentes:</h3>
+            </div>
+            <artistas-festival *ngSwitchCase="'artistsView'"></artistas-festival>
+            <blog-festival *ngSwitchCase="'newsView'"></blog-festival>
+            <maps *ngSwitchCase="'locationView'" [festival]="festival"></maps>
+            <assistants-festival *ngSwitchCase="'assistantsView'"></assistants-festival>
+        </div> 
     </div>
 </div>
 
-<h3>Estilo: {{festival?.style}}</h3>
-<h3>Descripcion: {{festival?.description}}</h3>
-<h3>Pais: {{festival?.location}}</h3>
-<h3>Direccion: {{festival?.address}}</h3>
-<h3>Mes: {{festival?.month}}</h3>
-<h3>Iniciio: {{festival?.startDate}}</h3>
-<h3>Final: {{festival?.endDate}}</h3>
-<h3>Asistentes:</h3> 
+ 
 <div class="row">
     <div *ngFor="let attendee of attendees">
         <div class="col-md-4">
@@ -44,8 +55,7 @@
 
 
 
-<button class="btn btn-succes" *ngIf="userData.isLoggedIn && !going" (click)="addAttendee()">Asistiré</button>
-<button class="btn btn-danger" *ngIf="userData.isLoggedIn && going === true;" (click)="removeAttendee()">Dejar de asistir</button>
+
 <chat *ngIf="userData.isLoggedIn"></chat>
 
 

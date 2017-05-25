@@ -1,5 +1,4 @@
-import { Component} from '@angular/core';
-import { CurrentUserData } from '../services/user-data.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'homePage',
@@ -7,5 +6,5 @@ import { CurrentUserData } from '../services/user-data.service';
   styleUrls: ['./homePage.component.css']
 })
 export class HomePageComponent{
-  constructor(public userData: CurrentUserData){}
+  constructor(){}
 }

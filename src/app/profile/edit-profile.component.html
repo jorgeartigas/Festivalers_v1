@@ -12,7 +12,7 @@
                     <input type="text" class="editInput" #age="ngModel" name="age" [(ngModel)]="userData.currentUser.age" required>
                     <input type="text" class="editInput" #location="ngModel" name="location" [(ngModel)]="userData.currentUser.location" required>
                     <input type="text" class="editInput"#estilos="ngModel" name="estilos" [(ngModel)]="userData.currentUser.estilos">
-                    <button *ngIf="editado" type="submit" [disabled]="perfilForm.invalid" class="btn btn-success">Guardar Cambios</button>
+                    <button *ngIf="editado" type="submit" [disabled]="perfilForm.invalid" class="btn btn-success guardar">Guardar Cambios</button>
                 </form>
             </div>
         </div>

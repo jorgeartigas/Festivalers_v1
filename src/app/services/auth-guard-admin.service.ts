@@ -8,7 +8,6 @@ import { CurrentUserData } from './user-data.service';
 
 @Injectable()
 export class AuthGuardAdmin implements CanActivate{
-  uid:string;
   constructor(
     private af: AngularFire, 
     private userData: CurrentUserData,
@@ -16,15 +15,13 @@ export class AuthGuardAdmin implements CanActivate{
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
-    //probar con esto tt
-    //this.af.auth.subscribe(auth => this.uid=auth.uid);
-    //console.log(this.uid);
-    return this.af.database.object('FESTIVALERS/Users/'+this.uid).map(user=>{
-       if(user.isAdmin===true){
-            return true;
-       }
-       this.router.navigate(["home"]);
-       return false;
+    return this.af.database.object('FESTIVALERS/Users/'+this.userData.userUID).map(user=>{
+       if(user.isAdmin==="true"){
+          return true;
+       }else{
+          this.router.navigate(["home"]);
+          return false;
+       }       
     }).first();
   }
 }

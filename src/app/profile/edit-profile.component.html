@@ -2,16 +2,16 @@
     <div class="row">
         <div class="col-md-3">
             <h2>Perfil de {{ userData.currentUser?.name }} {{ userData.currentUser?.lastname }}</h2>
-            <label for="fileUpload"  class="btn btn-primary buttonUpload">Upload a Photo</label>
-            <input type="file" id="fileUpload" (change)="upload($event)"/><br><br>
             <img *ngIf="userData.currentUser?.profilePhoto" class="thumbnail-image img-responsive" src="{{userData.currentUser?.profilePhoto}}"/>
-            <div *ngIf="userData?.currentUser">
+            <label for="fileUpload"  class="btn btn-primary buttonUpload fotoPerfil">Subir foto perfil</label>
+            <input type="file" id="fileUpload" class="fotoPerfil" (change)="upload($event)"/><br>
+            <div *ngIf="userData?.currentUser" class="inputUsuario">
                 <form (ngSubmit)="update()" #perfilForm="ngForm" (change)="editado=true">
-                    <input type="text" #name="ngModel" name="name" [(ngModel)]="userData.currentUser.name" required>
-                    <input type="text" #lastname="ngModel" name="lastname" [(ngModel)]="userData.currentUser.lastname" required>
-                    <input type="text" #age="ngModel" name="age" [(ngModel)]="userData.currentUser.age" required>
-                    <input type="text" #location="ngModel" name="location" [(ngModel)]="userData.currentUser.location" required>
-                    <input type="text" #estilos="ngModel" name="estilos" [(ngModel)]="userData.currentUser.estilos">
+                    <input type="text" class="editInput" #name="ngModel" name="name" [(ngModel)]="userData.currentUser.name" required>
+                    <input type="text" class="editInput" #lastname="ngModel" name="lastname" [(ngModel)]="userData.currentUser.lastname" required>
+                    <input type="text" class="editInput" #age="ngModel" name="age" [(ngModel)]="userData.currentUser.age" required>
+                    <input type="text" class="editInput" #location="ngModel" name="location" [(ngModel)]="userData.currentUser.location" required>
+                    <input type="text" class="editInput"#estilos="ngModel" name="estilos" [(ngModel)]="userData.currentUser.estilos">
                     <button *ngIf="editado" type="submit" [disabled]="perfilForm.invalid" class="btn btn-success">Guardar Cambios</button>
                 </form>
             </div>

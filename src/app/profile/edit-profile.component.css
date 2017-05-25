@@ -23,3 +23,15 @@ input[type="file"] {
     color: white;
     display: inline-block;
 }
+
+.inputUsuario, .fotoPerfil{
+    margin: 10px;
+}
+
+.editInput{
+    margin-top: 5px;
+    border:1px solid #9099A2;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    text-align: center;
+}

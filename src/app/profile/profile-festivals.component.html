@@ -2,10 +2,10 @@
     <h2>LISTA FESTIVALES</h2>
     <div class="row">
         <div *ngFor="let festival of festivals | async">
-            <div class="col-md-4">
-                <div class="show-artist well">
+            <div class="col-md-4 col-xs-4 col-sm-4 fstvl">
+                <div class="show-artist">
                     <h4 routerLink="/festival/{{ festival.$key }}">{{ festival.name }}</h4>
-                    <div class="img-artist">
+                    <div class="img-festival">
                         <img routerLink="/festival/{{ festival.$key }}" src="{{ festival.mainPhoto }}"/>
                     </div>
                 </div>

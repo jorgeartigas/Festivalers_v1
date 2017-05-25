@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileArtistsComponent {
+    @Input() idProfile:string;
     artists:any;
     sub:any;
     searchDisplay:boolean;
@@ -23,12 +24,21 @@ export class ProfileArtistsComponent {
   ){}
 
   ngOnInit(){
+    if(this.idProfile){
+        this.sub = this.af.database.list('FESTIVALERS/UsersArtists/'+this.idProfile).subscribe(artists => {
+            this.artists = artists;
+            if(!artists[0]){
+                this.searchDisplay=true;
+            }
+        });
+    }else{
     this.sub = this.af.database.list('FESTIVALERS/UsersArtists/'+this.userData.userUID).subscribe(artists => {
         this.artists = artists;
         if(!artists[0]){
             this.searchDisplay=true;
         }
-        });
+      });
+    }
   }
   removeFavorite(id){
     this.userService.removeFavorite(id);

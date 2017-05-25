@@ -30,3 +30,20 @@ h4{
     width: 80px;
     cursor: pointer;
 }
+
+.removeArtist{
+    background-color: #E2001A;
+    border: 1px solid #9099A2;
+    border-radius: 2px;
+    color: white;
+    height: 40px;
+    width: 40px;
+}
+
+.artst{
+   border: 1px solid #9099A2;
+   background-color: #e0e0e0;
+   margin-left: 5px;
+   height: 150px; 
+   width: 170px;
+}

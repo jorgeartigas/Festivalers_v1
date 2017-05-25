@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { CurrentUserData } from '../services/user-data.service';
 import { FestivalService } from '../services/festival.service';
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileFestivalsComponent implements OnInit{
+  @Input() idProfile:string;
   festivals:FirebaseListObservable<any>;
   
   constructor(
@@ -20,6 +21,10 @@ export class ProfileFestivalsComponent implements OnInit{
   ){}
 
   ngOnInit(){
-      this.festivals = this.af.database.list('FESTIVALERS/UsersFestivals/'+this.userData.userUID);
+      if(this.idProfile){
+        this.festivals = this.af.database.list('FESTIVALERS/UsersFestivals/'+this.idProfile);
+      }else{
+        this.festivals = this.af.database.list('FESTIVALERS/UsersFestivals/'+this.userData.userUID);
+      }
   }
 }

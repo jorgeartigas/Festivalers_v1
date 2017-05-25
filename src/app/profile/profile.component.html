@@ -16,8 +16,8 @@
             </ul>
         </div>
         <div class="col-md-6" [ngSwitch]="activeView">
-          <profileFestivals *ngSwitchDefault></profileFestivals>
-          <profileArtists *ngSwitchCase="'artistsView'"></profileArtists>
+          <profileFestivals [idProfile]="idProfile" *ngSwitchDefault></profileFestivals>
+          <profileArtists [idProfile]="idProfile" *ngSwitchCase="'artistsView'"></profileArtists>
         </div>
     </div>
 </div>

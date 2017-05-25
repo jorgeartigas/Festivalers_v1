@@ -1,10 +1,29 @@
 #mainPhoto{
-    height: 350px;
+    height: 190px;
     width: 800px;
 }
 h4{
     cursor:pointer;
 }
+
+h1{
+    text-align: center;
+}
 .img-user{
     cursor:pointer;
+}
+
+.navfestivales ul{
+    margin-top:20px;
+    list-style-type: none;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #9099A2;
+    padding-left: 0;
+}
+.navfestivales li{
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+    color: white;
+    display: inline-block;
 }

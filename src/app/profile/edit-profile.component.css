@@ -35,3 +35,8 @@ input[type="file"] {
     border-radius: 5px;
     text-align: center;
 }
+
+.guardar{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}

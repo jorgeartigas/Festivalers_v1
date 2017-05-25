@@ -1,0 +1,32 @@
+#Festivalbox{
+    margin: 0 auto;
+    text-align: center;
+    width: 300px;
+    height: 265px;
+    color: #3c3c3c;
+    display: inline;
+    position: relative;
+    top: 130px;
+}
+
+h1{
+    color: #3c3c3c;
+    text-align: center;
+}
+
+input, button{
+    border: 0;
+    border-radius: 2px;
+    background-color: white;
+    height: 50px;
+    border-bottom: 1px solid #3c3c3c;
+    text-align: center;
+    color: #3c3c3c;
+    margin: 5px;
+}
+
+button.guardFestival {
+    background-color: #dd2c35;
+    color: white;
+    font-size: 700;
+}

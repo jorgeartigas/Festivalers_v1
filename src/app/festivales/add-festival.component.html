@@ -9,7 +9,7 @@
       <input type="text" placeholder="mes" [(ngModel)]="newFestival.month" name="month" required /><br>
       <input placeholder="Fecha de inicio" type="date" [(ngModel)]="newFestival.startDate" name="startDate" required />
       <input type="date" placeholder="Fecha de finalización" [(ngModel)]="newFestival.endDate" name="endDate" required /><br>
-      <button type="submit" class="guardFestival">Solicitar Registro</button>
+      <button type="submit" class="guardFestival" [disabled]="!addFestivalForm.form.valid">Solicitar Registro</button>
     </form>
   </div>
 </div>

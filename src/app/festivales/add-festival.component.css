@@ -30,3 +30,7 @@ button.guardFestival {
     color: white;
     font-size: 700;
 }
+
+.guardFestival[disabled]{
+    background-color: #9099A2;
+}

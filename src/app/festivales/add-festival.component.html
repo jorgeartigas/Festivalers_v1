@@ -1,17 +1,15 @@
-<br><br><div>
-  <form (ngSubmit)="addFestival()" #addFestivalForm="ngForm" novalidate>
-    <label>Nombre</label><input type="text" [(ngModel)]="newFestival.name" name="name" required /><br>
-    <!-- lista predefinida desplegable -->
-    <label>Estilo</label><input type="text" [(ngModel)]="newFestival.style" name="style" required /><br>
-    <!-- pondre un modulo ckeditor para que se pueda formatear como quieran -->
-    <label>Descripcion</label><input type="text" [(ngModel)]="newFestival.description" name="description" required /><br>
-    <!-- O desplegable de paises o en la base de datos y que se vaya filtrando a medida que escriben en el input y lo seleccionen -->
-    <label>Pais</label><input type="text" [(ngModel)]="newFestival.location" name="location" required /><br>
-    <label>Dirección</label><input type="text" [(ngModel)]="newFestival.address" name="address" required /><br>
-    <label>Mes</label><input type="text" [(ngModel)]="newFestival.month" name="month" required /><br>
-    <label>Fecha Inicio</label><input type="date" [(ngModel)]="newFestival.startDate" name="startDate" required /><br>
-    <label>Fecha final</label><input type="date" [(ngModel)]="newFestival.endDate" name="endDate" required /><br>
-    <button type="submit">Add Festival</button>
-    <!-- <button type="submit" [disabled]="!addFestivalForm.form.valid">Add Festival</button> -->
-  </form>
+<div [ngStyle]="getBackground()">
+  <div id="Festivalbox">
+   <form (ngSubmit)="addFestival()" #addFestivalForm="ngForm" novalidate>
+      <input placeholder="Nombre" type="text" [(ngModel)]="newFestival.name" name="name" required />
+      <input placeholder="Estilo" type="text" [(ngModel)]="newFestival.style" name="style" required /><br>
+      <input placeholder="Descripcion" type="text" [(ngModel)]="newFestival.description" name="description" required />
+      <input placeholder="Pais" type="text" [(ngModel)]="newFestival.location" name="location" required /><br>
+      <input type="text" placeholder="Dirección" [(ngModel)]="newFestival.address" name="address" required />
+      <input type="text" placeholder="mes" [(ngModel)]="newFestival.month" name="month" required /><br>
+      <input placeholder="Fecha de inicio" type="date" [(ngModel)]="newFestival.startDate" name="startDate" required />
+      <input type="date" placeholder="Fecha de finalización" [(ngModel)]="newFestival.endDate" name="endDate" required /><br>
+      <button type="submit" class="guardFestival">Solicitar Registro</button>
+    </form>
+  </div>
 </div>

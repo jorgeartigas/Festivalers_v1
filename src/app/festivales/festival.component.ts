@@ -18,6 +18,7 @@ export class FestivalComponent implements OnInit, OnDestroy {
     attendees: any;
     sub: any;
     activeView:string;
+    owner:true;
     
     constructor(
         public af: AngularFire,
@@ -31,6 +32,8 @@ export class FestivalComponent implements OnInit, OnDestroy {
         this.route.params.first().subscribe(params => {
             this.idFestival = params['id'];
             this.af.database.object('FESTIVALERS/festivales/'+this.idFestival).first().subscribe(festival => {
+                if(festival.owner===this.userData.userUID) 
+                    this.owner=true;
                 this.festival=festival;
             });
             this.sub = this.af.database.list('FESTIVALERS/festivalAttendees/'+this.idFestival).subscribe(attendees =>{

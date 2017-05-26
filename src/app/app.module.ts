@@ -32,6 +32,8 @@ import { SearchArtistComponent } from './artist/search-artist.component';
 import { AlbumComponent } from './artist/album.component';
 import { EditFestivalComponent } from './festivales/edit-festival.component';
 import { ChatComponent } from './festivales/chat.component';
+import { AddArtistComponent } from './festivales/add-artist.component';
+import { BlogComponent } from './festivales/new-blog.component';
 import { MapComponent } from './map/maps.component';
 // IMPORTS FOR SERVICES
 import { LoginService } from './services/login.service';
@@ -90,7 +92,9 @@ const myFirebaseAuthConfig = {
     MapComponent,
     ArtistasFestivalComponent,
     BlogFestivalComponent,
-    AssistantsFestivalComponent
+    AssistantsFestivalComponent,
+    AddArtistComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,

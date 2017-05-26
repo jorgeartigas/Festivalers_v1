@@ -1,7 +1,7 @@
 <br><br><div>
   <form (ngSubmit)="updateFestival()" #addFestivalForm="ngForm" novalidate>
     <label>Nombre</label><input type="text" #name="ngModel" [(ngModel)]="festival.name" name="name" required /><br>
-    <input type="file" (change)="upload($event)"/>
+
     <!-- lista predefinida desplegable -->
     <label>Estilo</label><input type="text" #style="ngModel" [(ngModel)]="festival.style" name="style" required /><br>
     <!-- pondre un modulo ckeditor para que se pueda formatear como quieran -->
@@ -15,4 +15,42 @@
     <button type="submit">Add Festival</button>
     <!-- <button type="submit" [disabled]="!addFestivalForm.form.valid">Add Festival</button> -->
   </form>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>{{festival?.name}}</h1>
+        </div>
+        <div class="col-md-6">
+          si clickas la foto tmb va 
+            <label for="fileUpload"><img for="fileUpload" id="mainPhoto" src="{{ festival?.mainPhoto }}" class="img-responsive"/></label>
+            <label for="fileUpload" class="btn btn-primary">Change Photo</label>
+            <input type="file" id="fileUpload" (change)="upload($event)"/><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 navfestivales">
+            <ul>
+                <li (click)="activateView()" class="menprofile">Descripcion</li>
+                <li (click)="activateView('addArtistsView')" class="menprofile">Artistas</li>
+                <li (click)="activateView('newsView')" class="menprofile">Noticias</li>
+            </ul>
+        </div>
+        <div class="col-md-12 info" [ngSwitch]="activeView">
+            <div *ngSwitchDefault>
+                <h3>Estilo: {{festival?.style}}</h3>
+                <h3>Descripcion: {{festival?.description}}</h3>
+                <h3>Pais: {{festival?.location}}</h3>
+                <h3>Direccion: {{festival?.address}}</h3>
+                <h3>Mes: {{festival?.month}}</h3>
+                <h3>Iniciio: {{festival?.startDate}}</h3>
+                <h3>Final: {{festival?.endDate}}</h3>
+            </div>
+            <add-artist *ngSwitchCase="'addArtistsView'"></add-artist>
+            <new-blog *ngSwitchCase="'newsView'"></new-blog>
+            <maps *ngSwitchCase="'locationView'" [festival]="festival"></maps>
+            <assistants-festival *ngSwitchCase="'assistantsView'" [attendees]="attendees"></assistants-festival>
+        </div> 
+    </div>
 </div>

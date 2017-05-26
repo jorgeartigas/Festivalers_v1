@@ -1,0 +1,32 @@
+<div class="row">
+    <!--cambiar esta clase y ponerla custom, pero pa probar voy tirando -->
+    <div class="col-md-4 navfestivales">
+        <ul>
+            <li (click)="activeView='';spotifyResults=null">Cabezas de cartel</li>
+            <li (click)="activeView='general';spotifyResults=null">Añade artistas</li> 
+        </ul>
+    </div>
+</div>
+<div class="row" [ngSwitch]="activeView">
+    <div class="col-md-4" *ngSwitchDefault>
+        <input type="text" name="headLiner" [(ngModel)]="headLiner" placeholder="Añade un cabeza de cartel" (keyup)="search()"/><br><br>
+    </div>
+    <div class="col-md-4" *ngSwitchCase="'general'">
+        <input type="text" name="general" [(ngModel)]="general" placeholder="Añade un artista" (keyup)="search()"/><br><br>
+    </div>
+</div>
+    <div *ngIf="spotifyResults">
+        <div *ngFor="let results of spotifyResults">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="search-results well">
+                        <h4 routerLink="/artist/{{results.id}}">{{ results.name }}</h4>
+                        <div>
+                            <strong>Generos:</strong>
+                            <span *ngFor="let generos of results.genres">{{generos}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

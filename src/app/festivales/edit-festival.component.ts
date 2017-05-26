@@ -9,11 +9,12 @@ import { Festival } from './festival';
 @Component({
   selector: 'edit-festival',
   templateUrl: './edit-festival.component.html',
-  styleUrls: ['./edit-festival.component.css']
+  styleUrls: ['./festival.component.css']
 })
 export class EditFestivalComponent implements OnInit {
     festival = new Festival ('','','','','','','','','','',[],true,'',Date.now());
     idFestival: string;
+    activeView:string;
     constructor(
         public festivalService: FestivalService,
         public userData: CurrentUserData,
@@ -30,6 +31,9 @@ export class EditFestivalComponent implements OnInit {
             });
         });
     }
+    activateView(val?:string){
+        this.activeView = val;
+    }
     updateFestival(){
         this.af.database.object('FESTIVALERS/festivales/'+this.idFestival).update(this.festival)
         .then(()=>this.router.navigate(['festival/'+this.idFestival]));
@@ -38,5 +42,5 @@ export class EditFestivalComponent implements OnInit {
         if(file){
             this.storageService.upload(file.target.files[0],1,this.idFestival);
         }
-     }
+    }
 }

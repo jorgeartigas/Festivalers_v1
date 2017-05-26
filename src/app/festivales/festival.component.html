@@ -4,6 +4,7 @@
             <h1>{{festival?.name}}</h1>
             <button class="btn btn-succes" *ngIf="userData.isLoggedIn && !going" (click)="addAttendee()">Asistiré</button>
             <button class="btn btn-danger" *ngIf="userData.isLoggedIn && going === true;" (click)="removeAttendee()">Dejar de asistir</button>
+            <button class="btn btn-warning" *ngIf="userData.isLoggedIn && owner === true" routerLink="/edit-festival/{{idFestival}}">Editar Festival</button>
         </div>
         <div class="col-md-6">
             <img id="mainPhoto" src="{{ festival?.mainPhoto }}" class="img-responsive"/>
@@ -19,7 +20,7 @@
                 <li (click)="activateView('assistantsView')" class="menprofile">Asistentes</li>
             </ul>
         </div>
-        <div class="col-md-8" [ngSwitch]="activeView">
+        <div class="col-md-12 info" [ngSwitch]="activeView">
             <div *ngSwitchDefault>
                 <h3>Estilo: {{festival?.style}}</h3>
                 <h3>Descripcion: {{festival?.description}}</h3>
@@ -28,34 +29,15 @@
                 <h3>Mes: {{festival?.month}}</h3>
                 <h3>Iniciio: {{festival?.startDate}}</h3>
                 <h3>Final: {{festival?.endDate}}</h3>
-                <h3>Asistentes:</h3>
             </div>
             <artistas-festival *ngSwitchCase="'artistsView'"></artistas-festival>
             <blog-festival *ngSwitchCase="'newsView'"></blog-festival>
             <maps *ngSwitchCase="'locationView'" [festival]="festival"></maps>
-            <assistants-festival *ngSwitchCase="'assistantsView'"></assistants-festival>
+            <assistants-festival *ngSwitchCase="'assistantsView'" [attendees]="attendees"></assistants-festival>
         </div> 
     </div>
+    <chat *ngIf="userData.isLoggedIn"></chat>
 </div>
 
- 
-<div class="row">
-    <div *ngFor="let attendee of attendees">
-        <div class="col-md-4">
-            <div class="well">
-                <h4 routerLink="/profile/{{ attendee.$key }}">{{ attendee?.name }}</h4>
-                <div class="img-user">
-                    <img routerLink="/profile/{{ attendee.$key }}" src="{{ attendee.profilePhoto }}"/>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-<chat *ngIf="userData.isLoggedIn"></chat>
 
 

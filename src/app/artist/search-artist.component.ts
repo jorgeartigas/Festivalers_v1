@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -10,17 +9,18 @@ import { UserService } from '../services/user.service';
 export class SearchArtistComponent{
   spotifySearch: string;
   spotifyResults: any;
-  searchURL: string
   
   constructor(
-      private http: Http,
       private userService: UserService
   ){}
   search(){
-    if(this.spotifySearch)
+    if(this.spotifySearch){
       this.userService.search(this.spotifySearch).subscribe(res =>{
-      this.spotifyResults = res.artists.items;
-    })
+        this.spotifyResults = res.artists.items;
+       })
+    }else{
+      this.spotifyResults = null;
+    }
   }
 
 }

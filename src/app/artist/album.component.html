@@ -21,11 +21,15 @@
         <div *ngFor="let track of album?.tracks.items">
             <div class="well">
                 <h5>{{ track?.track_number }}.  {{ track?.name }}</h5>
-                <audio controls preload="none">
-                    <source src="{{track?.preview_url}}" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                </audio>
-               <a class="btn btn-primary" href="{{ track?.external_urls.spotify }}"> Escuchala en Spotify</a>
+                <div *ngIf="track.preview_url">
+                    <audio controls preload="none">
+                        <source src="{{track?.preview_url}}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <div *ngIf="track.external_urls.spotify">
+                    <a class="btn btn-primary" href="{{ track?.external_urls.spotify }}"> Escuchala en Spotify</a>
+                </div>
             </div>
         </div>
     </div>

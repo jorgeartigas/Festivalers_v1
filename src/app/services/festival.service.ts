@@ -60,4 +60,14 @@ export class FestivalService{
     this.URL = "https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&key=AIzaSyAgJusLHUIkIGgvTQJyB5_TtSxJTWlFNXo";
     return this.http.get(this.URL).map(res => JSON.parse(res.text()));
   }
+  addHeadLiner(idFestival,artistId,artistName,artistPhoto){
+    this.af.database.object('FESTIVALERS/FestivalsArtists/'+idFestival+'/headLiner/'+artistId).update({name:artistName,photo:artistPhoto});
+  }
+  addGeneral(idFestival,artistId,artistName,artistPhoto){
+    this.af.database.object('FESTIVALERS/FestivalsArtists/'+idFestival+'/general/'+artistId).update({name:artistName,photo:artistPhoto});
+  }
+  removeArtist(idFestival,idArtist,path){
+    console.log('FESTIVALERS/FestivalsArtists/'+idFestival+'/'+path+'/'+idArtist);
+    this.af.database.object('FESTIVALERS/FestivalsArtists/'+idFestival+'/'+path+'/'+idArtist).remove();
+  }
 }

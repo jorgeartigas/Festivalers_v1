@@ -17,6 +17,11 @@ h1{
     height: 100px;
     width: 135px;
 }
+.img-artist{
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+}
 .info{
     background-color:#f4f4f4;
     min-height: 300px;
@@ -79,4 +84,16 @@ h1{
 
 .show-assistants{
     text-align: center;
+}
+.edit{
+	opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.edit:hover {
+    cursor:pointer;
+	opacity: .5;
+}
+.cursor{
+    cursor: pointer;
 }

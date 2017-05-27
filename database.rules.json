@@ -1,6 +1,41 @@
 {
   "rules": {
-    ".read": true,
-    ".write": true
+    "FESTIVALERS": {
+      ".read": true,
+      "Users": {
+        "$user_id": {
+          ".write": "$user_id === auth.uid"
+        }
+      },
+      "UsersArtists":{
+        "$user_id": {
+          ".write": "$user_id === auth.uid"
+        }
+      },
+      "UsersFestivalOwners":{
+        "$user_id": {
+          ".write": "$user_id === auth.uid"
+        }
+      },
+      "UsersFestivals":{
+        ".write": true,
+      },
+      "festivalAttendees":{
+        "$idFestival":{
+          "$user_id":{
+            ".write": "$user_id === auth.uid"
+          }
+        }
+      },
+      "festivales":{
+        ".write": true
+      },
+      "messages":{
+        ".write": "auth.uid != null"
+      },
+      "FestivalsArtists":{
+        ".write": "auth.uid != null"
+      }
+    }
   }
 }

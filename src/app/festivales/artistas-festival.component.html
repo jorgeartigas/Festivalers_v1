@@ -1,1 +1,31 @@
-artistas
+<div class="row">
+    <div class="col-md-12" >
+        <h2>Cabezas de cartel</h2>
+        <div *ngIf="headLiners">
+            <div *ngFor="let artist of headLiners">
+                <div class="col-md-4">
+                    <div class="well">
+                        <span class="cursor" routerLink="/artist/{{artist.$key}}">{{ artist.name }}</span>
+                        <img routerLink="/artist/{{artist.$key}}" class="img-artist" src="{{artist.photo}}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12" >
+        <h2>Artistas</h2>
+        <div *ngIf="general">
+            <div *ngFor="let artist of general">
+                <div class="col-md-4">
+                    <div class="well">
+                        <span class="cursor" routerLink="/artist/{{artist.$key}}">{{ artist.name }}</span>
+                        <img routerLink="/artist/{{artist.$key}}" class="img-artist" src="{{artist.photo}}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

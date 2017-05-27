@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AngularFire } from 'angularfire2';
 
 @Component({
   selector: 'artistas-festival',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./festival.component.css']
 })
 export class ArtistasFestivalComponent {
-   constructor(){}
+  @Input() idFestival: string;
+  headLiners: any;
+  general: any;
+   constructor(
+     private af: AngularFire
+   ){}
+  
+  ngOnInit(){
+    this.af.database.list('FESTIVALERS/FestivalsArtists/'+this.idFestival+'/headLiner').subscribe(artists => {
+      this.headLiners = artists;
+    })
+    this.af.database.list('FESTIVALERS/FestivalsArtists/'+this.idFestival+'/general').subscribe(artists => {
+      this.general = artists;
+    })
+  }
 }

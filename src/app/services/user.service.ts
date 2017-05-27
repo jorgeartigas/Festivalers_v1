@@ -24,7 +24,6 @@ export class UserService {
           this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival+'/'+this.userData.userUID).update({profilePhoto: downloadURL});
     });
   }
-  /// juntar arriba y abajo + festivales tiene que ser una subscripcion!
   update(festivals){
     this.af.database.object('FESTIVALERS/Users/'+this.userData.userUID).update(this.userData.currentUser);
     this.userData.festivals.forEach(festival => {

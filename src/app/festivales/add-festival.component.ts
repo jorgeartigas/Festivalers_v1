@@ -24,16 +24,16 @@ export class AddFestivalComponent {
         this.festivalService.addFestival(this.newFestival);
     }
 
-      getBackground() {
-    let backgroundImage = {
-       'background-image': 'url(\'../../assets/umfmiami.jpg\')',
-       'background-repeat': 'no-repeat',
-       'background-size': 'cover',
-       'background-position': 'center center',
-       'height': '600px'
-    };
+    getBackground() {
+        let backgroundImage = {
+        'background-image': 'url(\'../../assets/umfmiami.jpg\')',
+        'background-repeat': 'no-repeat',
+        'background-size': 'cover',
+        'background-position': 'center center',
+        'height': '600px'
+        };
 
-    return backgroundImage;
-}
+        return backgroundImage;
+    }
 }
 

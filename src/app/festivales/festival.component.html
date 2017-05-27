@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 navfestivales">
+        <div class="col-md-7 navfestivales">
             <ul>
                 <li (click)="activateView()" class="menprofile">Descripcion</li>
                 <li (click)="activateView('artistsView')" class="menprofile">Artistas</li>
@@ -20,23 +20,25 @@
                 <li (click)="activateView('assistantsView')" class="menprofile">Asistentes</li>
             </ul>
         </div>
-        <div class="col-md-12 info" [ngSwitch]="activeView">
+        <div class="col-md-7 info" [ngSwitch]="activeView">
             <div *ngSwitchDefault>
-                <h3>Estilo: {{festival?.style}}</h3>
-                <h3>Descripcion: {{festival?.description}}</h3>
-                <h3>Pais: {{festival?.location}}</h3>
-                <h3>Direccion: {{festival?.address}}</h3>
-                <h3>Mes: {{festival?.month}}</h3>
-                <h3>Iniciio: {{festival?.startDate}}</h3>
-                <h3>Final: {{festival?.endDate}}</h3>
+                <p class="infoDet">Estilo: <span class="inf">{{festival?.style}}</span></p>
+                <p class="infoDet">Descripcion: <span class="inf">{{festival?.description}}</span></p>
+                <p class="infoDet">Pais: <span class="inf">{{festival?.location}}</span></p>
+                <p class="infoDet">Direccion: <span class="inf">{{festival?.address}}</span></p>
+                <p class="infoDet">Mes: <span class="inf">{{festival?.month}}</span></p>
+                <p class="infoDet">Iniciio: <span class="inf">{{festival?.startDate}}</span></p>
+                <p class="infoDet">Final: <span class="inf">{{festival?.endDate}}</span></p>
             </div>
             <artistas-festival *ngSwitchCase="'artistsView'"></artistas-festival>
             <blog-festival *ngSwitchCase="'newsView'"></blog-festival>
             <maps *ngSwitchCase="'locationView'" [festival]="festival"></maps>
             <assistants-festival *ngSwitchCase="'assistantsView'" [attendees]="attendees"></assistants-festival>
-        </div> 
+        </div>
+        <div class="col-md-4 md-offset-1 chat">
+            <chat *ngIf="userData.isLoggedIn"></chat>
+        </div>
     </div>
-    <chat *ngIf="userData.isLoggedIn"></chat>
 </div>
 
 

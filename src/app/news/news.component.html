@@ -1,9 +1,15 @@
 <h2>Listado festivales</h2>
-  <div *ngFor="let festival of festivales | async">
-    <h3 (click)="goTo(festival.$key)">Festival Name: {{ festival.name }}</h3>
-    <p>Description: {{ festival.description }}</p>
-    <h4>Start date:</h4>
-    <p>{{ festival.startDate }}</p>
-    <h4>End date:</h4>
-    <p>{{ festival.endDate }}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-lg-4">
+        <div *ngFor="let festival of festivales | async" class="listfestivales">
+          <h3 (click)="goTo(festival.$key)">Festival Name: {{ festival.name }}</h3>
+          <p>Description: {{ festival.description }}</p>
+          <h4>Start date:</h4>
+          <p>{{ festival.startDate }}</p>
+          <h4>End date:</h4>
+          <p>{{ festival.endDate }}</p>
+        </div>
+    </div>
   </div>
+</div>

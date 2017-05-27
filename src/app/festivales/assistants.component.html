@@ -1,10 +1,10 @@
 <div class="row">
     <div *ngFor="let attendee of attendees">
-        <div class="col-md-4">
-            <div class="well">
+        <div class="col-md-4 col-xs-4 col-sm-4 asstnt">
+            <div class="show-assistants">
                 <h4 routerLink="/profile/{{ attendee.$key }}">{{ attendee?.name }}</h4>
                 <div class="img-user">
-                    <img routerLink="/profile/{{ attendee.$key }}" src="{{ attendee.profilePhoto }}"/>
+                    <img class="user-img" routerLink="/profile/{{ attendee.$key }}" src="{{ attendee.profilePhoto }}"/>
                 </div>
             </div>
         </div>

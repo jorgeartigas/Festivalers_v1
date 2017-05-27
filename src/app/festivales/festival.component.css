@@ -12,6 +12,11 @@ h1{
 .img-user{
     cursor:pointer;
 }
+
+.user-img{
+    height: 100px;
+    width: 135px;
+}
 .info{
     background-color:#f4f4f4;
     min-height: 300px;
@@ -39,4 +44,39 @@ h1{
     cursor: pointer;
     color: white;
     display: inline-block;
+}
+
+.chat{
+    border: 1px solid #9099A2;
+    padding: 10px;
+    margin-left: 20px;
+    background-color: #f4f4f4;
+    margin-bottom: 20px;
+    position: relative;
+    bottom: 40px;
+}
+
+.infoDet{
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 1px solid #3c3c3c;
+    margin-top: 20px;
+}
+
+.inf{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.asstnt{
+   border: 1px solid #9099A2;
+   background-color: #e0e0e0;
+   margin-left: 5px;
+   height: 150px; 
+   width: 170px;
+   margin-top: 10px;
+}
+
+.show-assistants{
+    text-align: center;
 }

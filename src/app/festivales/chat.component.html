@@ -1,10 +1,11 @@
 <div class="chatbox">
     <h2>CHAT</h2>
-    <div *ngFor="let message of allMessages | async">
-        <a href="profile/{{message.uid}}">{{message.name}}</a>
+    <div *ngFor="let message of allMessages | async" class="mensaje">
+        <a class="usuario" href="profile/{{message.uid}}">{{message.name}}</a>
         <span>dice:</span><p> {{message.message}}</p>
     </div>
     <span *ngIf="error===true"><svg class="cruz" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="#F5494D" d="M10 1.951l-1.951-1.951-3.049 3.049-3.049-3.049-1.951 1.951 3.049 3.049-3.049 3.049 1.951 1.951 3.049-3.049 3.049 3.049 1.951-1.951-3.049-3.049z"/></svg>
     Escribe algun mensaje</span>
-    <input type="text" placeholder="Chat something.." (input)="error=false" (keyup.enter)="sendMsg($event.target.value)" [(ngModel)]="msgReset" />
+    <input type="text" placeholder="Introduzca su mensaje.." (input)="error=false" (keyup.enter)="sendMsg($event.target.value)" [(ngModel)]="msgReset" />
+    <button (click)="sendMsg($event.target.value)">Enviar</button>
 </div>

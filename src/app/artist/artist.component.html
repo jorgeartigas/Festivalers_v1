@@ -3,8 +3,8 @@
         <div *ngIf="artist.images.length > 0">
             <img class="artist-photo" src="{{ artist.images[0].url }}"/>
         </div>
+        <button class="btn btn-search btn-right" routerLink="/search-artist">Volver a buscar</button><br>
         <h1>{{ artist.name }}<a href="{{ artist.external_urls.spotify }}" class="btn btn-success btn-right btn-green">Abrir en spotify</a></h1>
-        
         <button class="btn btn-primary btn-right" *ngIf="userData.isLoggedIn && !favorite" (click)="addFavorite()">Añadir a favoritos</button>
         <button class="btn btn-primary btn-right" *ngIf="userData.isLoggedIn && favorite === true" (click)="removeFavorite()">Quitar de favoritos</button>
         <p *ngIf="artist.genres.length > 0">Generos:
@@ -13,11 +13,11 @@
     </header>
 
     <div class="artist-toptracks">
-        <h2 *ngIf="topTracks">Top Canciones</h2>
+        <h2 class="cabeceras" *ngIf="topTracks">Top Canciones</h2>
         <div class="row">
             <div *ngFor="let top of topTracks?.tracks">
                 <div class="col-md-3">
-                    <div class="well toptrack">
+                    <div class="toptrack">
                         <img *ngIf="top.album.images.length > 0" src="{{ top.album.images[0].url }}"/>
                             <h4>{{ top.name }}</h4>
                             <audio *ngIf="top.preview_url" controls preload="none">
@@ -32,12 +32,12 @@
     </div>
 
     <div class="artist-albums">
-        <h2 *ngIf="albums">Albumes</h2>
-        <h2 *ngIf="!albums">No hay albumes disponibles</h2>
+        <h2 class="cabeceras" *ngIf="albums">Albumes</h2>
+        <h2 class="cabeceras" *ngIf="!albums">No hay albumes disponibles</h2>
         <div class="row">
             <div *ngFor="let album of albums">
                 <div class="col-md-3">
-                    <div class="well album">
+                    <div class="album">
                         <div *ngIf="album.images.length >0">
                             <img routerLink="/album/{{ album.id }}" class="album-thumb img-thumbnail" src="{{ album.images[0].url }}"/>
                             <h4>{{ album.name }}</h4>

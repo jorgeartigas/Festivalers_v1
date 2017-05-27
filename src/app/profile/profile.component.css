@@ -41,19 +41,21 @@ h4{
 }
 
 .artst{
-   border: 1px solid #9099A2;
-   background-color: #e0e0e0;
-   margin-left: 5px;
-   height: 150px; 
-   width: 170px;
+    background-color: #F2F2F2;
+    border: 1px solid #8c8c8c;
+    margin-left: 5px;
+    height: 150px; 
+    width: 170px;
+    border-radius: 5px;
 }
 
 .fstvl{
-   border: 1px solid #9099A2;
-   background-color: #e0e0e0;
-   margin-left: 10px;
-   height: 145px; 
-   width: 160px;
+    background-color: #F2F2F2;
+    border: 1px solid #8c8c8c;
+    margin-left: 10px;
+    height: 145px; 
+    width: 160px;
+    border-radius: 5px;
 }
 
 .show-artist{

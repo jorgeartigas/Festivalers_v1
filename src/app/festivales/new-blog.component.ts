@@ -21,8 +21,8 @@ export class BlogComponent implements OnInit{
   new: boolean = false;
     constructor(
       public af: AngularFire,
-      private storageService: StorageService,
-      private festivalService: FestivalService
+      public storageService: StorageService,
+      public festivalService: FestivalService
     ){}
   ngOnInit(){
     this.noticias = this.af.database.list('FESTIVALERS/noticias/festivales/'+this.idFestival);
@@ -32,6 +32,13 @@ export class BlogComponent implements OnInit{
       this.storageService.upload(file.target.files[0],2,this.idFestival);
       this.new=true;
     }
+  }
+  reset(){
+    this.noticia.contenido = '';
+    this.noticia.entradilla = '';
+    this.noticia.photo = '';
+    this.noticia.titulo ='';
+    this.noticia.published ='';
   }
   publish(){
     this.noticia.photo = this.storageService.downloadURL;

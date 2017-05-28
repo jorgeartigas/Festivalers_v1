@@ -15,7 +15,7 @@ export class CreateNewsComponent {
     constructor(
         private af: AngularFire,
         private router: Router,
-        private storageService: StorageService,
+        public storageService: StorageService,
     ){}
   upload(file){ 
     if(file)

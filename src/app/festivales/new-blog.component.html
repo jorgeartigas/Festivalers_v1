@@ -4,7 +4,7 @@
         <div class="col-md-10 navfestivales">
             <ul>
                 <li (click)="activeView='';publicada=false;storageService.downloadURL='';editando=false">Añadir una noticia</li>
-                <li (click)="activeView='editView';publicada=false;storageService.downloadURL='';noticia=''">Editar noticias</li> 
+                <li (click)="activeView='editView';publicada=false;storageService.downloadURL='';reset()">Editar noticias</li> 
             </ul>
         </div>
     </div>

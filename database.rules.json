@@ -18,7 +18,7 @@
         }
       },
       "UsersFestivals":{
-        ".write": true,
+        ".write": true
       },
       "festivalAttendees":{
         "$idFestival":{

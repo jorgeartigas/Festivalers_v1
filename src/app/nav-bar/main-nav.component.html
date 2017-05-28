@@ -26,7 +26,10 @@
               <img *ngIf="notifications?.length > 0" src="../../assets/campana_roja.png"/></a>
               <ul class="dropdown-menu notificaciones" role="menu">
                   <li *ngIf="notifications?.length === 0">No tienes notificaciones nuevas, te avisaremos cuando haya alguna noticia</li>
-                  <li *ngFor="let notification of notifications" routerLink="/festival/{{notification.$key}}" (click)="delete(notification.$key)">{{notification.name}} ha añadido una nueva noticia</li>
+                  <div *ngFor="let notification of notifications">
+                      <li *ngIf="notification.status" class="link"routerLink="/festival/{{notification.$key}}" (click)="delete(notification.$key)">{{notification?.name}}: {{notification?.msg}}</li>
+                      <li *ngIf="notification.status===false" class="link" (click)="delete(notification.$key)">{{notification?.name}}: {{notification?.msg}}</li>
+                  </div>
               </ul>
           </li>
           <li class="dropdown" *ngIf="userData.isLoggedIn">

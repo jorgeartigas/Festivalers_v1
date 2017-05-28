@@ -4,6 +4,7 @@ import { CurrentUserData } from '../services/user-data.service';
 import { Http, Response } from '@angular/http';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/first';
+import { UUID } from 'angular2-uuid';
 
 
 
@@ -23,7 +24,10 @@ export class FestivalService{
   ) {}
 
   addFestival(newFestival){
-    this.festivalesPendientes.push(newFestival);
+    this.festivalesPendientes.push(newFestival).then(fest=>{
+      this.af.database.object('FESTIVALERS/UserNotifications/'+this.userData.userUID+'/'+fest.key).update({name:newFestival.name,msg:'Tu festival esta pendiente de validacion',status:false,date:Date.now()})
+      this.router.navigate(['home']);
+    });
   }
   updateFestival(idFestival,festival){
     this.af.database.object('FESTIVALERS/festivales/'+idFestival).update(festival);
@@ -33,11 +37,13 @@ export class FestivalService{
   validateFestival(festival: any){
       this.af.database.list('FESTIVALERS/festivales/').push(festival).then(newfestival =>{
         this.af.database.object('FESTIVALERS/UsersFestivalOwners/'+festival.owner+'/'+newfestival.key).set(festival);
+        this.af.database.object('FESTIVALERS/UserNotifications/'+festival.owner+'/'+newfestival.key).update({name:festival.name,msg:'Tu festival ha sido aceptado',status:true,date:Date.now()})
       });
       this.af.database.list('FESTIVALERS/festivalesPendientes/').remove(festival);
     }
   discardFestival(festival: any){
-    this.festivalesPendientes.remove(festival); 
+    this.af.database.object('FESTIVALERS/UserNotifications/'+festival.owner+'/'+UUID.UUID()).update({name:festival.name,msg:'Tu festival ha sido rechazado',status:false,date:Date.now()});
+    this.festivalesPendientes.remove(festival);
   }
   uploadMainPhoto(idFestival,downloadURL){
     this.af.database.object('FESTIVALERS/festivales/'+idFestival).update({mainPhoto: downloadURL});
@@ -77,7 +83,7 @@ export class FestivalService{
       this.name = festival.name;
       this.af.database.list('FESTIVALERS/festivalAttendees/'+idFestival+'/').first().subscribe(attendees => {
         for(let i =0;i<attendees.length;i++)
-          this.af.database.object('FESTIVALERS/UserNotifications/'+attendees[i].$key+'/'+idFestival).update({name:this.name,date: Date.now()})
+          this.af.database.object('FESTIVALERS/UserNotifications/'+attendees[i].$key+'/'+idFestival).update({name:this.name,msg:'ha añadido una nueva noticia',status:true,date: Date.now()})
       })
     });
   }

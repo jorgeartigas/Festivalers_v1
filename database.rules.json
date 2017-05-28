@@ -35,6 +35,12 @@
       },
       "FestivalsArtists":{
         ".write": "auth.uid != null"
+      },
+      "noticias":{
+        ".write": "auth.uid != null"
+      },
+      "UserNotifications": {
+        ".write" : "auth.uid != null"
       }
     }
   }

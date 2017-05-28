@@ -24,3 +24,12 @@
   position: relative;
   top: 10px;
 }
+.notificaciones{
+  min-height: 200px;
+  min-width: 200px;
+  padding: 10px;
+}
+.notificaciones li{
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+}

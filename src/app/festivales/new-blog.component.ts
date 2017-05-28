@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Noticia } from './noticia';
 import { AngularFire, FirebaseListObservable} from 'angularfire2';
 import { StorageService } from '../services/storage.service';
+import { FestivalService } from '../services/festival.service';
 
 @Component({
   selector: 'new-blog',
@@ -16,10 +17,10 @@ export class BlogComponent implements OnInit{
   publicada: boolean = false;
     constructor(
       public af: AngularFire,
-      private storageService: StorageService
+      private storageService: StorageService,
+      private festivalService: FestivalService
     ){}
   ngOnInit(){
-    console.log(this.storageService.done)
     this.noticias = this.af.database.list('FESTIVALERS/noticias/festivales/'+this.idFestival);
   }
   upload(file){
@@ -38,7 +39,7 @@ export class BlogComponent implements OnInit{
         this.noticia.contenido="";
         this.noticia.photo="";
         this.publicada = true;
-
+        this.festivalService.createNotification(this.idFestival);
       }
     )
   }

@@ -40,7 +40,7 @@ export class EditFestivalComponent implements OnInit {
         this.activeView = val;
     }
     updateFestival(){
-        this.af.database.object('FESTIVALERS/festivales/'+this.idFestival).update(this.festival);
+        this.festivalService.updateFestival(this.idFestival,this.festival);
         this.editado = false;
     }
     upload(file){

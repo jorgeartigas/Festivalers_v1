@@ -12,9 +12,9 @@ export class FestivalService{
   festivalesPendientes: FirebaseListObservable<any> = this.af.database.list('/FESTIVALERS/festivalesPendientes');
   festivales: FirebaseListObservable<any>=this.af.database.list('/FESTIVALERS/festivales');
   arrayAttendees: Array<string> = [];
-  arrayFestivales: Array<string> = [];
   URL:string;
   response:any;
+  name:string;
   constructor(
     private router: Router,
     private af: AngularFire,
@@ -23,7 +23,12 @@ export class FestivalService{
   ) {}
 
   addFestival(newFestival){
-    this.af.database.list('FESTIVALERS/festivalesPendientes/').push(newFestival);
+    this.festivales.push(newFestival);
+  }
+  updateFestival(idFestival,festival){
+    this.af.database.object('FESTIVALERS/festivales/'+idFestival).update(festival);
+    this.af.database.object('FESTIVALERS/UsersFestivals/'+this.userData.userUID+'/'+idFestival).update({name: festival.name});
+    this.af.database.object('FESTIVALERS/UsersFestivalOwners/'+this.userData.userUID+'/'+idFestival).update(festival);
   }
   validateFestival(festival: any){
       this.af.database.list('FESTIVALERS/festivales/').push(festival).then(newfestival =>{
@@ -56,8 +61,8 @@ export class FestivalService{
     this.userData.festivals.splice(this.userData.festivals.indexOf(idFestival),1);
     console.warn(this.userData.festivals);
   }
-  mapLocation(name:string){
-    this.URL = "https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&key=AIzaSyAgJusLHUIkIGgvTQJyB5_TtSxJTWlFNXo";
+  mapLocation(address:string){
+    this.URL = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyAgJusLHUIkIGgvTQJyB5_TtSxJTWlFNXo";
     return this.http.get(this.URL).map(res => JSON.parse(res.text()));
   }
   addHeadLiner(idFestival,artistId,artistName,artistPhoto){
@@ -69,5 +74,14 @@ export class FestivalService{
   removeArtist(idFestival,idArtist,path){
     console.log('FESTIVALERS/FestivalsArtists/'+idFestival+'/'+path+'/'+idArtist);
     this.af.database.object('FESTIVALERS/FestivalsArtists/'+idFestival+'/'+path+'/'+idArtist).remove();
+  }
+  createNotification(idFestival){
+    this.af.database.object('FESTIVALERS/festivales/'+idFestival).first().subscribe(festival =>{
+      this.name = festival.name;
+      this.af.database.list('FESTIVALERS/festivalAttendees/'+idFestival+'/').first().subscribe(attendees => {
+        for(let i =0;i<attendees.length;i++)
+          this.af.database.object('FESTIVALERS/UserNotifications/'+attendees[i].$key+'/'+idFestival).update({name:this.name,date: Date.now()})
+      })
+    });
   }
 }

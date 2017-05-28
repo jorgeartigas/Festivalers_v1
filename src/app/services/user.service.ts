@@ -36,6 +36,9 @@ export class UserService {
   removeFavorite(artistId){
     this.af.database.object('FESTIVALERS/UsersArtists/'+this.userData.userUID+'/'+artistId).remove();
   }
+  removeNotification(id){
+    this.af.database.object('FESTIVALERS/UserNotifications/'+this.userData.userUID+'/'+id).remove();
+  }
   search(name, type="artist"){
     this.searchURL = 'https://api.spotify.com/v1/search?query='+name+'&offset=0&limit=20&type='+type+'&market=US';
     return this.http.get(this.searchURL).map(res => res.json());

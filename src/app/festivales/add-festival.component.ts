@@ -31,7 +31,7 @@ export class AddFestivalComponent implements OnInit {
         this.newFestival.owner = this.userData.userUID;
         this.festivalService.addFestival(this.newFestival);
     }
-
+    
     getBackground() {
         let backgroundImage = {
         'background-image': 'url(\'../../assets/umfmiami.jpg\')',

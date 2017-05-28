@@ -20,7 +20,7 @@
         <div *ngIf="general">
             <div *ngFor="let artist of general">
                 <div class="col-md-4">
-                    <div class="artistboxt">
+                    <div class="artistbox">
                         <p><span class="cursor" routerLink="/artist/{{artist.$key}}">{{ artist.name }}</span></p>
                         <img routerLink="/artist/{{artist.$key}}" class="img-artist" src="{{artist.photo}}"/>
                     </div>

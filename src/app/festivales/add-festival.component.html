@@ -15,6 +15,8 @@
                     <option value="" disable selected> Mes </option>
                     <option *ngFor="let month of months | async" value="{{month.mes}}">{{ month.mes}}</option>
                 </select>
+            <input type="text" placeholder="Fecha de inicio" name="inicio" disabled/>
+            <input type="text" placeholder="Fecha de finalización" name="finalizacion" disabled/>
             <input type="date" [(ngModel)]="newFestival.startDate" name="startDate" required />
             <input type="date" placeholder="Fecha de finalización" [(ngModel)]="newFestival.endDate" name="endDate" required />
             <input type="url" placeholder="www.yourfestival.com" [(ngModel)]="newFestival.webpage" name="webpage"/>

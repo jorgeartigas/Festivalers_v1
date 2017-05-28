@@ -13,7 +13,7 @@ h1{
     height: 265px;
     border-radius: 10px;
     position: relative;
-    top: 50px;
+    top: 25px;
     color: #3c3c3c;
 }
 input, select{
@@ -32,6 +32,11 @@ input, button, select{
     text-align: center;
     color: #3c3c3c;
     margin-top: 5px;
+}
+
+label{
+    color: white;
+    margin-right: 20px;
 }
 
 button.guardFestival {

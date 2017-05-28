@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container min-height">
     <div class="row">
         <div class="col-md-12">
         <h2>Panel de Administración</h2>
@@ -13,14 +13,18 @@
             <div *ngSwitchDefault>
                 <span *ngIf="festivales?.length === 0">No hay festivales que gestionar</span>
                 <div class="col-md-4" *ngFor="let festival of festivales">
+                    <div class="admFestBox">
                     <h3>Festival Name: {{ festival.name }}</h3>
                         <p>description: {{ festival.description }}</p>
                     <h4>Start date:</h4>
                         <p>{{ festival.startDate }}</p>
                     <h4>End date:</h4>
                         <p>{{ festival.endDate }}</p>
-                        <button (click)="validateFestival(festival)">Validate</button>
-                        <button (click)="discardFestival(festival)">Discard</button>
+                        <div class="divButton">
+                            <button class="val" (click)="validateFestival(festival)">Validar</button>
+                            <button class="desc" (click)="discardFestival(festival)">Descartar</button>
+                        </div>
+                </div>
                 </div>
             </div>
                 <create-news *ngSwitchCase="'createNews'"></create-news>

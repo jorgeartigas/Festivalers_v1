@@ -1,0 +1,48 @@
+.edNoticia{
+    height: auto;
+    width: auto;
+    background-color: #F2F2F2;
+    border: 1px solid #8c8c8c;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+    align-items: center;
+}
+
+.adnot{
+    width: 443px;
+    height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #8c8c8c;
+    margin-top: 5px;
+}
+
+textarea{
+    border: 1px solid #8c8c8c;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+input{
+    margin: 0 auto;
+}
+
+button{
+    height: 50px;
+    border: 1px solid #8c8c8c;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+button:hover{
+    background-color: green;
+    color: white;
+}
+
+h1{
+    text-align: center;
+}

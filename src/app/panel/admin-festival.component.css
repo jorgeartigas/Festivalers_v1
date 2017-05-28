@@ -18,3 +18,35 @@
     color: white;
     display: inline-block;
 }
+
+.admFestBox{
+    height: auto;
+    width: auto;
+    background-color: #F2F2F2;
+    border: 1px solid #8c8c8c;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.divButton{
+    text-align: center;
+    color: white;
+    font-weight: 500;
+}
+
+button.val, button.desc{
+    height: 30px;
+    width: 95px;
+    border: 1px solid #8c8c8c;
+    border-radius: 5px;
+}
+
+.val{
+    background-color: green;
+}
+
+.desc{
+    background-color: red;
+}

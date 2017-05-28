@@ -10,3 +10,43 @@
 #noticiaGenUpload{
     display: none;
 }
+
+.edNoticia {
+	height: 450px;
+    width: 450px;
+    background-color: #F2F2F2;
+    border: 1px solid #8c8c8c;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+label{
+	margin-right: 5px;
+}
+
+input{
+	margin-bottom: 5px;
+    height: 50px;
+    border: 1px solid #8c8c8c;
+    border-radius: 5px;
+    text-align: center;
+}
+
+button{
+	margin-top: 10px;
+}
+
+.botEdNoti{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+h3, p {
+	border: 1px solid #8c8c8c;
+	border-radius: 5px;
+	width: 280px;
+	text-align: center;
+}

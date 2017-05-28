@@ -1,18 +1,19 @@
-<div class="container">
+<div class="container ">
     <div class="row">
         <div class="col-md-12">
             <h1>Publicar Noticia</h1>
             <div class="col-md-10">
             <span *ngIf="publicada" class="btn btn-success">Tu noticia ha sido publicada</span>
+            <div class="edNoticia">
             <form (ngSubmit)="publish()" #addNewsForm="ngForm">
-                <label for="noticiaUpload"><img class="edit" src="{{ storageService.downloadURL }}" /></label>
-                <input type="file" id="noticiaUpload" (change)="upload($event)"/>
-                <label>Titulo</label><input type="text" #titulo="ngModel" [(ngModel)]="noticia.titulo" name="titulo" required />
-                <label>Entradilla</label><input type="text" #entradilla="ngModel" [(ngModel)]="noticia.entradilla" name="entradilla" required />
-                <label>Contenido</label><input type="text" #contenido="ngModel" [(ngModel)]="noticia.contenido" name="contenido" required />
-                <button type="submit" class="" [disabled]="addNewsForm.form.invalid || storageService.done===false">Publicar Noticia</button>
+                <input class="adnot" placeholder="Titulo" type="text" #titulo="ngModel" [(ngModel)]="noticia.titulo" name="titulo" required /><br>
+                <input class="adnot" placeholder="Entrada" type="text" #entradilla="ngModel" [(ngModel)]="noticia.entradilla" name="entradilla" required /><br>
+                <textarea placeholder="Contenido" cols="60" rows="6" type="text" #contenido="ngModel" [(ngModel)]="noticia.contenido" name="contenido" required ></textarea><br>
+                <label for="noticiaUpload"><img class="edit" src="{{ storageService.downloadURL }}" /></label><input type="file" id="noticiaUpload" (change)="upload($event)"/>
+                <br><button type="submit" class="" [disabled]="addNewsForm.form.invalid || storageService.done===false">Publicar Noticia</button>
             </form>
+            </div>
             </div>
         </div>
     </div>
-</div>
+</div> 

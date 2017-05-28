@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-6">
             <span *ngIf="!noticias"> No hay noticias que mostrar</span>
-            <div *ngFor="let noticia of noticias">
+            <div class="botEdNoti" *ngFor="let noticia of noticias">
                 <img src="{{ noticia.photo }}" class="img-responsive edit"/>
                 <h3>{{noticia.titulo}}</h3>
                 <p> {{noticia.entradilla}}</p>
@@ -10,14 +10,16 @@
             </div>
         </div>
         <div *ngIf="editando" class="col-md-6">
+            <div class="edNoticia">
             <form (ngSubmit)="updateNew();editando=false;publicada=true" #editNewsForm="ngForm" (change)="editado=true">
                 <label for="noticiaGenUpload"><img for="noticiaGenUpload" src="{{ noticiaEdit?.photo }}" class="img-responsive edit"/></label>
                 <input type="file" id="noticiaGenUpload" (change)="upload($event)"/><br>
-                <label>Titulo</label><input type="text" [(ngModel)]="noticiaEdit.titulo" name="titulo" required /><br>
+                <label>Titulo</label><input  type="text" [(ngModel)]="noticiaEdit.titulo" name="titulo" required /><br>
                 <label>Entradilla</label><input type="text" [(ngModel)]="noticiaEdit.entradilla" name="entradilla" required /><br>
                 <label>Contenido</label><input type="text"[(ngModel)]="noticiaEdit.contenido" name="contenido" required /><br>
                 <button type="submit" [disabled]="!editado || editNewsForm.invalid" class="btn btn-succes">Guardar Cambios</button>
             </form>
+            </div>
         </div>
     </div>
 </div>

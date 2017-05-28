@@ -20,7 +20,7 @@
                 </ul>
             </div>
             <div class="col-md-12 info" *ngIf="activeView===''">
-                div class="edInfoFest">
+                <div class="edInfoFest">
                     <label>Estilo</label><input class="edFest" type="text" #style="ngModel" [(ngModel)]="festival.style" name="style" required />
                     <label>Pais</label><input type="text" class="edFest" #location="ngModel" [(ngModel)]="festival.location" name="location" required />
                     <label>Dirección</label><input type="text" class="edFest" #address="ngModel" [(ngModel)]="festival.address" name="address" required />

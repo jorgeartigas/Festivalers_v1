@@ -8,14 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent {
-  festivales: FirebaseListObservable<any>;
+  noticia: any;
     constructor(
         private af: AngularFire,
         private router: Router
-    ){
-        this.festivales = this.af.database.list('/FESTIVALERS/festivales');
-    }
-    goTo(id){
-        this.router.navigate(['festival/'+id]);
-    }
+    ){}
 }

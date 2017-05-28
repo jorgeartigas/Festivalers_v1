@@ -3,37 +3,11 @@
     <div class="row">
         <h2>Noticias</h2>
         <hr class="separator">
-        <div class="col-md-4">
-            <img src="../assets/creamfields.jpg" class="img-responsive">
-            <p>Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-            </p>
-            <button>Ver mas..</button>            
-        </div>
-        <div class="col-md-4">
-            <img src="../assets/primavera-sound.jpg" class="img-responsive">
-            <p>Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-            </p>
-            <button>Ver mas..</button>            
-        </div>
-        <div class="col-md-4">
-            <img src="../assets/ultramusic.jpg" class="img-responsive">
-            <p>Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-            </p>
+        <div class="col-md-4" *ngFor="let noticia of noticias">
+            <img src="{{ noticia.photo }}" class="img-responsive">
+            <h3>{{ noticia.titulo }}</h3>
+            <p>{{ noticia.published }}</p>
+            <p>{{ noticia.entradilla}}</p>
             <button>Ver mas..</button>            
         </div>
     </div>

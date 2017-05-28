@@ -4,11 +4,11 @@
         <h2>Noticias</h2>
         <hr class="separator">
         <div class="col-md-4" *ngFor="let noticia of noticias">
-            <img src="{{ noticia.photo }}" class="img-responsive">
-            <h3>{{ noticia.titulo }}</h3>
+            <img routerLink="/news/{{noticia.$key}}" src="{{ noticia.photo }}" class="img-responsive">
+            <h3 routerLink="/news/{{noticia.$key}}">{{ noticia.titulo }}</h3>
             <p>{{ noticia.published }}</p>
             <p>{{ noticia.entradilla}}</p>
-            <button>Ver mas..</button>            
+            <button routerLink="/news/{{noticia.$key}}">Ver mas..</button>            
         </div>
     </div>
 </div>

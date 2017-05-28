@@ -17,10 +17,10 @@
                 </select> 
             </form>
         </div>
-        
         <div *ngIf="userService.results">
           <h2>Festivales</h2>
             <div class="col-md-12">
+                <span *ngIf="userService?.results.length === 0">No hay resultados, prueba otros parametros</span>
                 <div *ngFor="let result of userService.results">
                     <div routerLink="/festival/{{result.$key}}" class="col-md-4 well festivalbox">
                         <h3>{{ result.name }}</h3>

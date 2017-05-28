@@ -20,18 +20,17 @@
                 </ul>
             </div>
             <div class="col-md-12 info" *ngIf="activeView===''">
-                <div>
-                    <label>Estilo</label><input type="text" #style="ngModel" [(ngModel)]="festival.style" name="style" required /><br>
-                    <label>Descripcion</label><input type="text" #description="ngModel" [(ngModel)]="festival.description" name="description" required /><br>
-                    <label>Pais</label><input type="text" #location="ngModel" [(ngModel)]="festival.location" name="location" required /><br>
-                    <label>Dirección</label><input type="text" #address="ngModel" [(ngModel)]="festival.address" name="address" required /><br>
-                    <label>Mes</label><input type="text" #month="ngModel" [(ngModel)]="festival.month" name="month" required /><br>
-                    <label>Fecha Inicio</label><input type="date" #startDate="ngModel" [(ngModel)]="festival.startDate" name="startDate" required /><br>
-                    <label>Fecha final</label><input type="date" #endDate="ngModel" [(ngModel)]="festival.endDate" name="endDate" required /><br>
-                    <label>Página web</label><input type="url" #endDate="ngModel" [(ngModel)]="festival.webpage" name="webpage" /><br>
-                    <label>Facebook</label><input type="url" #endDate="ngModel" [(ngModel)]="festival.facebook" name="facebook" /><br>
-                    <label>Youtube</label><input type="url" #endDate="ngModel" [(ngModel)]="festival.youtube" name="youtube" /><br>
-                    <label>Instagram</label><input type="url" #endDate="ngModel" [(ngModel)]="festival.instagram" name="instagram" /><br>
+                <div class="edInfoFest">
+                    <label>Estilo</label><input class="edFest" type="text" #style="ngModel" [(ngModel)]="festival.style" name="style" required />
+                    <label>Pais</label><input type="text" class="edFest" #location="ngModel" [(ngModel)]="festival.location" name="location" required />
+                    <label>Dirección</label><input type="text" class="edFest" #address="ngModel" [(ngModel)]="festival.address" name="address" required />
+                    <label>Mes</label><input type="text" class="edFest" #month="ngModel" [(ngModel)]="festival.month" name="month" required />
+                    <br><label>Fecha Inicio</label><input type="date" class="edFest" #startDate="ngModel" [(ngModel)]="festival.startDate" name="startDate" required />
+                    <label>Fecha final</label><input type="date" class="edFest" #endDate="ngModel" [(ngModel)]="festival.endDate" name="endDate" required />
+                    <label>Página web</label><input type="url" class="edFest" #endDate="ngModel" [(ngModel)]="festival.webpage" name="webpage" />
+                    <label>Facebook</label><input type="url" class="edFest" #endDate="ngModel" [(ngModel)]="festival.facebook" name="facebook" />
+                    <br><label>Instagram</label><input type="url" class="edFest" #endDate="ngModel" [(ngModel)]="festival.instagram" name="instagram" />
+                    <label>Descripcion</label><textarea type="text" cols="60" rows="6" class="edFest" #description="ngModel" [(ngModel)]="festival.description" name="description" required ></textarea>
                 </div>
             </div>
         </div>

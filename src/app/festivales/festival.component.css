@@ -125,3 +125,32 @@ h1{
     margin-right: 5px;
 }
 
+.edInfoFest{
+    height: auto;
+    width: auto;
+    background-color: #F2F2F2;
+    border: 1px solid #8c8c8c;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.edFest{
+    margin-top: 5px;
+    margin-bottom:  5px;
+    margin-left: 5px;
+    border: 1px solid #8c8c8c;
+    border-radius: 5px;
+}
+
+.search-results{
+    height: 155px;
+    width: auto;
+    background-color: #F2F2F2;
+    border: 1px solid #8c8c8c;
+    margin-bottom: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}

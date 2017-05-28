@@ -1,4 +1,5 @@
 <div class="row">
+    <!--cambiar esta clase y ponerla custom, pero pa probar voy tirando -->
     <div class="col-md-4 navfestivales">
         <ul>
             <li (click)="activeView='';spotifyResults=null;searchSpotify=null">Cabezas de cartel</li>
@@ -11,12 +12,11 @@
         <div *ngSwitchDefault>
             <div class="col-md-4" >
                 <input type="text" name="searchSpotify" [(ngModel)]="searchSpotify" placeholder="Añade un cabeza de cartel" (keyup)="search()"/><br><br>
-            </div>
                 <div *ngIf="spotifyResults">
                     <div *ngFor="let results of spotifyResults">
                         <div *ngIf="results.images[0]" class="row">
-                            <div class="col-md-4">
-                                <div class="search-results">
+                            <div class="col-md-12">
+                                <div class="search-results well">
                                     <h4 routerLink="/artist/{{results.id}}">{{ results.name }}</h4>
                                     <div>
                                         <strong>Generos:</strong>
@@ -48,7 +48,7 @@
                     <div *ngFor="let results of spotifyResults">
                         <div *ngIf="results.images[0]" class="row">
                             <div class="col-md-12">
-                                <div class="search-results">
+                                <div class="search-results well">
                                     <h4 routerLink="/artist/{{results.id}}">{{ results.name }}</h4>
                                     <div>
                                         <strong>Generos:</strong>
@@ -74,6 +74,6 @@
             </div>
         </div>
     </div>
-
+</div>
 
 

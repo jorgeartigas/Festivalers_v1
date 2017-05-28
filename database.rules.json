@@ -30,6 +30,9 @@
       "festivales":{
         ".write": true
       },
+      "festivalesPendientes": {
+        ".write": "auth.uid != null"
+      },
       "messages":{
         ".write": "auth.uid != null"
       },

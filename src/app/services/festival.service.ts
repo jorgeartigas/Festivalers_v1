@@ -23,7 +23,7 @@ export class FestivalService{
   ) {}
 
   addFestival(newFestival){
-    this.festivales.push(newFestival);
+    this.festivalesPendientes.push(newFestival);
   }
   updateFestival(idFestival,festival){
     this.af.database.object('FESTIVALERS/festivales/'+idFestival).update(festival);

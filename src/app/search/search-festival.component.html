@@ -1,0 +1,15 @@
+  <div class="search">
+      <p>Encuentra tu festival: </p>
+      <form (ngSubmit)="search()" #searchFestivalForm="ngForm">
+          <input type="text" class="input-search" name="style" [(ngModel)]="style" placeholder=" - ">
+          <input type="text" class="input-search" name="month" [(ngModel)]="month" placeholder=" - ">
+          <input type="text" class="input-search" name="location" [(ngModel)]="location"placeholder=" - ">
+          <button type="submit">Busca</button>
+      </form>
+  </div>
+
+<div *ngIf="userService.results">
+    <div *ngFor="let result of userService.results">
+      {{ result.name }}
+    </div>
+</div>

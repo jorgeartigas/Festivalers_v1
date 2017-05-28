@@ -11,6 +11,7 @@ export class UserService {
   albumsURL:string;
   albumURL: string;
   topTracks: string;
+  results: any[];
 
   constructor(
     public userData : CurrentUserData,
@@ -59,5 +60,21 @@ export class UserService {
     this.topTracks = 'https://api.spotify.com/v1/artists/'+artistId+'/top-tracks?country=ES';
     return this.http.get(this.topTracks).map(res => res.json());
   }
-
+  searchFestival(style?,month?,location?):any{
+    this.af.database.list('FESTIVALERS/festivales').first().subscribe(results => {
+        this.results = results;
+        results.forEach(filterStyle => {
+            if(style){
+                this.results = this.results.filter(fest => fest.style === style);
+                if(month){
+                    this.results = this.results.filter(fest => fest.month === month);
+                    if(location){
+                        this.results = this.results.filter(fest => fest.location === location);
+                    }
+                }           
+            }
+        })
+        console.log(this.results);
+      })
+  }
 }

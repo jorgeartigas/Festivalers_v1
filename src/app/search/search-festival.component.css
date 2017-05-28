@@ -11,8 +11,8 @@ select{
 img{
     height: 100px;
     width: 200px;
-    cursor: pointer;
 }
 .festivalbox{
     min-height: 450px;
+    cursor: pointer;
 }

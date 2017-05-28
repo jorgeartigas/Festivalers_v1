@@ -22,7 +22,7 @@
           <h2>Festivales</h2>
             <div class="col-md-12">
                 <div *ngFor="let result of userService.results">
-                    <div class="col-md-4 well festivalbox">
+                    <div routerLink="/festival/{{result.$key}}" class="col-md-4 well festivalbox">
                         <h3>{{ result.name }}</h3>
                         <p>{{ result.description }}</p>
                         <img src="{{result.mainPhoto}}"/>

@@ -22,7 +22,9 @@
           <li><a *ngIf="userData.isLoggedIn === false" routerLink="/signUp" routerLinkActive="active">Sign Up</a></li>
 
           <li class="dropdown" *ngIf="userData.isLoggedIn">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="../../assets/campana.png"/></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <img *ngIf="notifications?.length === 0" src="../../assets/campana.png"/>
+              <img *ngIf="notifications?.length > 0" src="../../assets/campana_roja.png"/></a>
               <ul class="dropdown-menu notificaciones" role="menu">
                   <li *ngIf="notifications?.length === 0">No tienes notificaciones nuevas, te avisaremos cuando haya alguna noticia</li>
                   <li *ngFor="let notification of notifications" routerLink="/festival/{{notification.$key}}" (click)="delete(notification.$key)">{{notification.name}} ha añadido una nueva noticia</li>

@@ -9,6 +9,7 @@ import { FestivalService } from '../services/festival.service';
 })
 export class AdminFestivalComponent {
     festivales: FirebaseListObservable<any>;
+    activeView: string;
     constructor(
         private af: AngularFire,
         private festivalService: FestivalService

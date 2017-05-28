@@ -2,8 +2,16 @@
     <div class="row">
         <div class="col-md-12">
         <h2>Panel de Administración</h2>
-            <div *ngFor="let festival of festivales | async">
-                <div>
+            <div class="col-md-12 navfestivales">
+                <ul>
+                    <li (click)="activeView=''">Gestión de Festivales</li>
+                    <li (click)="activeView='createNews'">Añadir Noticias</li>
+                </ul>
+            </div>
+            <div class="col-md-12 info" [ngSwitch]="activeView">
+            <div *ngSwitchDefault>
+                <span *ngIf="!festival">No hay festivales que gestionar</span>
+                <div class="col-md-4" *ngFor="let festival of festivales | async">
                     Festival ID: <b>{{ festival.$key }}</b>
                     <h3>Festival Name: {{ festival.name }}</h3>
                         <p>description: {{ festival.description }}</p>
@@ -14,6 +22,8 @@
                         <button (click)="validateFestival(festival)">Validate</button>
                         <button (click)="discardFestival(festival)">Discard</button>
                 </div>
+            </div>
+                <create-news *ngSwitchCase="'createNews'"></create-news>
             </div>
         </div>
     </div>

@@ -28,6 +28,10 @@ if(value===0){
     let uuid = UUID.UUID();
     uploadTask = this.storageRef.child('images/festival_news/'+ idFestival+'/'+uuid).put(file);
 }
+else if(value===3){
+    let uuid = UUID.UUID();
+    uploadTask = this.storageRef.child('images/general_news/'+uuid).put(file);
+}
 
 // Register three observers:
 uploadTask.on('state_changed', function(snapshot){
@@ -64,7 +68,7 @@ uploadTask.on('state_changed', function(snapshot){
     }else if(value===1){
         that.festivalService.uploadMainPhoto(idFestival,uploadTask.snapshot.downloadURL);
         console.log("Mainfestival");
-    }else if(value===2){
+    }else {
         that.downloadURL = uploadTask.snapshot.downloadURL;
     }
     that.done = true;

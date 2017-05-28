@@ -8,6 +8,7 @@
     <div *ngFor="let noticia of noticias | async">
         <div class="col md-12"> 
             <h3>Titulo: {{ noticia?.titulo }}</h3>
+            <p>Published: {{noticia?.published | date:'medium'}}</p>
             <p>Entradilla: {{ noticia?.entradilla }}</p>
             <div *ngIf="more===noticia.$key">
                 <p>Contenido: {{ noticia?.contenido }}</p>

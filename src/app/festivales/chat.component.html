@@ -2,7 +2,7 @@
     <h2>CHAT</h2>
     <div class="conjunto">
         <div *ngFor="let message of allMessages | async" class="mensaje">
-            <a class="usuario" href="profile/{{message.uid}}">{{message.name}}</a>
+            <a class="usuario" href="profile/{{message.uid}}">{{message.name}}</a><span> - {{message.time | date:'medium'}}</span>
             <span>dice:</span><p> {{message.message}}</p>
         </div>
     </div>

@@ -33,7 +33,7 @@ export class ChatComponent implements OnInit{
     if(!msg || msg == " "){
         this.error = true;
     }else{
-        this.af.database.list('FESTIVALERS/messages/'+this.idFestival).push({message: msg,name: this.userData.currentUser.name,uid:this.userData.userUID});
+        this.af.database.list('FESTIVALERS/messages/'+this.idFestival).push({message: msg,name: this.userData.currentUser.name,uid:this.userData.userUID,time:Date.now()});
         this.msgReset = " ";
     }
   }

@@ -4,10 +4,9 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './login/signUp.component';
 import { HomePageComponent } from './home/homePage.component';
 import { NewsComponent } from './news/news.component';
-import { CreateNewsComponent } from './news/create-news.component';
 import { ContactComponent } from './contact/contact.component';
 import { AddFestivalComponent } from './festivales/add-festival.component';
-import { AdminFestivalComponent } from './festivales/admin-festival.component';
+import { AdminFestivalComponent } from './panel/admin-festival.component';
 import { FestivalComponent } from './festivales/festival.component';
 import { EditFestivalComponent } from './festivales/edit-festival.component';
 import { AuthGuard } from './services/auth-guard.service';
@@ -28,7 +27,6 @@ const routes: Routes = [
   { path: 'signUp', component: SignUpComponent, canActivate: [AuthGuardLogin,AuthGuardData]},
   { path: 'home', component: HomePageComponent, canActivate: [AuthGuardData]},
   { path: 'news', component: NewsComponent, canActivate: [AuthGuardData]},
-  { path: 'create-news', component: CreateNewsComponent, canActivate: [AuthGuardData,AuthGuardAdmin]},
   { path: 'contact', component: ContactComponent, canActivate: [AuthGuardData]},
   { path: 'search-festival', component: SearchFestivalComponent, canActivate: [AuthGuardData]},
   { path: 'festival/:id', component: FestivalComponent, canActivate: [AuthGuardData]},

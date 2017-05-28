@@ -5,8 +5,19 @@ h1{
 .center{
     margin:0 auto;
 }
-input{
-    width: 100%;
+
+#addFestival{
+    margin: 0 auto;
+    text-align: center;
+    width: 400px;
+    height: 265px;
+    border-radius: 10px;
+    position: relative;
+    top: 100px;
+    color: #3c3c3c;
+}
+input, select{
+    width: 195px;
 }
 input, button, select{
     border: 0;
@@ -22,6 +33,7 @@ button.guardFestival {
     background-color: #dd2c35;
     color: white;
     font-size: 700;
+    margin-top: 20px;
 }
 
 .guardFestival[disabled]{

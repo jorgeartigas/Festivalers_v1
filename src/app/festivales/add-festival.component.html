@@ -1,59 +1,28 @@
 <div [ngStyle]="getBackground()">
-    <div class="container">
-        <div class="row">
-            <form (ngSubmit)="addFestival()" #addFestivalForm="ngForm" novalidate>
-                <div class="col-md-6">
-                    <input placeholder="Nombre" type="text" [(ngModel)]="newFestival.name" name="name" required />
-                </div>
-                <div class="col-md-10">
-                    <div class="col-md-6">
-                        <select [(ngModel)]="newFestival.style" name="newFestival.style">
-                            <option value="" disabled selected> Estilo musical del festival </option>
-                            <option *ngFor="let style of styles | async" value="{{style.style}}">{{ style.style}}</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6" >
-                        <select [(ngModel)]="newFestival.location" name="newFestival.location">
-                            <option value="" disabled selected> Pais donde se localiza </option>
-                            <option *ngFor="let country of countries | async" value="{{country.name}}">{{ country.name }}</option>
-                        </select> 
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" placeholder="Dirección" [(ngModel)]="newFestival.address" name="address" required />
-                    </div>
-                    <div class="col-md-6">
-                        <select [(ngModel)]="newFestival.month" name="newFestival.month">
-                            <option value="" disable selected> Mes </option>
-                            <option *ngFor="let month of months | async" value="{{month.mes}}">{{ month.mes}}</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="date" [(ngModel)]="newFestival.startDate" name="startDate" required />
-                    </div>
-                    <div class="col-md-6">
-                        <input type="date" placeholder="Fecha de finalización" [(ngModel)]="newFestival.endDate" name="endDate" required />
-                    </div>
-                    <div class="col-md-6">
-                        <input type="url" placeholder="www.yourfestival.com" [(ngModel)]="newFestival.webpage" name="webpage"/>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="url" placeholder="facebook" [(ngModel)]="newFestival.facebook" name="facebook"/>
-                    </div>
-                        <div class="col-md-6">
-                        <input type="url" placeholder="youtube" [(ngModel)]="newFestival.youtube" name="youtube"/>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="url" placeholder="instagram" [(ngModel)]="newFestival.instagram" name="instagram"/>
-                    </div>
-                    <div class="col-md-12">
-                        <input placeholder="Descripcion" type="textarea" rows="4" cols="50" [(ngModel)]="newFestival.description" name="description" required />
-                    </div>
-
-                    <div class="col-md-4">
-                        <button type="submit" class=" btn guardFestival" [disabled]="!addFestivalForm.form.valid">Enviar Solicitud</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+    <div id="addFestival">
+        <form (ngSubmit)="addFestival()" #addFestivalForm="ngForm" novalidate>
+            <input placeholder="Nombre" type="text" [(ngModel)]="newFestival.name" name="name" required />
+                <select [(ngModel)]="newFestival.style" name="newFestival.style"><br>
+                    <option value="" disabled selected> Estilo musical del festival </option>
+                    <option *ngFor="let style of styles | async" value="{{style.style}}">{{ style.style}}</option>
+                </select>
+                <select [(ngModel)]="newFestival.location" name="newFestival.location">
+                    <option value="" disabled selected> Pais donde se localiza </option>
+                    <option *ngFor="let country of countries | async" value="{{country.name}}">{{ country.name }}</option>
+                </select> 
+            <input type="text" placeholder="Dirección" [(ngModel)]="newFestival.address" name="address" required />
+                <select [(ngModel)]="newFestival.month" name="newFestival.month">
+                    <option value="" disable selected> Mes </option>
+                    <option *ngFor="let month of months | async" value="{{month.mes}}">{{ month.mes}}</option>
+                </select>
+            <input type="date" [(ngModel)]="newFestival.startDate" name="startDate" required />
+            <input type="date" placeholder="Fecha de finalización" [(ngModel)]="newFestival.endDate" name="endDate" required />
+            <input type="url" placeholder="www.yourfestival.com" [(ngModel)]="newFestival.webpage" name="webpage"/>
+            <input type="url" placeholder="facebook" [(ngModel)]="newFestival.facebook" name="facebook"/>
+            <input type="url" placeholder="youtube" [(ngModel)]="newFestival.youtube" name="youtube"/>
+            <input type="url" placeholder="instagram" [(ngModel)]="newFestival.instagram" name="instagram"/>
+            <input placeholder="Descripcion" type="textarea" rows="4" cols="50" [(ngModel)]="newFestival.description" name="description" required /><br>
+            <button type="submit" class=" btn guardFestival" [disabled]="!addFestivalForm.form.valid">Enviar Solicitud</button>
+        </form>
     </div>
 </div>

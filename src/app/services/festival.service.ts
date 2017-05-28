@@ -58,8 +58,6 @@ export class FestivalService{
   removeAttendee(idFestival){
     this.af.database.object('FESTIVALERS/festivalAttendees/'+idFestival+'/'+this.userData.userUID).remove();
     this.af.database.object('FESTIVALERS/UsersFestivals/'+this.userData.userUID+'/'+idFestival).remove();
-    this.userData.festivals.splice(this.userData.festivals.indexOf(idFestival),1);
-    console.warn(this.userData.festivals);
   }
   mapLocation(address:string){
     this.URL = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyAgJusLHUIkIGgvTQJyB5_TtSxJTWlFNXo";
@@ -72,7 +70,6 @@ export class FestivalService{
     this.af.database.object('FESTIVALERS/FestivalsArtists/'+idFestival+'/general/'+artistId).update({name:artistName,photo:artistPhoto});
   }
   removeArtist(idFestival,idArtist,path){
-    console.log('FESTIVALERS/FestivalsArtists/'+idFestival+'/'+path+'/'+idArtist);
     this.af.database.object('FESTIVALERS/FestivalsArtists/'+idFestival+'/'+path+'/'+idArtist).remove();
   }
   createNotification(idFestival){

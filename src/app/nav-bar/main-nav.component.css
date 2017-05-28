@@ -34,13 +34,6 @@
   padding-bottom: 5px;
 }
 
-.bell{
-  margin-left:10px;
-  margin-top:25px;
-}
-a {
-  color:white;
-}
 @media (max-width: 767px){
   .dropdown-menu>li>a{
     color:white

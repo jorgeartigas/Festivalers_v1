@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <span *ngIf="!noticias"> No hay noticias que mostrar</span>
+            <div *ngFor="let noticia of noticias">
+                {{noticia.titulo}}
+            </div>
+        </div>
+        <div *ngIf="editando" class="col-md-10">
+            <label for="noticiaGenUpload"><img for="noticiaGenUpload" src="{{ noticia?.photo }}" class="img-responsive edit"/></label>
+            <input type="file" id="noticiaGenUpload" (change)="upload($event)"/><br>
+            <img src="{{ noticia.photo }}"/>
+            <label>Titulo</label><input type="text" [(ngModel)]="noticia.titulo" name="titulo" required /><br>
+            <label>Entradilla</label><input type="text" [(ngModel)]="noticia.entradilla" name="entradilla" required /><br>
+            <label>Contenido</label><input type="text" [(ngModel)]="noticia.contenido" name="contenido" required /><br>
+        </div>
+    </div>
+</div>

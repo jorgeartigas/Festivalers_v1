@@ -12,6 +12,7 @@ import { HomePageComponent } from './home/homePage.component';
 import { MainNavComponent } from './nav-bar/main-nav.component';
 import { NewsComponent } from './news/news.component';
 import { CreateNewsComponent } from './panel/create-news.component';
+import { EditNewsComponent } from './panel/edit-news.component';
 import { ContactComponent } from './contact/contact.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AddFestivalComponent } from './festivales/add-festival.component';
@@ -96,7 +97,8 @@ const myFirebaseAuthConfig = {
     AssistantsFestivalComponent,
     AddArtistComponent,
     BlogComponent,
-    CreateNewsComponent
+    CreateNewsComponent,
+    EditNewsComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class HomePageComponent implements OnInit{
   noticias:FirebaseListObservable<any>;
+  festivales:FirebaseListObservable<any>;
   constructor(
     private af: AngularFire
   ){}
@@ -17,5 +18,10 @@ export class HomePageComponent implements OnInit{
             limitToLast: 3
           }
     }).first().subscribe(snap => this.noticias=snap.reverse());
+    this.af.database.list('FESTIVALERS/festivales/', {
+          query: {
+            limitToLast: 6
+          }
+    }).first().subscribe(snap => this.festivales=snap.reverse());
   }
 }

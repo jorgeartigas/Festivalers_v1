@@ -1,0 +1,12 @@
+.edit{
+	opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.edit:hover {
+    cursor:pointer;
+	opacity: .5;
+}
+input{
+    display: none;
+}

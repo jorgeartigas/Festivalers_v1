@@ -6,13 +6,13 @@
                 <ul>
                     <li (click)="activeView=''">Gestión de Festivales</li>
                     <li (click)="activeView='createNews'">Añadir Noticias</li>
+                    <li (click)="activeView='editNews'">Editar Noticias</li>
                 </ul>
             </div>
             <div class="col-md-12 info" [ngSwitch]="activeView">
             <div *ngSwitchDefault>
-                <span *ngIf="!festival">No hay festivales que gestionar</span>
-                <div class="col-md-4" *ngFor="let festival of festivales | async">
-                    Festival ID: <b>{{ festival.$key }}</b>
+                <span *ngIf="festivales?.length === 0">No hay festivales que gestionar</span>
+                <div class="col-md-4" *ngFor="let festival of festivales">
                     <h3>Festival Name: {{ festival.name }}</h3>
                         <p>description: {{ festival.description }}</p>
                     <h4>Start date:</h4>
@@ -24,6 +24,7 @@
                 </div>
             </div>
                 <create-news *ngSwitchCase="'createNews'"></create-news>
+                <edit-news *ngSwitchCase="'editNews'"></edit-news>
             </div>
         </div>
     </div>

@@ -14,40 +14,14 @@
 </div>
 <div class="container festmod">
     <div class="row">
-        <h2>Festivales Destacados</h2>
+        <h2>Ultimos festivales añadidos</h2>
         <hr class="separator">
-        <div class="col-md-4">
-            <img src="../assets/maxresdefault.jpg" class="img-responsive">
-            <p>Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-            </p>
-            <button>Ver mas..</button>            
-        </div>
-        <div class="col-md-4">
-            <img src="../assets/maxresdefault.jpg" class="img-responsive">
-            <p>Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-            </p>
-            <button>Ver mas..</button>            
-        </div>
-        <div class="col-md-4">
-            <img src="../assets/maxresdefault.jpg" class="img-responsive">
-            <p>Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-                Lorem Impsum Galore estratus exia no mater.
-            </p>
-            <button>Ver mas..</button>            
+        <div class="col-md-4" *ngFor="let festival of festivales">
+            <img routerLink="/festival/{{festival.$key}}" src="{{ festival.mainPhoto }}" class="img-responsive">
+            <h3 routerLink="/festival/{{festival.$key}}">{{ festival.name }}</h3>
+            <p>{{ festival.startDate }}</p>
+            <p>{{ festival.endDate}}</p>
+            <button routerLink="/festival/{{festival.$key}}">Ver mas..</button>            
         </div>
     </div>
 </div>

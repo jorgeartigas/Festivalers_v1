@@ -10,7 +10,7 @@ import { StorageService } from '../services/storage.service';
   styleUrls: ['./create-news.component.css']
 })
 export class CreateNewsComponent {
-    noticia: Noticia = new Noticia("","","","",Date.now());ç
+    noticia: Noticia = new Noticia("","","","",Date.now());
     publicada: boolean = false;
     constructor(
         private af: AngularFire,

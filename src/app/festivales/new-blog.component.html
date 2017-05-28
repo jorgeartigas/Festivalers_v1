@@ -1,1 +1,37 @@
-new blogs
+<div class="row">
+    <!-- usar custom clase esta es para probar rapidu -->
+    <div class="col-md-8 navfestivales">
+        <ul>
+            <li (click)="activeView=''">Añadir una noticia</li>
+            <li (click)="activeView='editView';publicada=false">Editar noticias</li> 
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div [ngSwitch]="activeView">
+        <div class="col md-10" *ngSwitchDefault>
+            <h2>Crear Noticia</h2>
+            <span *ngIf="publicada" class="btn btn-success">Tu noticia ha sido publicada</span>
+            <form (ngSubmit)="publish()" #addNewsForm="ngForm">
+                <label for="noticiaUpload"><img class="edit" src="{{ storageService.downloadURL }}" /></label>
+                <input type="file" id="noticiaUpload" (change)="upload($event)"/>
+                <label>Titulo</label><input type="text" #titulo="ngModel" [(ngModel)]="noticia.titulo" name="titulo" required />
+                <label>Entradilla</label><input type="text" #entradilla="ngModel" [(ngModel)]="noticia.entradilla" name="entradilla" required />
+                <label>Contenido</label><input type="text" #contenido="ngModel" [(ngModel)]="noticia.contenido" name="contenido" required />
+                <button type="submit" class="" [disabled]="addNewsForm.form.invalid || storageService.done===false">Publicar Noticia</button>
+            </form>
+        </div>
+        <div class="col md-10" *ngSwitchCase="'editView'">
+            <h2>Editar Noticias </h2>
+            <div *ngFor="let noticia of noticias | async">
+                <div class="col md-12"> 
+                    Titulo: {{ noticia?.titulo }}
+                    Entradilla: {{ noticia?.entradilla }}
+                    Contenido: {{ noticia?.contenido }}ç
+                    <button class="btn btn-warning">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

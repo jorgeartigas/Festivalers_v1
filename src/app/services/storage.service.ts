@@ -3,18 +3,20 @@ import * as firebase from 'firebase';
 import { UserService } from './user.service';
 import { CurrentUserData } from './user-data.service';
 import { FestivalService } from './festival.service';
+import { UUID } from 'angular2-uuid';
 
 @Injectable()
 export class StorageService {
 private storageRef = firebase.storage().ref();
 downloadURL:string;
+done:boolean = false;
 constructor(
     public userData: CurrentUserData,
     public userService: UserService,
     public festivalService: FestivalService
     ) {}
 
-upload(file,value,idFestival?){
+upload(file,value,idFestival?,idNoticia?){
 const that = this;
 let uploadTask
 // Upload file and metadata to the object
@@ -22,6 +24,9 @@ if(value===0){
      uploadTask = this.storageRef.child('images/profile_pictures/'+ this.userData.userUID).put(file);
 }else if(value===1){
     uploadTask = this.storageRef.child('images/festival_main_pictures/'+ idFestival).put(file);
+}else if(value===2){
+    let uuid = UUID.UUID();
+    uploadTask = this.storageRef.child('images/festival_news/'+ idFestival+'/'+uuid).put(file);
 }
 
 // Register three observers:
@@ -59,7 +64,10 @@ uploadTask.on('state_changed', function(snapshot){
     }else if(value===1){
         that.festivalService.uploadMainPhoto(idFestival,uploadTask.snapshot.downloadURL);
         console.log("Mainfestival");
+    }else if(value===2){
+        that.downloadURL = uploadTask.snapshot.downloadURL;
     }
+    that.done = true;
     });
 }
 }

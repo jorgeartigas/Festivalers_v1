@@ -38,14 +38,12 @@ export class AddArtistComponent implements OnInit{
     this.festivalService.addGeneral(this.idFestival,id,artistName,artistPhoto);
   }
   removeArtist(idArtist,path){
-    console.log(path);
     this.festivalService.removeArtist(this.idFestival,idArtist,path);
   }
   search(val?:number){
     if(this.searchSpotify){
         this.userService.search(this.searchSpotify).subscribe(res =>{
             this.spotifyResults = res.artists.items;
-            console.log(this.spotifyResults)
       });
     }else{
       this.spotifyResults = null;

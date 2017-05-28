@@ -1,1 +1,19 @@
-blog
+<div class="col md-12">
+    <h2>Noticias </h2>
+    que quede en plan esto hijo puta, foto izquierda y derecha titulo contenido cn el boton y si le da a ver mas que se desplace pabajo
+    <img class="asin" src="https://i.gyazo.com/a583862961f6abe319abb3da9fc1b788.png"/>
+</div>
+
+
+    <div *ngFor="let noticia of noticias | async">
+        <div class="col md-12"> 
+            <h3>Titulo: {{ noticia?.titulo }}</h3>
+            <p>Entradilla: {{ noticia?.entradilla }}</p>
+            <div *ngIf="more===noticia.$key">
+                <p>Contenido: {{ noticia?.contenido }}</p>
+            </div>
+            <img src="{{noticia?.photo}}"/>
+            <button *ngIf="more!=noticia.$key" class="btn btn-primary" (click)="more=noticia.$key">Ver mas..</button>
+            <button *ngIf="more===noticia.$key" class="btn btn-primary" (click)="more=''">Ver menos</button>
+        </div>
+    </div>

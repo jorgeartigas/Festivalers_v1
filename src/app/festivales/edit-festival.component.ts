@@ -15,7 +15,7 @@ import { Festival } from './festival';
 export class EditFestivalComponent implements OnInit {
     festival = new Festival ('','','','','','','','','','',[],true,'',Date.now());
     idFestival: string;
-    activeView: string;
+    activeView: string = "";
     editado:boolean = false;
 
     constructor(

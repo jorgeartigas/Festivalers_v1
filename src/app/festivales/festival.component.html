@@ -31,7 +31,7 @@
                 <p class="infoDet">Final: <span class="inf">{{festival?.endDate}}</span></p>
             </div>
             <artistas-festival [idFestival]="idFestival" *ngSwitchCase="'artistsView'"></artistas-festival>
-            <blog-festival *ngSwitchCase="'newsView'"></blog-festival>
+            <blog-festival [idFestival]="idFestival" *ngSwitchCase="'newsView'"></blog-festival>
             <maps *ngSwitchCase="'locationView'" [festival]="festival"></maps>
             <assistants-festival *ngSwitchCase="'assistantsView'" [attendees]="attendees"></assistants-festival>
         </div>

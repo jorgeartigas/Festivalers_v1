@@ -1,14 +1,26 @@
 h2{
+    margin-top:0;
     text-align: center;
 }
-
-.mensaje{
-    border: 1px solid #8c8c8c;
-    background-color: #9c9c9c;
-    color: white;
-    margin-bottom: 5px;
+.conjunto{
+    margin-bottom:5px;
 }
-
+.mensaje{
+    border: 1px white solid;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: black;
+    margin-bottom: 5px;
+    padding:2px;
+}
+hr{
+    margin:0;
+    background-color:black;
+}
+input{
+    margin-top:5px;
+    width: 80%;
+}
 .usuario{
     color: #d9534f;
     font-weight: 700;

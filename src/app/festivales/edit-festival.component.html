@@ -1,9 +1,9 @@
 <div class="container">
-    <form (ngSubmit)="updateFestival()" #addFestivalForm="ngForm" (change)="editado=true">
+    <form (ngSubmit)="updateFestival()" #editFestivalForm="ngForm" (change)="editado=true">
         <div class="row">
             <div class="col-md-6">
                 <h1><input type="text" #name="ngModel" [(ngModel)]="festival.name" name="name" required /></h1>
-                <button type="submit" class="btn btn-success" *ngIf="editado" [disabled]="!addFestivalForm.form.valid" >Guardar</button>
+                <button type="submit" class="btn btn-success" *ngIf="editado" [disabled]="!editFestivalForm.form.valid" >Guardar</button>
                 <span class="btn btn-danger" (click)="cancel()">Cancelar</span>
             </div>
             <div class="col-md-6">
@@ -16,13 +16,13 @@
         <div class="row">
             <div class="col-md-12 navfestivales">
                 <ul>
-                    <li (click)="activateView()" class="menprofile">Descripcion</li>
+                    <li (click)="activateView('')" class="menprofile">Descripcion</li>
                     <li (click)="activateView('addArtistsView')" class="menprofile">Artistas</li>
                     <li (click)="activateView('newsView')" class="menprofile">Noticias</li>
                 </ul>
             </div>
-            <div class="col-md-12 info" [ngSwitch]="activeView">
-                <div *ngSwitchDefault>
+            <div class="col-md-12 info" *ngIf="activeView===''">
+                <div>
                     <label>Estilo</label><input type="text" #style="ngModel" [(ngModel)]="festival.style" name="style" required /><br>
                     <label>Descripcion</label><input type="text" #description="ngModel" [(ngModel)]="festival.description" name="description" required /><br>
                     <label>Pais</label><input type="text" #location="ngModel" [(ngModel)]="festival.location" name="location" required /><br>
@@ -31,11 +31,13 @@
                     <label>Fecha Inicio</label><input type="date" #startDate="ngModel" [(ngModel)]="festival.startDate" name="startDate" required /><br>
                     <label>Fecha final</label><input type="date" #endDate="ngModel" [(ngModel)]="festival.endDate" name="endDate" required /><br>
                 </div>
-                <add-artist [idFestival]="idFestival" *ngSwitchCase="'addArtistsView'"></add-artist>
-                <new-blog *ngSwitchCase="'newsView'"></new-blog>
-                <maps *ngSwitchCase="'locationView'" [festival]="festival"></maps>
-                <assistants-festival *ngSwitchCase="'assistantsView'" [attendees]="attendees"></assistants-festival>
-            </div> 
+            </div>
         </div>
     </form>
+        <div class="row" *ngIf="activeView!=''">
+            <div class="col-md-12 info" [ngSwitch]="activeView">
+                <add-artist [idFestival]="idFestival" *ngSwitchCase="'addArtistsView'"></add-artist>
+                <new-blog [idFestival]="idFestival" *ngSwitchCase="'newsView'"></new-blog>
+            </div> 
+        </div>
 </div>

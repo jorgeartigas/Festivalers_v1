@@ -2,21 +2,24 @@
     <div class="row">
         <div class="col-md-6">
             <span *ngIf="!noticias"> No hay noticias que mostrar</span>
-            <div class="botEdNoti" *ngFor="let noticia of noticias">
-                <img src="{{ noticia.photo }}" class="img-responsive edit"/>
+            <div class="botEdNoti" *ngFor="let noticia of noticias | async">
+                <img src="{{ noticia.photo }}" class="img-responsive"/>
                 <h3>{{noticia.titulo}}</h3>
                 <p> {{noticia.entradilla}}</p>
-                <button class="btn btn-warning" (click)="idNoticia=noticia.$key;noticiaEdit=noticia;editando=true">Editar</button>
+                <button class="btn btn-warning" (click)="idNoticia=noticia.$key;noticiaEdit=noticia;editando=true;publicada=false">Editar</button>
+                <button class="btn btn-danger" (click)="delete(noticia.$key);publicada=false">Borrar</button>
             </div>
         </div>
+        <span class="btn btn-success" *ngIf="publicada" (click)="publicada=false">Tu noticia ha sido actualizada</span>
         <div *ngIf="editando" class="col-md-6">
             <div class="edNoticia">
-            <form (ngSubmit)="updateNew();editando=false;publicada=true" #editNewsForm="ngForm" (change)="editado=true">
-                <label for="noticiaGenUpload"><img for="noticiaGenUpload" src="{{ noticiaEdit?.photo }}" class="img-responsive edit"/></label>
+            <form (ngSubmit)="updateNew()" #editNewsForm="ngForm" (input)="editado=true">
+                <label for="noticiaGenUpload"><img *ngIf="!new" for="noticiaGenUpload" src="{{ noticiaEdit?.photo }}" class="img-responsive edit"/>
+                <img *ngIf="new" for="noticiaGenUpload" src="{{ storageService.downloadURL }}" class="img-responsive edit"/></label>
                 <input type="file" id="noticiaGenUpload" (change)="upload($event)"/><br>
                 <label>Titulo</label><input  type="text" [(ngModel)]="noticiaEdit.titulo" name="titulo" required /><br>
                 <label>Entradilla</label><input type="text" [(ngModel)]="noticiaEdit.entradilla" name="entradilla" required /><br>
-                <label>Contenido</label><input type="text"[(ngModel)]="noticiaEdit.contenido" name="contenido" required /><br>
+                <label>Contenido</label><textarea placeholder="Contenido" cols="50" rows="4" type="text" [(ngModel)]="noticiaEdit.contenido" name="contenido" required ></textarea><br>
                 <button type="submit" [disabled]="!editado || editNewsForm.invalid" class="btn btn-succes">Guardar Cambios</button>
             </form>
             </div>

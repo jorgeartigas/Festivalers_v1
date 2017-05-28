@@ -28,9 +28,10 @@ export class BlogComponent implements OnInit{
     this.noticias = this.af.database.list('FESTIVALERS/noticias/festivales/'+this.idFestival);
   }
   upload(file){
-    if(file)
+    if(file){
       this.storageService.upload(file.target.files[0],2,this.idFestival);
       this.new=true;
+    }
   }
   publish(){
     this.noticia.photo = this.storageService.downloadURL;

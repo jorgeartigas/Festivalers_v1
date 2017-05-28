@@ -17,7 +17,7 @@ export class CreateNewsComponent {
         private router: Router,
         private storageService: StorageService,
     ){}
-upload(file){
+  upload(file){ 
     if(file)
       this.storageService.upload(file.target.files[0],3);
   }

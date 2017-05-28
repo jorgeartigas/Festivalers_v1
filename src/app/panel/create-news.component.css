@@ -36,10 +36,12 @@ button{
     border: 1px solid #8c8c8c;
     border-radius: 5px;
     font-weight: 500;
+    background-color: green;
+    color: white;
 }
 
-button:hover{
-    background-color: green;
+button:disabled{
+    background-color: #8c8c8c;
     color: white;
 }
 

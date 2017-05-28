@@ -1,18 +1,17 @@
-<div class="row">
-    <!-- usar custom clase esta es para probar rapidu -->
-    <div class="col-md-8 navfestivales">
-        <ul>
-            <li (click)="activeView=''">Añadir una noticia</li>
-            <li (click)="activeView='editView';publicada=false">Editar noticias</li> 
-        </ul>
+<div class="container">
+    <div class="row">
+        <!-- usar custom clase esta es para probar rapidu -->
+        <div class="col-md-10 navfestivales">
+            <ul>
+                <li (click)="activeView='';publicada=false;storageService.downloadURL='';editando=false">Añadir una noticia</li>
+                <li (click)="activeView='editView';publicada=false;storageService.downloadURL='';noticia=''">Editar noticias</li> 
+            </ul>
+        </div>
     </div>
-</div>
-
-<div class="row">
     <div [ngSwitch]="activeView">
-        <div class="col md-10" *ngSwitchDefault>
+        <div class="col-md-12" *ngSwitchDefault>
             <h2>Crear Noticia</h2>
-            <span *ngIf="publicada" class="btn btn-success">Tu noticia ha sido publicada</span>
+            <span *ngIf="publicada" class="btn btn-success" (click)="activeView='editView';publicada=false">Tu noticia ha sido publicada</span>
             <form (ngSubmit)="publish()" #addNewsForm="ngForm">
                 <label for="noticiaUpload"><img class="edit" src="{{ storageService.downloadURL }}" /></label>
                 <input type="file" id="noticiaUpload" (change)="upload($event)"/>
@@ -22,15 +21,29 @@
                 <button type="submit" class="" [disabled]="addNewsForm.form.invalid || storageService.done===false">Publicar Noticia</button>
             </form>
         </div>
-        <div class="col md-10" *ngSwitchCase="'editView'">
-            <h2>Editar Noticias </h2>
-            <div *ngFor="let noticia of noticias | async">
-                <div class="col md-12"> 
-                    Titulo: {{ noticia?.titulo }}
-                    Entradilla: {{ noticia?.entradilla }}
-                    Contenido: {{ noticia?.contenido }}ç
-                    <button class="btn btn-warning">Editar</button>
+        <div class="col-md-12" *ngSwitchCase="'editView'">
+            <div class="col-md-6">
+                <h2>Editar Noticias </h2>
+                <div *ngFor="let noticia of noticias | async">
+                    <div class="col-md-12"> 
+                        Titulo: {{ noticia?.titulo }}
+                        Entradilla: {{ noticia?.entradilla }}
+                        Contenido: {{ noticia?.contenido }}ç
+                        <button class="btn btn-warning" (click)="publicada=false;noticiaEdit=noticia;editando=true;idNoticia=noticia.$key">Editar</button>
+                    </div>
                 </div>
+            </div>
+            <span *ngIf="publicada" class="btn btn-success" (click)="publicada=false">Tu noticia se ha actualizado</span>
+            <div *ngIf="editando" class="col-md-6">
+                <form (ngSubmit)="updateNew();editando=false;publicada=true" #editNewsForm="ngForm" (input)="editado=true">
+                <label *ngIf="!new" for="noticiaFestUpload"><img for="noticiaFestUpload" src="{{ noticiaEdit?.photo }}" class="img-responsive edit"/></label>
+                <label *ngIf="new" for="noticiaFestUpload"><img for="noticiaFestUpload" src="{{ storageService.downloadURL }}" class="img-responsive edit"/></label>
+                <input type="file" id="noticiaFestUpload" (change)="upload($event)"/><br>
+                <label>Titulo</label><input type="text" [(ngModel)]="noticiaEdit.titulo" name="titulo" required /><br>
+                <label>Entradilla</label><input type="text" [(ngModel)]="noticiaEdit.entradilla" name="entradilla" required /><br>
+                <label>Contenido</label><input type="text"[(ngModel)]="noticiaEdit.contenido" name="contenido" required /><br>
+                <button type="submit" [disabled]="!editado || editNewsForm.invalid" class="btn btn-succes">Guardar Cambios</button>
+            </form>
             </div>
         </div>
     </div>

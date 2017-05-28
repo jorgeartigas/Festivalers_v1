@@ -7,7 +7,7 @@ import { FestivalService } from '../services/festival.service';
 @Component({
   selector: 'new-blog',
   templateUrl: './new-blog.component.html',
-  styleUrls: ['./festival.component.css']
+  styleUrls: ['./new-blog.component.css']
 })
 export class BlogComponent implements OnInit{
   @Input() idFestival:string;
@@ -15,6 +15,10 @@ export class BlogComponent implements OnInit{
   activeView:string;
   noticias:FirebaseListObservable<any>;
   publicada: boolean = false;
+  idNoticia:string;
+  noticiaEdit: Noticia = new Noticia("","","","",Date.now());
+  editando: boolean = false;
+  new: boolean = false;
     constructor(
       public af: AngularFire,
       private storageService: StorageService,
@@ -26,11 +30,11 @@ export class BlogComponent implements OnInit{
   upload(file){
     if(file)
       this.storageService.upload(file.target.files[0],2,this.idFestival);
+      this.new=true;
   }
   publish(){
     this.noticia.photo = this.storageService.downloadURL;
     this.noticia.published = Date.now();
-    console.log(this.noticia)
     this.af.database.list('FESTIVALERS/noticias/festivales/'+this.idFestival).push(this.noticia).then(
       ()=>{
         this.storageService.downloadURL = "";
@@ -42,5 +46,10 @@ export class BlogComponent implements OnInit{
         this.festivalService.createNotification(this.idFestival);
       }
     )
+  }
+  updateNew(){
+      this.noticiaEdit.photo = this.storageService.downloadURL;
+      this.af.database.object('FESTIVALERS/noticias/festivales/'+this.idFestival+'/'+this.idNoticia).update(this.noticiaEdit).then(
+        ()=> this.storageService.downloadURL="");
   }
 }

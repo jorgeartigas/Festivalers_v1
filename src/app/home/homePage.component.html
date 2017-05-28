@@ -6,7 +6,7 @@
         <div class="col-md-4" *ngFor="let noticia of noticias">
             <img routerLink="/news/{{noticia.$key}}" src="{{ noticia.photo }}" class="img-responsive">
             <h3 routerLink="/news/{{noticia.$key}}">{{ noticia.titulo }}</h3>
-            <p>{{ noticia.published }}</p>
+            <p>{{ noticia.published | date:'medium'}}</p>
             <p>{{ noticia.entradilla}}</p>
             <button routerLink="/news/{{noticia.$key}}">Ver mas..</button>            
         </div>

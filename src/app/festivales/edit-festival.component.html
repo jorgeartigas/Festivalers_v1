@@ -7,9 +7,7 @@
                 <span class="btn btn-danger" (click)="cancel()">Cancelar</span>
             </div>
             <div class="col-md-6">
-            si clickas la foto tmb va 
                 <label for="fileUpload"><img for="fileUpload" id="mainPhoto" src="{{ festival?.mainPhoto }}" class="img-responsive edit"/></label>
-                <label for="fileUpload" class="btn btn-primary">Change Photo</label>
                 <input type="file" id="fileUpload" (change)="upload($event)"/><br>
             </div>
         </div>

@@ -60,6 +60,11 @@ export class UserService {
     this.topTracks = 'https://api.spotify.com/v1/artists/'+artistId+'/top-tracks?country=ES';
     return this.http.get(this.topTracks).map(res => res.json());
   }
+  getFestivals(){
+    this.af.database.list('FESTIVALERS/festivales').first().subscribe(results => {
+        this.results = results;
+    })
+  }
   searchFestival(style?,month?,location?):any{
     this.af.database.list('FESTIVALERS/festivales').first().subscribe(results => {
         this.results = results;

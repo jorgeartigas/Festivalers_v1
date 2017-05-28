@@ -7,10 +7,16 @@
                 </div>
                 <div class="col-md-10">
                     <div class="col-md-6">
-                        <input placeholder="Estilo" type="text" [(ngModel)]="newFestival.style" name="style" required />
+                        <select [(ngModel)]="newFestival.style" name="newFestival.style">
+                            <option value="" disabled selected> Estilo musical del festival </option>
+                            <option *ngFor="let style of styles | async" value="{{style.style}}">{{ style.style}}</option>
+                        </select>
                     </div>
                     <div class="col-md-6" >
-                        <input placeholder="Pais" type="text" [(ngModel)]="newFestival.location" name="location" required />
+                        <select [(ngModel)]="newFestival.location" name="newFestival.location">
+                            <option value="" disabled selected> Pais donde se localiza </option>
+                            <option *ngFor="let country of countries | async" value="{{country.name}}">{{ country.name }}</option>
+                        </select> 
                     </div>
                     <div class="col-md-12">
                         <input placeholder="Descripcion" type="text" [(ngModel)]="newFestival.description" name="description" required />
@@ -19,7 +25,10 @@
                         <input type="text" placeholder="Dirección" [(ngModel)]="newFestival.address" name="address" required />
                     </div>
                     <div class="col-md-6">
-                        <input type="text" placeholder="mes" [(ngModel)]="newFestival.month" name="month" required />
+                        <select [(ngModel)]="newFestival.month" name="newFestival.month">
+                            <option value="" disable selected> Mes </option>
+                            <option *ngFor="let month of months | async" value="{{month.mes}}">{{ month.mes}}</option>
+                        </select>
                     </div>
                     <div class="col-md-6">
                         <input type="date" [(ngModel)]="newFestival.startDate" name="startDate" required />

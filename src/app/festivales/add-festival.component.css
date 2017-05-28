@@ -27,13 +27,14 @@ input, button, select{
     border-bottom: 1px solid #3c3c3c;
     text-align: center;
     color: #3c3c3c;
+    margin-top: 5px;
 }
 
 button.guardFestival {
     background-color: #dd2c35;
     color: white;
     font-size: 700;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .guardFestival[disabled]{

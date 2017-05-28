@@ -80,6 +80,18 @@ h1{
    height: 150px; 
    width: 170px;
    margin-top: 10px;
+   border-radius: 5px;
+}
+
+.artistbox{
+   border: 1px solid #9099A2;
+   background-color: #e0e0e0;
+   margin-left: 5px;
+   height: 150px; 
+   width: 190px;
+   margin-top: 10px;
+   border-radius: 5px;
+   text-align: center; 
 }
 
 .show-assistants{
@@ -96,6 +108,7 @@ h1{
 }
 .cursor{
     cursor: pointer;
+    text-align: center;
 }
 
 .social{

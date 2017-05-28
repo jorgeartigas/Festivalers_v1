@@ -4,8 +4,8 @@
         <div *ngIf="headLiners">
             <div *ngFor="let artist of headLiners">
                 <div class="col-md-4">
-                    <div class="well">
-                        <span class="cursor" routerLink="/artist/{{artist.$key}}">{{ artist.name }}</span>
+                    <div class="artistbox">
+                        <p><span class="cursor" routerLink="/artist/{{artist.$key}}">{{ artist.name }}</span></p>
                         <img routerLink="/artist/{{artist.$key}}" class="img-artist" src="{{artist.photo}}"/>
                     </div>
                 </div>
@@ -20,8 +20,8 @@
         <div *ngIf="general">
             <div *ngFor="let artist of general">
                 <div class="col-md-4">
-                    <div class="well">
-                        <span class="cursor" routerLink="/artist/{{artist.$key}}">{{ artist.name }}</span>
+                    <div class="artistboxt">
+                        <p><span class="cursor" routerLink="/artist/{{artist.$key}}">{{ artist.name }}</span></p>
                         <img routerLink="/artist/{{artist.$key}}" class="img-artist" src="{{artist.photo}}"/>
                     </div>
                 </div>

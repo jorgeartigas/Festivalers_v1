@@ -1,7 +1,7 @@
 <div [ngStyle]="getBackground()">
     <div id="addFestival">
         <form (ngSubmit)="addFestival()" #addFestivalForm="ngForm" novalidate>
-            <input placeholder="Nombre" type="text" [(ngModel)]="newFestival.name" name="name" required />
+            <input placeholder="Nombre" type="text" [(ngModel)]="newFestival.name" name="name" class="innombre" required /><br>
                 <select [(ngModel)]="newFestival.style" name="newFestival.style"><br>
                     <option value="" disabled selected> Estilo musical del festival </option>
                     <option *ngFor="let style of styles | async" value="{{style.style}}">{{ style.style}}</option>
@@ -21,7 +21,8 @@
             <input type="url" placeholder="facebook" [(ngModel)]="newFestival.facebook" name="facebook"/>
             <input type="url" placeholder="youtube" [(ngModel)]="newFestival.youtube" name="youtube"/>
             <input type="url" placeholder="instagram" [(ngModel)]="newFestival.instagram" name="instagram"/>
-            <input placeholder="Descripcion" type="textarea" rows="4" cols="50" [(ngModel)]="newFestival.description" name="description" required /><br>
+            <textarea placeholder="Descripcion" rows="4" cols="50" [(ngModel)]="newFestival.description" name="description" required >
+            </textarea><br>
             <button type="submit" class=" btn guardFestival" [disabled]="!addFestivalForm.form.valid">Enviar Solicitud</button>
         </form>
     </div>

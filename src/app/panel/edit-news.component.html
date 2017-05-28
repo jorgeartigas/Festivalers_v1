@@ -1,18 +1,23 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-6">
             <span *ngIf="!noticias"> No hay noticias que mostrar</span>
             <div *ngFor="let noticia of noticias">
-                {{noticia.titulo}}
+                <img src="{{ noticia.photo }}" class="img-responsive edit"/>
+                <h3>{{noticia.titulo}}</h3>
+                <p> {{noticia.entradilla}}</p>
+                <button class="btn btn-warning" (click)="idNoticia=noticia.$key;noticiaEdit=noticia;editando=true">Editar</button>
             </div>
         </div>
-        <div *ngIf="editando" class="col-md-10">
-            <label for="noticiaGenUpload"><img for="noticiaGenUpload" src="{{ noticia?.photo }}" class="img-responsive edit"/></label>
-            <input type="file" id="noticiaGenUpload" (change)="upload($event)"/><br>
-            <img src="{{ noticia.photo }}"/>
-            <label>Titulo</label><input type="text" [(ngModel)]="noticia.titulo" name="titulo" required /><br>
-            <label>Entradilla</label><input type="text" [(ngModel)]="noticia.entradilla" name="entradilla" required /><br>
-            <label>Contenido</label><input type="text" [(ngModel)]="noticia.contenido" name="contenido" required /><br>
+        <div *ngIf="editando" class="col-md-6">
+            <form (ngSubmit)="updateNew();editando=false;publicada=true" #editNewsForm="ngForm" (change)="editado=true">
+                <label for="noticiaGenUpload"><img for="noticiaGenUpload" src="{{ noticiaEdit?.photo }}" class="img-responsive edit"/></label>
+                <input type="file" id="noticiaGenUpload" (change)="upload($event)"/><br>
+                <label>Titulo</label><input type="text" [(ngModel)]="noticiaEdit.titulo" name="titulo" required /><br>
+                <label>Entradilla</label><input type="text" [(ngModel)]="noticiaEdit.entradilla" name="entradilla" required /><br>
+                <label>Contenido</label><input type="text"[(ngModel)]="noticiaEdit.contenido" name="contenido" required /><br>
+                <button type="submit" [disabled]="!editado || editNewsForm.invalid" class="btn btn-succes">Guardar Cambios</button>
+            </form>
         </div>
     </div>
 </div>

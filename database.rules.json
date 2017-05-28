@@ -44,6 +44,9 @@
       },
       "UserNotifications": {
         ".write" : "auth.uid != null"
+      },
+      "camposBD":{
+        ".write": "auth.uid != null"
       }
     }
   }

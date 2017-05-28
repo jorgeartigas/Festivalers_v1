@@ -1,47 +1,49 @@
 <div [ngStyle]="getBackground()">
-    <div class="row">
-        <form (ngSubmit)="addFestival()" #addFestivalForm="ngForm" novalidate>
-            <div class="col-md-6">
-                <input placeholder="Nombre" type="text" [(ngModel)]="newFestival.name" name="name" required />
-            </div>
-            <div class="col-md-10">
+    <div class="container">
+        <div class="row">
+            <form (ngSubmit)="addFestival()" #addFestivalForm="ngForm" novalidate>
                 <div class="col-md-6">
-                    <input placeholder="Estilo" type="text" [(ngModel)]="newFestival.style" name="style" required />
+                    <input placeholder="Nombre" type="text" [(ngModel)]="newFestival.name" name="name" required />
                 </div>
-                <div class="col-md-6" >
-                    <input placeholder="Pais" type="text" [(ngModel)]="newFestival.location" name="location" required />
-                </div>
-                <div class="col-md-12">
-                    <input placeholder="Descripcion" type="text" [(ngModel)]="newFestival.description" name="description" required />
-                </div>
-                <div class="col-md-6">
-                    <input type="text" placeholder="Dirección" [(ngModel)]="newFestival.address" name="address" required />
-                </div>
-                <div class="col-md-6">
-                    <input type="text" placeholder="mes" [(ngModel)]="newFestival.month" name="month" required />
-                </div>
-                <div class="col-md-6">
-                    <input type="date" [(ngModel)]="newFestival.startDate" name="startDate" required />
-                </div>
-                <div class="col-md-6">
-                    <input type="date" placeholder="Fecha de finalización" [(ngModel)]="newFestival.endDate" name="endDate" required />
-                </div>
-                <div class="col-md-6">
-                    <input type="url" placeholder="www.yourfestival.com" [(ngModel)]="newFestival.webpage" name="webpage"/>
-                </div>
-                <div class="col-md-6">
-                    <input type="url" placeholder="facebook" [(ngModel)]="newFestival.facebook" name="facebook"/>
-                </div>
+                <div class="col-md-10">
                     <div class="col-md-6">
-                    <input type="url" placeholder="youtube" [(ngModel)]="newFestival.youtube" name="youtube"/>
+                        <input placeholder="Estilo" type="text" [(ngModel)]="newFestival.style" name="style" required />
+                    </div>
+                    <div class="col-md-6" >
+                        <input placeholder="Pais" type="text" [(ngModel)]="newFestival.location" name="location" required />
+                    </div>
+                    <div class="col-md-12">
+                        <input placeholder="Descripcion" type="text" [(ngModel)]="newFestival.description" name="description" required />
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" placeholder="Dirección" [(ngModel)]="newFestival.address" name="address" required />
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" placeholder="mes" [(ngModel)]="newFestival.month" name="month" required />
+                    </div>
+                    <div class="col-md-6">
+                        <input type="date" [(ngModel)]="newFestival.startDate" name="startDate" required />
+                    </div>
+                    <div class="col-md-6">
+                        <input type="date" placeholder="Fecha de finalización" [(ngModel)]="newFestival.endDate" name="endDate" required />
+                    </div>
+                    <div class="col-md-6">
+                        <input type="url" placeholder="www.yourfestival.com" [(ngModel)]="newFestival.webpage" name="webpage"/>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="url" placeholder="facebook" [(ngModel)]="newFestival.facebook" name="facebook"/>
+                    </div>
+                        <div class="col-md-6">
+                        <input type="url" placeholder="youtube" [(ngModel)]="newFestival.youtube" name="youtube"/>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="url" placeholder="instagram" [(ngModel)]="newFestival.instagram" name="instagram"/>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class=" btn guardFestival" [disabled]="!addFestivalForm.form.valid">Enviar Solicitud</button>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <input type="url" placeholder="instagram" [(ngModel)]="newFestival.instagram" name="instagram"/>
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class=" btn guardFestival" [disabled]="!addFestivalForm.form.valid">Enviar Solicitud</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

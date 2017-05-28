@@ -1,15 +1,35 @@
-  <div class="search">
-      <p>Encuentra tu festival: </p>
-      <form (ngSubmit)="search()" #searchFestivalForm="ngForm">
-          <input type="text" class="input-search" name="style" [(ngModel)]="style" placeholder=" - ">
-          <input type="text" class="input-search" name="month" [(ngModel)]="month" placeholder=" - ">
-          <input type="text" class="input-search" name="location" [(ngModel)]="location"placeholder=" - ">
-          <button type="submit">Busca</button>
-      </form>
-  </div>
-
-<div *ngIf="userService.results">
-    <div *ngFor="let result of userService.results">
-      {{ result.name }}
+<div class="container min-height">
+    <div class="row">
+        <div class="col-md-12 search">
+          <h2>Encuentra tu festival</h2>
+            <form (ngSubmit)="search()" #searchFestivalForm="ngForm">
+                <select [(ngModel)]="style" name="style">
+                    <option value="" selected> - </option>
+                    <option *ngFor="let style of styles | async" value="{{style.style}}">{{ style.style}}</option>
+                </select> 
+                <select [(ngModel)]="month" name="month">
+                    <option value="" selected> - </option>
+                    <option *ngFor="let month of months | async" value="{{month.mes}}">{{ month.mes}}</option>
+                </select>
+                <select [(ngModel)]="location" name="location">
+                    <option value="" selected> - </option>
+                    <option *ngFor="let country of countries | async" value="{{country.name}}">{{ country.name }}</option>
+                </select> 
+                <button type="submit">Busca</button>
+            </form>
+        </div>
+        
+        <div *ngIf="userService.results">
+          <h2>Festivales</h2>
+            <div class="col-md-12">
+                <div *ngFor="let result of userService.results">
+                    <div class="col-md-4 well festivalbox">
+                        <h3>{{ result.name }}</h3>
+                        <p>{{ result.description }}</p>
+                        <img src="{{result.mainPhoto}}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

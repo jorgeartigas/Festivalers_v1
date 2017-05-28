@@ -1,9 +1,9 @@
-<div class="hijoProfile">
+<div class="ownFestProfile">
     <h2>EDITAR FESTIVALES</h2>
     <div class="row">
         <div *ngFor="let ownFestival of ownFestivals | async">
             <div class="col-md-4">
-                <div class="well festivalbox">
+                <div class="festivalBox">
                     <h4 routerLink="/edit-festival/{{ ownFestival.$key }}">{{ ownFestival.name }}</h4>
                     <div class="img-festival">
                         <img *ngIf="ownFestival.mainPhoto" routerLink="/edit-festival/{{ ownFestival.$key }}" src="{{ ownFestival.mainPhoto }}"/>

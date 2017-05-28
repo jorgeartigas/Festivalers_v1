@@ -53,11 +53,24 @@ h4{
     background-color: #F2F2F2;
     border: 1px solid #8c8c8c;
     margin-left: 10px;
-    height: 145px; 
-    width: 160px;
+    height: 150px; 
+    width: 170px;
+    border-radius: 5px;
+}
+
+.festivalBox{
+    background-color: #F2F2F2;
+    border: 1px solid #8c8c8c;
+    margin-left: 5px;
+    height: 150px; 
+    width: 170px;
     border-radius: 5px;
 }
 
 .show-artist{
+    text-align: center;
+}
+
+.ownFestProfile{
     text-align: center;
 }

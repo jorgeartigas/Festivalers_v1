@@ -10,7 +10,7 @@ import { Festival } from './festival';
   styleUrls: ['./add-festival.component.css']
 })
 export class AddFestivalComponent {
-    newFestival = new Festival ('','','','','','','','','','',[],true,'',Date.now());
+    newFestival = new Festival ('','','','','','','','','','',[],'','','','',true,'',Date.now());
     festivales: FirebaseListObservable<any>;
     constructor(
         private af: AngularFire,

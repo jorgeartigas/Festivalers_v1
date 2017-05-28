@@ -5,6 +5,12 @@
             <button class="btn btn-succes" *ngIf="userData.isLoggedIn && !going" (click)="addAttendee()">Asistiré</button>
             <button class="btn btn-danger" *ngIf="userData.isLoggedIn && going === true;" (click)="removeAttendee()">Dejar de asistir</button>
             <button class="btn btn-warning" *ngIf="userData.isLoggedIn && owner === true" routerLink="/edit-festival/{{idFestival}}">Editar Festival</button>
+            <ul class="social">
+                <li *ngIf="festival?.webpage"><a href="{{ festival.webpage }}"><img src="../../assets/www.png"/></a></li>
+                <li *ngIf="festival?.facebook"><a href="{{ festival.facebook }}"><img src="../../assets/facebook.png"/></a></li>
+                <li *ngIf="festival?.youtube"><a href="{{ festival.youtube }}"><img src="../../assets/youtube.png"/></a></li>
+                <li *ngIf="festival?.instagram"><a href="{{ festival.instagram }}"><img src="../../assets/instagram.png"/></a></li>
+            </ul>
         </div>
         <div class="col-md-6">
             <img id="mainPhoto" src="{{ festival?.mainPhoto }}" class="img-responsive"/>

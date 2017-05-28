@@ -97,6 +97,15 @@ h1{
 .cursor{
     cursor: pointer;
 }
+
+.social{
+    list-style: none;
+}
+.social li{
+    padding-right: 10px;
+    display: inline-block;
+}
+
 .asin{
     width: 500px;
 }

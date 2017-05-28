@@ -1,19 +1,13 @@
-#Festivalbox{
-    margin: 0 auto;
-    text-align: center;
-    width: 300px;
-    height: 265px;
-    color: #3c3c3c;
-    display: inline;
-    position: relative;
-    top: 130px;
-}
-
 h1{
     color: #3c3c3c;
     text-align: center;
 }
-
+.center{
+    margin:0 auto;
+}
+input{
+    width: 100%;
+}
 input, button{
     border: 0;
     border-radius: 2px;
@@ -22,7 +16,6 @@ input, button{
     border-bottom: 1px solid #3c3c3c;
     text-align: center;
     color: #3c3c3c;
-    margin: 5px;
 }
 
 button.guardFestival {

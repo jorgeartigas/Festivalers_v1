@@ -13,7 +13,7 @@ import { Festival } from './festival';
   styleUrls: ['./festival.component.css']
 })
 export class EditFestivalComponent implements OnInit {
-    festival = new Festival ('','','','','','','','','','',[],true,'',Date.now());
+    festival = new Festival ('','','','','','','','','','',[],'','','','',true,'',Date.now());
     idFestival: string;
     activeView: string = "";
     editado:boolean = false;

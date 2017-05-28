@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12 search">
           <h2>Encuentra tu festival</h2>
-            <form (ngSubmit)="search()" #searchFestivalForm="ngForm">
+            <form (ngSubmit)="search()" #searchFestivalForm="ngForm" (change)="search()">
                 <select [(ngModel)]="style" name="style">
                     <option value="" selected> - </option>
                     <option *ngFor="let style of styles | async" value="{{style.style}}">{{ style.style}}</option>
@@ -15,7 +15,6 @@
                     <option value="" selected> - </option>
                     <option *ngFor="let country of countries | async" value="{{country.name}}">{{ country.name }}</option>
                 </select> 
-                <button type="submit">Busca</button>
             </form>
         </div>
         

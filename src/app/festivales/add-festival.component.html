@@ -18,9 +18,6 @@
                             <option *ngFor="let country of countries | async" value="{{country.name}}">{{ country.name }}</option>
                         </select> 
                     </div>
-                    <div class="col-md-12">
-                        <input placeholder="Descripcion" type="text" [(ngModel)]="newFestival.description" name="description" required />
-                    </div>
                     <div class="col-md-6">
                         <input type="text" placeholder="Dirección" [(ngModel)]="newFestival.address" name="address" required />
                     </div>
@@ -48,6 +45,10 @@
                     <div class="col-md-6">
                         <input type="url" placeholder="instagram" [(ngModel)]="newFestival.instagram" name="instagram"/>
                     </div>
+                    <div class="col-md-12">
+                        <input placeholder="Descripcion" type="textarea" rows="4" cols="50" [(ngModel)]="newFestival.description" name="description" required />
+                    </div>
+
                     <div class="col-md-4">
                         <button type="submit" class=" btn guardFestival" [disabled]="!addFestivalForm.form.valid">Enviar Solicitud</button>
                     </div>

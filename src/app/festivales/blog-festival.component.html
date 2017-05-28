@@ -1,7 +1,7 @@
-<div class="row">
     <div *ngFor="let noticia of noticias | async">
-    <div class="col-md-3 img-responsive imgNotice">
-        <img src="{{noticia?.photo}}"/>
+    <div class="col-md-12">
+    <div class="col-md-3">
+        <img class="imgNotice" src="{{noticia?.photo}}" height="150"/>
     </div>
     <div class="col-md-9">
             <h3>Titulo: {{ noticia?.titulo }}</h3>
@@ -14,4 +14,4 @@
             <button *ngIf="more===noticia.$key" class="btn btn-primary" (click)="more=''">Ver menos</button>
     </div>
     </div>
-</div>
+    </div>

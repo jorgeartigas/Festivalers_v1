@@ -27,5 +27,6 @@ export class SearchFestivalComponent implements OnInit{
   }
   search(){
     this.userService.searchFestival(this.style,this.month,this.location);
+    console.log(this.userService.results.length)
   }
 }

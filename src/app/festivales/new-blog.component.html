@@ -30,6 +30,7 @@
                         Entradilla: {{ noticia?.entradilla }}
                         Contenido: {{ noticia?.contenido }}ç
                         <button class="btn btn-warning" (click)="publicada=false;noticiaEdit=noticia;editando=true;idNoticia=noticia.$key">Editar</button>
+                        <button class="btn btn-danger" (click)="publicada=false;delete(noticia.$key)">Borrar</button>
                     </div>
                 </div>
             </div>

@@ -40,6 +40,9 @@ export class BlogComponent implements OnInit{
     this.noticia.titulo ='';
     this.noticia.published ='';
   }
+  delete(id){
+    this.af.database.object('FESTIVALERS/noticias/festivales/'+this.idFestival+'/'+id).remove();
+  }
   publish(){
     this.noticia.photo = this.storageService.downloadURL;
     this.noticia.published = Date.now();

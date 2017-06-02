@@ -14,12 +14,13 @@ Obrim un terminal i executem la comanda, aquesta ens instal·lara el `command li
 npm install -g @angular/cli
 ```
 [<img src="https://avatars0.githubusercontent.com/u/139426?v=3&s=400" alt="VS Code" width="50" height="50">](https://cli.angular.io)   
-Per a crear un nou projecte, un cop instal·lat `angular cli`, anem al directori destijat i executem
+Per a crear un nou projecte, un cop instal·lat `angular cli`, anem al directori destijat i executem.
+En el nostre cas no cal fer `ng new`, cloneu el projecte de github a una carpeta i aneu al següent pas
 ```
 ng new PROJECT NAME
 ```
 Això ens creara tota l'estructura de carpetes del nostre projecte i una pagina amb un titol de mostra.
-En el nostre cas no cal fer `ng new`, cloneu el projecte de github a una carpeta i aneu al següent pas
+
 
 ## VS Code
 Per a obrir/editar el nostre projecte, instal·lem visual studio code   

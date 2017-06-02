@@ -60,4 +60,15 @@ Un cop creada aquesta carpeta, com la configuració del hosting/base de dades ja
 # Firebase-tools ha estat instal·lat amb npm, ja que era una dependència del projecte
 firebase deploy
 ```
-## FIREBASE HOSTING
+## FIREBASE HOSTING / REAL TIME DATABASE EXPLANATION
+#### Creació del compte a firebase
+Podem fer login amb qualsevol correu de google  
+[<img src="https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png" alt="VS Code" width="50" height="50">](https://console.firebase.google.com/)  
+Click on afegir un projecte i li donem el nom que volguem + escollir la regió, uns segons després ja tindrem firebase llest per a treballar... 
+Hauriem d'anar al nostre projecte, obrir el terminal i executar aquesta comanda
+```bash
+# En el nostre cas ho tenim instal·lat perque formen part de les dependències del nostre projecte, omitim aquest pas
+npm install angularfire2 firebase --save
+```
+
+

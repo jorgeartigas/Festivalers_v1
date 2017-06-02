@@ -60,7 +60,7 @@ ng serve
 #### Per a fer un build "final" i poder desplegar primer hem de parar l'execució del `ng serve` amb `Ctrl+C` i confirmant que volem parar l'execució, ara ja podrem executar noves comandes
 
 
-## FIREBASE HOSTING / REAL TIME DATABASE EXPLANATION
+## FIREBASE HOSTING EXPLANATION
 #### Creació del compte a firebase
 Podem fer login amb qualsevol correu de google  
 [<img src="https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png" alt="VS Code" width="50" height="50">](https://console.firebase.google.com/)  
@@ -73,18 +73,16 @@ Haurem de fer login amb les credencials de google (les mateixes amb les que hem 
 ```bash
 firebase login
 ```
-##### Si feu firebase init amb el nostre projecte, haureu d'eliminar primer l'arxiu `.firebasesrc`
+##### Si feu firebase init amb el nostre projecte, haureu d'eliminar primer l'arxiu `.firebasesrc`, ja que es creu que ja està configurat.
+
 A continuació initcialitzem el nostre projecte com un projecte de firebase, i ens preguntara quines funcionalitats volem.
 Escollim firebase realtime database i firebase hosting
 ```bash
 firebase init
 ```
 Ens preguntara a quin projecte volem desplegar la nostra aplicacio (a console.firebase.google.com) podem tenir més d'un projecte i hosting, cadascún amb la seva id... ens desplegarà l'aplicació en el hosting del projecte que li diguem.  
-També que especifiquem quina serà la carpeta per defecte que es pujarà (public).  
+També que especifiquem quina serà la carpeta per defecte que es pujarà, li diem que volem que sigui `dist` 
 Ens preguntarà si volem que la nostre pàgina sigui una single-page app (en el nostre cas, sí)  
-
-
-
 
 ### PRODUCTION BUILD
 Per tal de poder pujar la nostra aplicació al servidor de firebase, hem de fer una build en mode producció que ens crearà la carpeta amb els arxius comprimits necessaris per a que funcioni.  
@@ -97,5 +95,10 @@ firebase deploy
 ```
 
 I ens tornara la url de la consola del projecte i la del projecte desplegat, per a que la poguem visitar
+
+## FIREBASE REAL TIME DATABASE EXPLANATION
+
+#### En aquest punt de la guia d'instal·lació teniu el nostre projecte desplegat en el vostre propi hosting de firebase.  
+##### Pero esteu utilitzant la nostre base de dades, per poder utilitzar la vostre, només heu de canviar les dades al fitxer de configuració següent
 
 

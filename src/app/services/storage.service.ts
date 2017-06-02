@@ -64,10 +64,8 @@ uploadTask.on('state_changed', function(snapshot){
     // Handle successful uploads on complete
     if(value===0){
         that.userService.changeProfilePhoto(uploadTask.snapshot.downloadURL);
-        console.log("profile");
     }else if(value===1){
         that.festivalService.uploadMainPhoto(idFestival,uploadTask.snapshot.downloadURL);
-        console.log("Mainfestival");
     }else {
         that.downloadURL = uploadTask.snapshot.downloadURL;
     }

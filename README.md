@@ -8,3 +8,7 @@ Jorge Artigas i David Montero
 ### Estat final del projecte
 
 Ens sap greu comunicar que Festivalers no esta complet al 100%, actualment es troba a un 70 - 80% del seu desenvolupament tota, hi ha interació entre usuaris, gestió per administradors, busqueda d'artistes i festivals, noticies, pero falta edicio i millora de css en algunas seccions del web, galeria d'imatges per usuaris, mapa interactiu amb tots els festivals, integració amb reserves d'hotels i vols per poguer asistir al festival.
+
+
+### Guia d'instal·lació
+[Accès a la guia d'instal·lació](https://github.com/jorgeartigas/Festivalers_v1/blob/master/INSTALL.md)

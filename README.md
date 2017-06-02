@@ -1,28 +1,10 @@
-# Festivalers
+# DESCRIPCIÓ DEL PROYECTE
+Festivalers es una eina social interactiva, per la gestió d'esdeveniments(Festivals musicals) arran del mon, una de les principals caracteristiques de Festivalers es la seva part social on l'usuari pot indicar la seva asistencia a l'esdeveniment, on pot parlar mitjançant un xat amb altres usuaris dintre de cada festival de tal forma que les conversacions son independents per cada festival. A més altres usuaris poden visualitzar les preferencies musicals i les asistencies d'altres usuaris.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+## Integrants del grup
 
-## Development server
+Jorge Artigas i David Montero
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Estat final del projecte
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Ens sap greu comunicar que Festivalers no esta complet al 100%, actualment es troba a un 70 - 80% del seu desenvolupament tota, hi ha interació entre usuaris, gestió per administradors, busqueda d'artistes i festivals, noticies, pero falta edicio i millora de css en algunas seccions del web, galeria d'imatges per usuaris, mapa interactiu amb tots els festivals, integració amb reserves d'hotels i vols per poguer asistir al festival.

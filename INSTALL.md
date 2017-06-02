@@ -26,7 +26,7 @@ Això ens creara tota l'estructura de carpetes del nostre projecte i una pagina 
 Per a obrir/editar el nostre projecte, instal·lem visual studio code   
 [<img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/master/logo.ico" alt="VS Code" width="50" height="50">](https://code.visualstudio.com/)
 
-Un cop instal·lat obrim l'aplicació
+Un cop instal·lat obrim l'aplicació  
 Per tal de facilitar el treball i millores visuals, hem instal·las aquestes extension.
 Suggereixen codi a mesure que vas escribint, i et faciliten una breu explicació dels parametres que ha de rebre la funció que estas editant, afegeixen icones als arxius per a diferenciar de quin tipus son més ràpidament.   
    

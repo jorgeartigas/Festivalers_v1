@@ -58,15 +58,8 @@ Un cop finalitzi l'instal·lació dels paquets, prodecim amb aquesta comanda, qu
 ng serve
 ```
 #### Per a fer un build "final" i poder desplegar primer hem de parar l'execució del `ng serve` amb `Ctrl+C` i confirmant que volem parar l'execució, ara ja podrem executar noves comandes
-```bash
-#Aquesta comanda ens creara una carpeta /dist amb els fitxers necessaris i comprimits de la nostra aplicació
-ng build --prod
-```
-Un cop creada aquesta carpeta, com la configuració del hosting/base de dades ja estan introduides.. només hem de fer un:
-```bash
-# Firebase-tools ha estat instal·lat amb npm, ja que era una dependència del projecte
-firebase deploy
-```
+
+
 ## FIREBASE HOSTING / REAL TIME DATABASE EXPLANATION
 #### Creació del compte a firebase
 Podem fer login amb qualsevol correu de google  
@@ -80,6 +73,7 @@ Haurem de fer login amb les credencials de google (les mateixes amb les que hem 
 ```bash
 firebase login
 ```
+##### Si feu firebase init amb el nostre projecte, haureu d'eliminar primer l'arxiu `.firebasesrc`
 A continuació initcialitzem el nostre projecte com un projecte de firebase, i ens preguntara quines funcionalitats volem.
 Escollim firebase realtime database i firebase hosting
 ```bash
@@ -89,8 +83,7 @@ Ens preguntara a quin projecte volem desplegar la nostra aplicacio (a console.fi
 També que especifiquem quina serà la carpeta per defecte que es pujarà (public).  
 Ens preguntarà si volem que la nostre pàgina sigui una single-page app (en el nostre cas, sí)  
 
-##### Si feu firebase init amb el nostre projecte, com ja conté un arxiu especificant la id del projecte, haureu de cambiar-ho pel vostre, podeu trobar la id del projecte a la consola de firebase 
-<img src="https://i.gyazo.com/2236a9db87bbd5c3536d967894a0a83a.png" alt="VS Code" width="700" height="250">
+
 
 
 ### PRODUCTION BUILD

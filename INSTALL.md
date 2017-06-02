@@ -102,8 +102,8 @@ I ens tornara la url de la consola del projecte i la del projecte desplegat, per
 ##### Pero esteu utilitzant la nostre base de dades, per poder utilitzar la vostre, només heu de canviar les dades al fitxer de configuració següent
 
 Busqueu la configuració de firebase (esta comentada amb la seguent linea) `// CONNECTION DATA TO FIREBASE`   
-les dades es troben al següent fitxer: `src/app/app.module.ts`
-Heu de reemplaçar-les per les vostres que les podeu trobar a la consola de firebase del vostre projecte
+les dades es troben al següent fitxer: `src/app/app.module.ts`   
+Heu de reemplaçar-les per les vostres que les podeu trobar a la consola de firebase del vostre projecte   
 <img src="https://i.gyazo.com/66251ecfd16846c2a03df67bdd7037eb.png" width="700" height="250">
 
 <img src="https://i.gyazo.com/72f5a6b3bbe813d34ec0694bafbc4f6e.png" width="700" height="350">

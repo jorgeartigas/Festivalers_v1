@@ -63,7 +63,7 @@ ng serve
 ## FIREBASE HOSTING EXPLANATION
 #### Creació del compte a firebase
 Podem fer login amb qualsevol correu de google  
-[<img src="https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png" alt="VS Code" width="50" height="50">](https://console.firebase.google.com/)  
+[<img src="https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png" width="50" height="50">](https://console.firebase.google.com/)  
 Click on afegir un projecte i li donem el nom que volguem + escollir la regió, uns segons després ja tindrem firebase llest per a treballar... 
 Hauriem d'anar al nostre projecte, obrir el terminal i executar aquesta comanda per a instal·lar el CLI de firebase
 ```bash
@@ -100,5 +100,12 @@ I ens tornara la url de la consola del projecte i la del projecte desplegat, per
 
 #### En aquest punt de la guia d'instal·lació teniu el nostre projecte desplegat en el vostre propi hosting de firebase.  
 ##### Pero esteu utilitzant la nostre base de dades, per poder utilitzar la vostre, només heu de canviar les dades al fitxer de configuració següent
+
+Busqueu la configuració de firebase (esta comentada amb la seguent linea) `// CONNECTION DATA TO FIREBASE`
+les dades es troben al següent fitxer: `src/app/app.module.ts`
+Heu de reemplaçar-les per les vostres que les podeu trobar a la consola de firebase del vostre projecte
+<img src="https://i.gyazo.com/66251ecfd16846c2a03df67bdd7037eb.png" width="700" height="250">
+
+<img src="https://i.gyazo.com/72f5a6b3bbe813d34ec0694bafbc4f6e.png" width="700" height="250">
 
 

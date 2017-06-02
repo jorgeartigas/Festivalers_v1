@@ -76,7 +76,7 @@ Haurem de fer login amb les credencials de google per tal d'utilitzar les funcio
 firebase login
 ```
 A continuació initcialitzem el nostre projecte com un projecte de firebase, i ens preguntara quines funcionalitats volem.
-Escollim firebase realtime database i firebase hosting (funcions no utilitzem)
+Escollim firebase realtime database i firebase hosting
 ```bash
 firebase init
 ```

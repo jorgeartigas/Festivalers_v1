@@ -106,6 +106,6 @@ les dades es troben al següent fitxer: `src/app/app.module.ts`
 Heu de reemplaçar-les per les vostres que les podeu trobar a la consola de firebase del vostre projecte
 <img src="https://i.gyazo.com/66251ecfd16846c2a03df67bdd7037eb.png" width="700" height="250">
 
-<img src="https://i.gyazo.com/72f5a6b3bbe813d34ec0694bafbc4f6e.png" width="700" height="250">
+<img src="https://i.gyazo.com/72f5a6b3bbe813d34ec0694bafbc4f6e.png" width="700" height="350">
 
 

@@ -1,4 +1,4 @@
-<div [ngStyle]="getBackground()">
+<div [ngStyle]="getBackground()" class="min-height">
 <div id="registerbox">
 <form (ngSubmit)="signUp({email: email, password: password})" #signUpForm="ngForm">
   <input type="text" [(ngModel)]="email" name="email" placeholder="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>

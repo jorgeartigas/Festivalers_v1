@@ -1,4 +1,4 @@
-<div [ngStyle]="getBackground()">
+<div [ngStyle]="getBackground()" class="min-height">
     <div id="addFestival">
         <form (ngSubmit)="addFestival()" #addFestivalForm="ngForm" novalidate>
             <input placeholder="Nombre" type="text" [(ngModel)]="newFestival.name" name="name" class="innombre" required /><br>

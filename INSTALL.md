@@ -20,7 +20,13 @@ En el nostre cas no cal fer `ng new`, cloneu el projecte de github a una carpeta
 ng new PROJECT NAME
 ```
 Això ens creara tota l'estructura de carpetes del nostre projecte i una pagina amb un titol de mostra.
+#### Descarrega el nostre projecte
 
+https://github.com/jorgeartigas/Festivalers_v1/archive/master.zip   
+o
+```
+git clone https://github.com/jorgeartigas/Festivalers_v1.git
+```
 
 ## VS Code
 Per a obrir/editar el nostre projecte, instal·lem visual studio code   
@@ -66,12 +72,11 @@ firebase deploy
 Podem fer login amb qualsevol correu de google  
 [<img src="https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png" alt="VS Code" width="50" height="50">](https://console.firebase.google.com/)  
 Click on afegir un projecte i li donem el nom que volguem + escollir la regió, uns segons després ja tindrem firebase llest per a treballar... 
-Hauriem d'anar al nostre projecte, obrir el terminal i executar aquesta comanda
+Hauriem d'anar al nostre projecte, obrir el terminal i executar aquesta comanda per a instal·lar el CLI de firebase
 ```bash
-# En el nostre cas ho tenim instal·lat perque formen part de les dependències del nostre projecte, omitim aquest pas
-npm install angularfire2 firebase --save
+npm install -g firebase-tools
 ```
-Haurem de fer login amb les credencials de google per tal d'utilitzar les funcions de firebase, al terminal executem això i s'obrirà una pàgina web on podrem seleccionar amb quina compte configurar-ho, acceptem i llestos
+Haurem de fer login amb les credencials de google (les mateixes amb les que hem creat el projecte) per tal d'utilitzar les funcions de firebase, al terminal executem això i s'obrirà una pàgina web on podrem seleccionar amb quina compte configurar-ho, acceptem i llestos
 ```bash
 firebase login
 ```
@@ -80,4 +85,24 @@ Escollim firebase realtime database i firebase hosting
 ```bash
 firebase init
 ```
+Ens preguntara a quin projecte volem desplegar la nostra aplicacio (a console.firebase.google.com) podem tenir més d'un projecte i hosting, cadascún amb la seva id... ens desplegarà l'aplicació en el hosting del projecte que li diguem.  
+També que especifiquem quina serà la carpeta per defecte que es pujarà (public).  
+Ens preguntarà si volem que la nostre pàgina sigui una single-page app (en el nostre cas, sí)  
+
+##### Si feu firebase init amb el nostre projecte, com ja conté un arxiu especificant la id del projecte, haureu de cambiar-ho pel vostre, podeu trobar la id del projecte a la consola de firebase 
+<img src="https://i.gyazo.com/2236a9db87bbd5c3536d967894a0a83a.png" alt="VS Code" width="700" height="250">
+
+
+### PRODUCTION BUILD
+Per tal de poder pujar la nostra aplicació al servidor de firebase, hem de fer una build en mode producció que ens crearà la carpeta amb els arxius comprimits necessaris per a que funcioni.  
+```bash
+ng build --prod
+```
+Per a pujar-ho fem 
+```bash
+firebase deploy
+```
+
+I ens tornara la url de la consola del projecte i la del projecte desplegat, per a que la poguem visitar
+
 

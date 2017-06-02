@@ -13,7 +13,6 @@ import { MainNavComponent } from './nav-bar/main-nav.component';
 import { NewsComponent } from './news/news.component';
 import { CreateNewsComponent } from './panel/create-news.component';
 import { EditNewsComponent } from './panel/edit-news.component';
-import { ContactComponent } from './contact/contact.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AddFestivalComponent } from './festivales/add-festival.component';
 import { AdminFestivalComponent } from './panel/admin-festival.component';
@@ -73,7 +72,6 @@ const myFirebaseAuthConfig = {
     HomePageComponent,
     MainNavComponent,
     NewsComponent,
-    ContactComponent,
     AddFestivalComponent,
     AdminFestivalComponent,
     SignUpComponent,

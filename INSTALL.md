@@ -71,5 +71,13 @@ Hauriem d'anar al nostre projecte, obrir el terminal i executar aquesta comanda
 # En el nostre cas ho tenim instal·lat perque formen part de les dependències del nostre projecte, omitim aquest pas
 npm install angularfire2 firebase --save
 ```
-
+Haurem de fer login amb les credencials de google per tal d'utilitzar les funcions de firebase, al terminal executem això i s'obrirà una pàgina web on podrem seleccionar amb quina compte configurar-ho, acceptem i llestos
+```bash
+firebase login
+```
+A continuació initcialitzem el nostre projecte com un projecte de firebase, i ens preguntara quines funcionalitats volem.
+Escollim firebase realtime database i firebase hosting (funcions no utilitzem)
+```bash
+firebase init
+```
 

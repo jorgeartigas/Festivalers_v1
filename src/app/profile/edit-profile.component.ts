@@ -15,6 +15,8 @@ export class EditProfileComponent implements OnInit{
   ownsFestival:boolean;
   activeView:string;
   editado: boolean = false;
+  styles: FirebaseListObservable<any>;
+  countries:FirebaseListObservable<any>;
     constructor(
         private af: AngularFire,
         private storageService: StorageService,
@@ -23,6 +25,8 @@ export class EditProfileComponent implements OnInit{
         private route:ActivatedRoute
     ){}
   ngOnInit(){
+    this.styles = this.af.database.list('FESTIVALERS/camposBD/estilos');
+    this.countries = this.af.database.list('FESTIVALERS/camposBD/paises');
     this.af.database.list('FESTIVALERS/UsersFestivalOwners/'+this.userData.userUID).subscribe(snap=>{
       if(snap[0]){
         this.ownsFestival=true;

@@ -10,8 +10,14 @@
                     <input type="text" class="editInput" #name="ngModel" name="name" [(ngModel)]="userData.currentUser.name" required>
                     <input type="text" class="editInput" #lastname="ngModel" name="lastname" [(ngModel)]="userData.currentUser.lastname" required>
                     <input type="text" class="editInput" #age="ngModel" name="age" [(ngModel)]="userData.currentUser.age" required>
-                    <input type="text" class="editInput" #location="ngModel" name="location" [(ngModel)]="userData.currentUser.location" required>
-                    <input type="text" class="editInput"#estilos="ngModel" name="estilos" [(ngModel)]="userData.currentUser.estilos">
+                      <select class="editInput select" [(ngModel)]="userData.currentUser.location" name="location">
+                        <option value="" disabled selected> Pais de residencia </option>
+                        <option *ngFor="let country of countries | async" value="{{country.name}}">{{ country.name }}</option>
+                    </select>
+                    <select class="editInput select" [(ngModel)]="userData.currentUser.estilos" name="estilos">
+                        <option value="" disabled selected>Estilo musical favorito </option>
+                        <option *ngFor="let style of styles | async" value="{{style.style}}">{{ style.style}}</option>
+                    </select><br><br>
                     <button *ngIf="editado" type="submit" [disabled]="perfilForm.invalid" class="btn btn-success guardar">Guardar Cambios</button>
                 </form>
             </div>
@@ -23,7 +29,7 @@
                 <li *ngIf="ownsFestival" (click)="activateView('ownFestivalsView')" class="menprofile">Administrar mis Festivales</li>
             </ul>
         </div>
-        <div class="col-md-6" [ngSwitch]="activeView">
+        <div class="col-md-8" [ngSwitch]="activeView">
           <profileFestivals *ngSwitchDefault></profileFestivals>
           <profileArtists *ngSwitchCase="'artistsView'"></profileArtists>
           <profileOwnFestivals  *ngSwitchCase="'ownFestivalsView'"></profileOwnFestivals>

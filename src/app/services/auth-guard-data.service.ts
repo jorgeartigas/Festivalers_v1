@@ -33,6 +33,6 @@ export class AuthGuardData implements CanActivate{
         this.userData.isLoggedIn = false;
         return true;
       }
-    }).first()
+    })
   }
 }

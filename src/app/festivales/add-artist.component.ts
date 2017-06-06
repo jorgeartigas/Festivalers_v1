@@ -10,8 +10,8 @@ import { FestivalService } from '../services/festival.service';
 })
 export class AddArtistComponent implements OnInit{
   @Input() idFestival:string;
-  searchSpotify: string;
-  spotifyResults:any;
+  lastFmSearch: string;
+  lastFmResults: any;
   searchURL: string
   activeView: string;
   headLinersArtists: any;
@@ -28,6 +28,7 @@ export class AddArtistComponent implements OnInit{
       this.headLinersArtists = artists;
     })
     this.af.database.list('FESTIVALERS/FestivalsArtists/'+this.idFestival+'/general').subscribe(artists => {
+      console.log(this.generalArtists)
       this.generalArtists = artists;
     })
   }
@@ -35,18 +36,19 @@ export class AddArtistComponent implements OnInit{
     this.festivalService.addHeadLiner(this.idFestival,id,artistName,artistPhoto);
   }
   addGeneral(id,artistName,artistPhoto){
+    console.warn(id,artistName,artistPhoto)
     this.festivalService.addGeneral(this.idFestival,id,artistName,artistPhoto);
   }
   removeArtist(idArtist,path){
     this.festivalService.removeArtist(this.idFestival,idArtist,path);
   }
-  search(val?:number){
-    if(this.searchSpotify){
-        this.userService.search(this.searchSpotify).subscribe(res =>{
-            this.spotifyResults = res.artists.items;
+  search(){
+    if(this.lastFmSearch){
+        this.userService.search(this.lastFmSearch).subscribe(res =>{
+            this.lastFmResults = res.results.artistmatches.artist;
       });
     }else{
-      this.spotifyResults = null;
+      this.lastFmResults = null;
     }
   }
 

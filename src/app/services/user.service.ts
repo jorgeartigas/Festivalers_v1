@@ -7,11 +7,13 @@ import { CurrentUserData } from './user-data.service';
 @Injectable()
 export class UserService {
   searchURL: string;
+  searchCountry: string;
   artistURL: string;
   albumsURL:string;
-  albumURL: string;
   topTracks: string;
+  similar: string;
   results: any[];
+  apiKey: string = '9cf654c3a4c1332e1239c7c2578f8184';
 
   constructor(
     public userData : CurrentUserData,
@@ -40,25 +42,29 @@ export class UserService {
   removeNotification(id){
     this.af.database.object('FESTIVALERS/UserNotifications/'+this.userData.userUID+'/'+id).remove();
   }
-  search(name, type="artist"){
-    this.searchURL = 'https://api.spotify.com/v1/search?query='+name+'&offset=0&limit=20&type='+type+'&market=US';
+  search(name){
+    this.searchURL = 'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist='+name+'&api_key='+this.apiKey+'&format=json';
     return this.http.get(this.searchURL).map(res => res.json());
   }
+  getArtistsByCountry(location){
+    this.searchCountry = 'http://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country='+location+'&api_key='+this.apiKey+'&format=json';
+    return this.http.get(this.searchCountry).map(res => res.json());
+  }
   getArtist(id){
-    this.artistURL = 'https://api.spotify.com/v1/artists/'+id;
+    this.artistURL = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='+id+'&api_key='+this.apiKey+'&format=json';
     return this.http.get(this.artistURL).map(res => res.json());
   }
-  getAlbums(artistId){
-    this.albumsURL = 'https://api.spotify.com/v1/artists/'+artistId+'/albums';
+  getAlbums(id){
+    this.albumsURL = 'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid='+id+'&api_key='+this.apiKey+'&format=json';
     return this.http.get(this.albumsURL).map(res => res.json());
   }
-  getAlbum(id){
-    this.albumURL = 'https://api.spotify.com/v1/albums/'+id;
-    return this.http.get(this.albumURL).map(res => res.json());
-  }
-  getTopTracks(artistId){
-    this.topTracks = 'https://api.spotify.com/v1/artists/'+artistId+'/top-tracks?country=ES';
+  getTopTracks(id){
+    this.topTracks = 'http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&mbid='+id+'&api_key='+this.apiKey+'&format=json';
     return this.http.get(this.topTracks).map(res => res.json());
+  }
+  getSimilar(id){
+    this.similar = 'http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&mbid='+id+'&api_key='+this.apiKey+'&format=json';
+    return this.http.get(this.similar).map(res => res.json());
   }
   getFestivals(){
     this.af.database.list('FESTIVALERS/festivales').first().subscribe(results => {

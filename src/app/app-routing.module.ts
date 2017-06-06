@@ -16,7 +16,6 @@ import { EditProfileComponent } from './profile/edit-profile.component';
 import { ArtistComponent } from './artist/artist.component';
 import { SearchArtistComponent } from './artist/search-artist.component';
 import { SearchFestivalComponent } from './search/search-festival.component';
-import { AlbumComponent } from './artist/album.component';
 import { AuthGuardData } from './services/auth-guard-data.service';
 import { AuthGuardOwner } from './services/auth-guard-owner.service';
 
@@ -31,7 +30,6 @@ const routes: Routes = [
   { path: 'edit-festival/:id', component: EditFestivalComponent, canActivate: [AuthGuardData,AuthGuardOwner]},
   { path: 'search-artist', component: SearchArtistComponent, canActivate: [AuthGuardData]},
   { path: 'artist/:id', component: ArtistComponent, canActivate: [AuthGuardData]},
-  { path: 'album/:id', component: AlbumComponent, canActivate: [AuthGuardData]},
   { path: 'addFestival', component: AddFestivalComponent, canActivate: [AuthGuard,AuthGuardData]},
   { path: 'adminFestival', component: AdminFestivalComponent, canActivate: [AuthGuardData,AuthGuardAdmin]},
   { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard,AuthGuardData]},

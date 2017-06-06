@@ -11,4 +11,17 @@
     padding: 10px;
     cursor: pointer;
     border-radius: 5px;
+    min-height: 180px;
+}
+img{
+    height: 110px;
+}
+input{
+    margin-top: 5px;
+    border:1px solid #9099A2;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    text-align: center;
+    width: 400px;
+    padding:5px;
 }

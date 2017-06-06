@@ -2,8 +2,8 @@
     <!--cambiar esta clase y ponerla custom, pero pa probar voy tirando -->
     <div class="col-md-4 navfestivales">
         <ul>
-            <li (click)="activeView='';spotifyResults=null;searchSpotify=null">Cabezas de cartel</li>
-            <li (click)="activeView='general';spotifyResults=null;searchSpotify=null">Artistas Generales</li> 
+            <li (click)="activeView='';lastFmResults=null;lastFmSearch=null">Cabezas de cartel</li>
+            <li (click)="activeView='general';lastFmResults=null;lastFmSearch=null">Artistas Generales</li> 
         </ul>
     </div>
 </div>
@@ -11,18 +11,14 @@
     <div class="row">
         <div *ngSwitchDefault>
             <div class="col-md-4" >
-                <input type="text" name="searchSpotify" [(ngModel)]="searchSpotify" placeholder="Añade un cabeza de cartel" (keyup)="search()"/><br><br>
-                <div *ngIf="spotifyResults">
-                    <div *ngFor="let results of spotifyResults">
-                        <div *ngIf="results.images[0]" class="row">
+                <input type="text" name="lastFmSearch" [(ngModel)]="lastFmSearch" placeholder="Añade un cabeza de cartel" (keyup)="search()"/><br><br>
+                <div *ngIf="lastFmResults">
+                    <div *ngFor="let results of lastFmResults">
+                        <div *ngIf="results.image[2] && results.mbid" class="row">
                             <div class="col-md-12">
                                 <div class="search-results well">
-                                    <h4 routerLink="/artist/{{results.id}}">{{ results.name }}</h4>
-                                    <div>
-                                        <strong>Generos:</strong>
-                                        <span *ngFor="let generos of results.genres">{{generos}}, </span>
-                                    </div>
-                                        <button class="btn btn-succes" (click)="addHeadLiner(results.id,results.name,results.images[0].url)">Add</button>
+                                    <h4 routerLink="/artist/{{results.mbid}}">{{ results.name }}</h4>
+                                        <button class="btn btn-succes" (click)="addHeadLiner(results.mbid,results.name,results.image[2]['#text'])">Add</button>
                                 </div>
                             </div>
                         </div>
@@ -32,8 +28,8 @@
             <div *ngIf="headLinersArtists" class="col-md-8">
                 <div *ngFor="let artist of headLinersArtists">
                     <div class="col-md-4">
-                        <div class="well">
-                            <span>{{ artist.name }}</span>
+                        <div class="well add-artist-height">
+                            <h4>{{ artist.name }}</h4>
                             <img class="img-artist" src="{{ artist.photo }}"/>
                             <span class="btn btn-danger" (click)="removeArtist(artist.$key,'headLiner')"> X </span>
                         </div>
@@ -43,18 +39,14 @@
         </div>
         <div *ngSwitchCase="'general'">
             <div class="col-md-4">
-                <input type="text" name="searchSpotify" [(ngModel)]="searchSpotify" placeholder="Añade un artista" (keyup)="search()"/><br><br>
-                <div *ngIf="spotifyResults">
-                    <div *ngFor="let results of spotifyResults">
-                        <div *ngIf="results.images[0]" class="row">
+                <input type="text" name="lastFmSearch" [(ngModel)]="lastFmSearch" placeholder="Añade un artista" (keyup)="search()"/><br><br>
+                <div *ngIf="lastFmResults">
+                    <div *ngFor="let results of lastFmResults">
+                        <div *ngIf="results.image[2] && results.mbid" class="row">
                             <div class="col-md-12">
                                 <div class="search-results well">
-                                    <h4 routerLink="/artist/{{results.id}}">{{ results.name }}</h4>
-                                    <div>
-                                        <strong>Generos:</strong>
-                                        <span *ngFor="let generos of results.genres">{{generos}}, </span>
-                                    </div>
-                                        <button class="btn btn-succes" (click)="addHeadLiner(results.id,results.name,results.images[0].url)">Add</button>
+                                    <h4 routerLink="/artist/{{results.mbid}}">{{ results.name }}</h4>
+                                        <button class="btn btn-succes" (click)="addGeneral(results.mbid,results.name,results.image[2]['#text'])">Add</button>
                                 </div>
                             </div>
                         </div>
@@ -64,8 +56,8 @@
             <div *ngIf="generalArtists" class="col-md-8">
                 <div *ngFor="let artist of generalArtists">
                     <div class="col-md-4">
-                        <div class="well">
-                            <span>{{ artist.name }}</span>
+                        <div class="well add-artist-height">
+                            <h4>{{ artist.name }}</h4>
                             <img class="img-artist" src="{{ artist.photo }}"/>
                             <span class="btn btn-danger" (click)="removeArtist(artist.$key,'general')"> X </span>
                         </div>

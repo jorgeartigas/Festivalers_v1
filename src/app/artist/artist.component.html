@@ -1,46 +1,57 @@
-<div class="artist" *ngIf="artist" class="min-height">
-    <header class="artist-header">
-        <div *ngIf="artist.images.length > 0">
-            <img class="artist-photo" src="{{ artist.images[0].url }}"/>
-        </div>
-        <button class="btn btn-search btn-right" routerLink="/search-artist">Volver a buscar</button><br>
-        <h1>{{ artist.name }}<a href="{{ artist.external_urls.spotify }}" class="btn btn-success btn-right btn-green">Abrir en spotify</a></h1>
-        <button class="btn btn-primary btn-right" *ngIf="userData.isLoggedIn && !favorite" (click)="addFavorite()">Añadir a favoritos</button>
-        <button class="btn btn-primary btn-right" *ngIf="userData.isLoggedIn && favorite === true" (click)="removeFavorite()">Quitar de favoritos</button>
-        <p *ngIf="artist.genres.length > 0">Generos:
-            <span *ngFor="let generos of artist.genres">{{ generos }}</span>
-        </p>
-    </header>
+<div class="container min-heigth">
+    <div class="artist" *ngIf="artist">
+        <header class="artist-header">
+            <button class="btn btn-search atras" routerLink="/search-artist">Volver a buscar</button>
+            <div *ngIf="artist.image?.length > 0">
+                <img class="artist-photo" src="{{ artist.image[2]['#text'] }}"/>
+            </div>
+            
+            <h1>{{ artist.name }}
+            <button class="btn btn-primary btn-right" *ngIf="userData.isLoggedIn && !favorite" (click)="addFavorite()">Añadir a favoritos</button>
+            <button class="btn btn-primary btn-right" *ngIf="userData.isLoggedIn && favorite === true" (click)="removeFavorite()">Quitar de favoritos</button>
+            </h1>
 
-    <div class="artist-toptracks">
-        <h2 class="cabeceras" *ngIf="topTracks">Top Canciones</h2>
-        <div class="row">
-            <div *ngFor="let top of topTracks?.tracks">
-                <div class="col-md-3">
-                    <div class="toptrack">
-                        <img *ngIf="top.album.images.length > 0" src="{{ top.album.images[0].url }}"/>
+            <p class="summary">{{ artist.bio.summary}}</p>
+            <h4>Estilo de musica</h4>
+            <span *ngFor="let tag of artist.tags.tag">{{ tag.name }}, </span>
+        </header>
+        <div class="artist-toptracks">
+            <h2 class="cabeceras" *ngIf="topTracks">Top Canciones</h2>
+            <div class="row">
+                <div *ngFor="let top of topTracks;  let i=index">
+                    <div *ngIf="i<limitTracks" class="col-md-3">
+                        <div class="toptrack">
                             <h4>{{ top.name }}</h4>
-                            <audio *ngIf="top.preview_url" controls preload="none">
-                                <source src="{{top.preview_url}}" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                            </audio>
-                            <span *ngIf="!top.preview_url">Preview no disponible</span>
+                        </div>
+                    </div>
+                </div>
+                <button *ngIf="!moreTracks" class="btn btn-search btn-right" (click)="moreTracks = !moreTracks; limitTracks=8">Ver más..</button>
+                <button *ngIf="moreTracks" class="btn btn-search btn-right" (click)="moreTracks = !moreTracks; limitTracks=4">Ver menos</button>
+            </div>
+        </div>
+
+        <div class="artist-albums">
+            <h2 class="cabeceras" *ngIf="albums">Albumes</h2>
+            <h2 class="cabeceras" *ngIf="!albums">No hay albumes disponibles</h2>
+            <div class="row">
+                <div *ngFor="let album of albums;  let i=index">
+                    <div *ngIf="album.mbid" class="col-md-3">
+                        <div class="album">
+                                <h4>{{ album.name }}</h4>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="artist-albums">
-        <h2 class="cabeceras" *ngIf="albums">Albumes</h2>
-        <h2 class="cabeceras" *ngIf="!albums">No hay albumes disponibles</h2>
-        <div class="row">
-            <div *ngFor="let album of albums">
-                <div class="col-md-3">
-                    <div class="album">
-                        <div *ngIf="album.images.length >0">
-                            <img routerLink="/album/{{ album.id }}" class="album-thumb img-thumbnail" src="{{ album.images[0].url }}"/>
-                            <h4>{{ album.name }}</h4>
+        <div class="artist-albums">
+            <h2 class="cabeceras" *ngIf="similars">Artistas relacionados</h2>
+            <h2 class="cabeceras" *ngIf="!similars">No hay artistas relacionados</h2>
+            <div class="row">
+                <div *ngFor="let similar of similars;  let i=index">
+                    <div *ngIf="similar.mbid && i<=limitSimilars" class="col-md-2">
+                        <div class="album similar">
+                                <h4 routerLink="/artist/{{ similar.mbid }}">{{ similar.name }}</h4>
+                                <img routerLink="/artist/{{ similar.mbid }}" src="{{ similar.image[1]['#text'] }}"/>
                         </div>
                     </div>
                 </div>

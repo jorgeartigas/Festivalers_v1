@@ -7,11 +7,14 @@
     margin-bottom: 20px;
     margin-top: 20px;
 }
+.atras{
+    margin-bottom: 20px;
+}
 .artist-toptracks{
     padding-bottom: 20px;
 }
 .toptrack{
-    height: 200px;
+    height: 100px;
     width: auto;
     background-color: #F2F2F2;
     border: 1px solid #8c8c8c;
@@ -29,7 +32,7 @@
 }
 
 .album{
-    height: 375px;
+    height: 100px;
     width: auto;
     background-color: #F2F2F2;
     border: 1px solid #8c8c8c;
@@ -38,6 +41,10 @@
     border-radius: 5px;
     cursor: pointer;
 
+}
+.summary{
+    margin-top:30px;
+    margin-bottom: 20px;
 }
 .album-thumb{
     width: 100%;
@@ -59,4 +66,7 @@ audio{
 
 .cabeceras{
     text-align: center;
+}
+.similar{
+    min-height: 150px;
 }

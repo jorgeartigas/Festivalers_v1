@@ -17,7 +17,7 @@
         <div class="row">
             <h2>Ultimos festivales añadidos</h2>
             <hr class="separator">
-            <div class="col-md-4" *ngFor="let festival of festivales">
+            <div class="col-md-4 festmod" *ngFor="let festival of festivales">
                 <img routerLink="/festival/{{festival.$key}}" src="{{ festival.mainPhoto }}" class="img-responsive">
                 <h3 routerLink="/festival/{{festival.$key}}">{{ festival.name }}</h3>
                 <p>{{ festival.startDate }}</p>

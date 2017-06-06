@@ -30,7 +30,6 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchFestivalComponent } from './search/search-festival.component';
 import { ArtistComponent } from './artist/artist.component';
 import { SearchArtistComponent } from './artist/search-artist.component';
-import { AlbumComponent } from './artist/album.component';
 import { EditFestivalComponent } from './festivales/edit-festival.component';
 import { ChatComponent } from './festivales/chat.component';
 import { AddArtistComponent } from './festivales/add-artist.component';
@@ -84,7 +83,6 @@ const myFirebaseAuthConfig = {
     SearchFestivalComponent,
     ArtistComponent,
     SearchArtistComponent,
-    AlbumComponent,
     EditFestivalComponent,
     EditProfileComponent,
     ChatComponent,

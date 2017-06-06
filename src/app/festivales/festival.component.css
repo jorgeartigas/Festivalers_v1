@@ -121,10 +121,13 @@ h1{
 }
 
 .imgNotice{
-    margin-top: 20px;
-    margin-right: 5px;
-}
+    margin-top: 30px;
 
+}
+hr{
+    margin-top:40px;
+    border: 1px solid black;
+}
 .edInfoFest{
     height: auto;
     width: auto;
@@ -142,4 +145,10 @@ h1{
     margin-left: 5px;
     border: 1px solid #8c8c8c;
     border-radius: 5px;
+}
+.new {
+    margin-bottom: 20px;
+}
+.add-artist-height{
+    min-height: 200px;
 }

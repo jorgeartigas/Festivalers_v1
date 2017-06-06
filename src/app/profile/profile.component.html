@@ -15,7 +15,7 @@
                 <li (click)="activateView('artistsView')" class="menprofile">Mis Artistas</li>
             </ul>
         </div>
-        <div class="col-md-6" [ngSwitch]="activeView">
+        <div class="col-md-8" [ngSwitch]="activeView">
           <profileFestivals [idProfile]="idProfile" *ngSwitchDefault></profileFestivals>
           <profileArtists [idProfile]="idProfile" *ngSwitchCase="'artistsView'"></profileArtists>
         </div>

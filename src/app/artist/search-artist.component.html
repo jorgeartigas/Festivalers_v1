@@ -6,17 +6,19 @@
                 <input type="text" name="lastFmSearch" [(ngModel)]="lastFmSearch" placeholder="Busca un artista..." (keyup)="search()"/><br><br>
             </div>
         </div>
-        <div *ngIf="!lastFmResults">
-            <h2>Popular en tu pais</h2>
-            <div *ngFor="let results of popular">
-                <div *ngIf="results.mbid" class="col-md-3">
-                    <div class="search-results">
-                        <img routerLink="/artist/{{ results.mbid }}" src="{{ results.image[2]['#text'] }}"/>
-                        <h4 routerLink="/artist/{{ results.mbid }}">{{ results.name }}</h4>
+        <div *ngIf="userData.isLoggedIn">
+            <div *ngIf="!lastFmResult">
+                <h2>Popular en tu pais</h2>
+                <div *ngFor="let results of popular">
+                    <div *ngIf="results.mbid" class="col-md-3">
+                        <div class="search-results">
+                            <img routerLink="/artist/{{ results.mbid }}" src="{{ results.image[2]['#text'] }}"/>
+                            <h4 routerLink="/artist/{{ results.mbid }}">{{ results.name }}</h4>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+    <   </div>
         <div *ngIf="lastFmResults">
             <h2>Resultados de la busqueda</h2>
             <div *ngFor="let results of lastFmResults">

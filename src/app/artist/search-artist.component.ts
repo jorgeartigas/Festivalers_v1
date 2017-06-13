@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { AngularFire } from 'angularfire2';
+import { CurrentUserData } from '../services/user-data.service'
 
 @Component({
   selector: 'search-artist',
@@ -13,16 +14,19 @@ export class SearchArtistComponent implements OnInit{
   lastFmResults: any;
   
   constructor(
-      private userService: UserService,
-      private af: AngularFire
+      public userService: UserService,
+      public userData: CurrentUserData,
+      public af: AngularFire
   ){}
   ngOnInit(){
     this.af.auth.first().subscribe(uid => {
+      if(uid){
         this.af.database.object('FESTIVALERS/Users/'+uid.uid).first().subscribe(user=>{
             this.userService.getArtistsByCountry(user.location).subscribe(artists => {
               this.popular = artists.topartists.artist;
             })
         })
+      }
     })
 
   }

@@ -43,27 +43,27 @@ export class UserService {
     this.af.database.object('FESTIVALERS/UserNotifications/'+this.userData.userUID+'/'+id).remove();
   }
   search(name){
-    this.searchURL = 'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist='+name+'&api_key='+this.apiKey+'&format=json';
+    this.searchURL = 'https://ws.audioscrobbler.com/2.0/?method=artist.search&artist='+name+'&api_key='+this.apiKey+'&format=json';
     return this.http.get(this.searchURL).map(res => res.json());
   }
   getArtistsByCountry(location){
-    this.searchCountry = 'http://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country='+location+'&api_key='+this.apiKey+'&format=json';
+    this.searchCountry = 'https://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country='+location+'&api_key='+this.apiKey+'&format=json';
     return this.http.get(this.searchCountry).map(res => res.json());
   }
   getArtist(id){
-    this.artistURL = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='+id+'&api_key='+this.apiKey+'&format=json';
+    this.artistURL = 'https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid='+id+'&api_key='+this.apiKey+'&format=json';
     return this.http.get(this.artistURL).map(res => res.json());
   }
   getAlbums(id){
-    this.albumsURL = 'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid='+id+'&api_key='+this.apiKey+'&format=json';
+    this.albumsURL = 'https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid='+id+'&api_key='+this.apiKey+'&format=json';
     return this.http.get(this.albumsURL).map(res => res.json());
   }
   getTopTracks(id){
-    this.topTracks = 'http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&mbid='+id+'&api_key='+this.apiKey+'&format=json';
+    this.topTracks = 'https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&mbid='+id+'&api_key='+this.apiKey+'&format=json';
     return this.http.get(this.topTracks).map(res => res.json());
   }
   getSimilar(id){
-    this.similar = 'http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&mbid='+id+'&api_key='+this.apiKey+'&format=json';
+    this.similar = 'https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&mbid='+id+'&api_key='+this.apiKey+'&format=json';
     return this.http.get(this.similar).map(res => res.json());
   }
   getFestivals(){
